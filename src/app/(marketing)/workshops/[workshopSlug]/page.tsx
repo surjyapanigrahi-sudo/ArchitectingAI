@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { enterpriseAiFoundations } from "@/modules/workshops/enterprise-ai-foundations";
+
+export default async function WorkshopOverview({ params }: { params: Promise<{ workshopSlug: string }> }) {
+  const { workshopSlug } = await params; if (workshopSlug !== enterpriseAiFoundations.slug) notFound();
+  return <section className="workshop-overview"><p className="eyebrow">Enterprise AI Foundations</p><h1>{enterpriseAiFoundations.title}</h1><p className="workshop-summary">Production Lesson 1 is in development. Experiences 1–6 are currently available.</p><div className="demo-lesson-card"><div><span>Lesson 1 · In development</span><h2>From AI Solution to Enterprise AI Architecture</h2><p>Understand why a working AI application is not automatically an enterprise AI architecture and identify the major architectural capabilities relevant to an enterprise context.</p></div><Link className="primary-button button-link" href="/workshops/enterprise-ai-foundations/from-ai-solution-to-enterprise-ai-architecture">Open Lesson 1</Link></div><div className="demo-lesson-card"><div><span>Engine demonstration</span><h2>Explore the reusable lesson engine</h2><p>The approved placeholder demo remains available for engine validation.</p></div><Link className="secondary-button" href="/workshops/enterprise-ai-foundations/demo-learning-experience">Open Demo</Link></div><div className="future-lessons"><h2>Future lessons</h2><ol><li><span>Lesson 2</span><strong>Not yet implemented</strong></li><li><span>Lesson 3</span><strong>Not yet implemented</strong></li></ol></div></section>;
+}

@@ -1,0 +1,6 @@
+import type { ArchitectureLabComponent, ArchitectureLabPlacement } from "../types";
+
+export function ArchitectureToolkit({ components, placements, activeSlotId, onAssign }: { components: ArchitectureLabComponent[]; placements: ArchitectureLabPlacement[]; activeSlotId: string | null; onAssign: (componentId: string) => void }) {
+  const selectedIds = new Set(placements.map((placement) => placement.componentId));
+  return <section className="lab-toolkit" aria-labelledby="lab-toolkit-title"><div className="lab-section-heading"><p className="eyebrow">Architecture toolkit</p><h2 id="lab-toolkit-title">Choose a capability</h2><p>{activeSlotId ? "Select a compatible capability for the active position." : "Select an architecture position first."}</p></div><div className="toolkit-grid">{components.map((component) => { const selected = selectedIds.has(component.id); const compatible = Boolean(activeSlotId && component.compatibleSlotIds.includes(activeSlotId)); return <button key={component.id} type="button" className={`toolkit-card ${selected ? "is-selected" : ""}`} disabled={!compatible} aria-pressed={selected} onClick={() => onAssign(component.id)}><span>{component.label}</span><small>{component.purpose}</small><strong>{selected ? "Selected" : compatible ? "Available" : "Choose a compatible position"}</strong></button>; })}</div></section>;
+}

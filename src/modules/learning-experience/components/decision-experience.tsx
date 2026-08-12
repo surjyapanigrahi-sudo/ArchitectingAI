@@ -1,0 +1,5 @@
+import type { DecisionExperienceDefinition } from "../types";
+
+export function DecisionExperience({ experience, selectedOptionId, onSelect }: { experience: DecisionExperienceDefinition; selectedOptionId?: string; onSelect: (optionId: string) => void }) {
+  return <article className="experience-surface"><header className="experience-heading"><p className="eyebrow">{experience.eyebrow}</p><h1 tabIndex={-1}>{experience.title}</h1><p>{experience.prompt}</p></header><fieldset className="lesson-choice-list"><legend>Choose one response</legend>{experience.options.map((option, index) => <label key={option.id} className={`lesson-choice ${selectedOptionId === option.id ? "is-selected" : ""}`}><input type="radio" name={experience.id} checked={selectedOptionId === option.id} onChange={() => onSelect(option.id)} /><span className="option-letter">{String.fromCharCode(65 + index)}</span><span>{option.label}</span>{selectedOptionId === option.id && <strong>Selected</strong>}</label>)}</fieldset><p className="decision-note">Your response is stored only in this demo lesson session.</p></article>;
+}

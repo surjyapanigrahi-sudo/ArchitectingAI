@@ -1,0 +1,1 @@
+export function LearnerShell({ children }: { children: React.ReactNode }) { return <div className="shell"><header className="shell-header">Learner shell</header><main className="shell-main">{children}</main></div>; }
