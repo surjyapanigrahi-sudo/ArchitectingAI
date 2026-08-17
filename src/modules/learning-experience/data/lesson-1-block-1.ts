@@ -1,5 +1,7 @@
 import type { LearningLesson } from "../types";
 import { lesson1Block2Experiences, lesson1Block2Glossary } from "./lesson-1-block-2";
+import { lesson1Experiences7And8 } from "./lesson-1-experiences-7-8";
+import { lesson1Experience10 } from "./lesson-1-experience-10";
 
 export const lesson1Block1: LearningLesson = {
   id: "lesson-1-ai-solution-to-enterprise-architecture",
@@ -94,5 +96,7 @@ export const lesson1Block1: LearningLesson = {
       ] }, architectInsight: "Do not treat the model as the system. The model is part of the system.", enterpriseExample: { title: "Same AI capability, different context", summary: "Two assistants may both use an LLM while their users, data sensitivity, availability expectations and ability to update systems lead to different design decisions." }, resourceIds: ["microsoft-ai-principles", "nist-ai-rmf"] },
     },
     ...lesson1Block2Experiences,
+    ...lesson1Experiences7And8,
+    lesson1Experience10,
   ],
 };

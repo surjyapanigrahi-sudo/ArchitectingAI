@@ -35,6 +35,7 @@ export interface ArchitectureLabDefinition {
   referenceArchitecture: ArchitectureLabReferenceArchitecture;
   finalChallenge: ArchitectureLabChallenge;
   completionCriteria: ArchitectureLabCompletionCriteria;
+  experienceModel?: "production-guided-lab";
 }
 
 export type ArchitectureLabPhase = "matching" | "design" | "review" | "compare" | "challenge" | "complete";
@@ -52,8 +53,17 @@ export interface ArchitectureLabState {
   finalChallengeSubmitted: boolean;
   completed: boolean;
   phase: ArchitectureLabPhase;
+  currentStage: number;
+  missionResponse: EntityId | null;
+  informationClassifications: Record<EntityId, EntityId>;
+  requestFlowResponse: EntityId | null;
+  changeRequestConcerns: EntityId[];
+  changeRequestSubmitted: boolean;
+  realityTestResponses: Record<EntityId, EntityId>;
+  currentRealityScenario: number;
+  learnerExplanation: string;
 }
 
 export function createArchitectureLabState(): ArchitectureLabState {
-  return { matchingResponses: [], matchingReviewed: false, activeMatchingPromptId: null, placements: [], activeSlotId: null, attemptNumber: 0, reviewHistory: [], latestFeedback: null, referenceArchitectureViewed: false, finalChallengeResponse: null, finalChallengeSubmitted: false, completed: false, phase: "matching" };
+  return { matchingResponses: [], matchingReviewed: false, activeMatchingPromptId: null, placements: [], activeSlotId: null, attemptNumber: 0, reviewHistory: [], latestFeedback: null, referenceArchitectureViewed: false, finalChallengeResponse: null, finalChallengeSubmitted: false, completed: false, phase: "matching", currentStage: 0, missionResponse: null, informationClassifications: {}, requestFlowResponse: null, changeRequestConcerns: [], changeRequestSubmitted: false, realityTestResponses: {}, currentRealityScenario: 0, learnerExplanation: "" };
 }

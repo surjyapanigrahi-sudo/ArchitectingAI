@@ -5,9 +5,11 @@ import type { ArchitectureLabExperienceDefinition } from "@/modules/learning-exp
 import type { ArchitectureLabFeedback, ArchitectureLabPlacement, ArchitectureLabState } from "../types";
 import { ArchitectureToolkit } from "./architecture-toolkit";
 import { CapabilityMatchingActivity } from "./capability-matching-activity";
+import { ProductionArchitectureLabExperience } from "./production-architecture-lab-experience";
 
 export function ArchitectureLabExperience({ experience, state, onChange }: { experience: ArchitectureLabExperienceDefinition; state: ArchitectureLabState; onChange: (state: ArchitectureLabState) => void }) {
   const { lab } = experience;
+  if (lab.experienceModel === "production-guided-lab") return <ProductionArchitectureLabExperience experience={experience} state={state} onChange={onChange} />;
   const assign = (componentId: string) => { if (!state.activeSlotId) return; const placements = [...state.placements.filter((placement) => placement.slotId !== state.activeSlotId), { slotId: state.activeSlotId, componentId }]; onChange({ ...state, placements }); };
   const remove = (slotId: string) => onChange({ ...state, placements: state.placements.filter((placement) => placement.slotId !== slotId) });
   const minimumReady = state.placements.length >= lab.completionCriteria.minimumPlacements && lab.completionCriteria.requiredSlotIds.every((slotId) => state.placements.some((placement) => placement.slotId === slotId));
@@ -25,7 +27,7 @@ export function ArchitectureLabExperience({ experience, state, onChange }: { exp
   </article>;
 }
 
-function ArchitectureSlots({ lab, state, onActivate, onRemove }: { lab: ArchitectureLabExperienceDefinition["lab"]; state: ArchitectureLabState; onActivate: (slotId: string) => void; onRemove: (slotId: string) => void }) {
+export function ArchitectureSlots({ lab, state, onActivate, onRemove }: { lab: ArchitectureLabExperienceDefinition["lab"]; state: ArchitectureLabState; onActivate: (slotId: string) => void; onRemove: (slotId: string) => void }) {
   return <section className="lab-canvas" aria-labelledby="lab-canvas-title"><div className="lab-section-heading"><p className="eyebrow">My architecture</p><h2 id="lab-canvas-title">Select a position to configure</h2><p>The guided positions keep the system readable while you make each decision.</p></div><div className="lab-slot-list">{lab.slots.map((slot, index) => { const placement = state.placements.find((item) => item.slotId === slot.id); const component = lab.availableComponents.find((item) => item.id === placement?.componentId); const active = state.activeSlotId === slot.id; return <div className={`lab-slot is-${slot.zone} ${active ? "is-active" : ""}`} key={slot.id}><button type="button" aria-pressed={active} onClick={() => onActivate(slot.id)}><span className="slot-order">{String(index + 1).padStart(2, "0")}</span><span><strong>{slot.label}</strong><small>{component?.label ?? slot.placeholder}</small></span><span className="slot-state">{component ? "Configured" : "Select"}</span></button>{component && <button className="slot-remove" type="button" onClick={() => onRemove(slot.id)} aria-label={`Remove ${component.label} from ${slot.label}`}>Remove</button>}</div>; })}</div></section>;
 }
 

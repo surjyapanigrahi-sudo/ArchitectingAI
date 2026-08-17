@@ -26,7 +26,7 @@ The `public.profiles.id` value is always the authenticated `auth.users.id`. The 
 
 ## Login and logout
 
-Login uses `signInWithPassword` and redirects successful sessions to `/dashboard`. Provider errors are mapped to safe user-facing messages. The existing Remember me control remains visual; session lifetime is owned by Supabase and no custom storage is created.
+Login uses `signInWithPassword` and redirects successful sessions to `/dashboard`. Provider errors are mapped to safe user-facing messages. Session persistence uses Supabase's standard browser-client behavior; the former visual-only Remember me control has been removed.
 
 Logout calls Supabase `signOut` and returns to `/`.
 
