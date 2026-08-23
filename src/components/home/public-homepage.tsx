@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ArchitectingAiLogo } from "@/components/brand/architecting-ai-logo";
 import { ArchitectingAiIcon, type ArchitectingAiSymbolName } from "@/components/icons";
 import { publishedCurriculumLessons, type CurriculumLessonMetadata } from "@/modules/learning-experience/data/curriculum-catalog";
+import { part1IntroductionVideo } from "@/modules/learning-experience/data/part-1-lessons";
 
 const labRoute = "/workshops/enterprise-ai-foundations/demo-learning-experience";
 const curriculum = [
@@ -12,7 +14,7 @@ const curriculum = [
   { part: "Part III", title: "Architect the Enterprise", lessons: ["Designing an End-to-End Enterprise RAG Architecture", "Designing Enterprise Agentic AI Architecture", "Architecture Patterns, Trade-offs & Technology Decisions", "Scaling Enterprise AI: Platform Architecture", "Enterprise AI Architecture Capstone"].map((title) => ({ title, status: "coming-soon" as const })) },
 ];
 
-function Brand() { return <Link className="home-brand" href="/" aria-label="Architecting AI home"><span className="home-brand-mark" aria-hidden="true">A</span><span>Architecting AI</span></Link>; }
+function Brand() { return <Link className="home-brand" href="/" aria-label="Architecting AI home"><ArchitectingAiLogo priority /></Link>; }
 
 function ArchitectureVisual() {
   const domains: { label: string; icon: ArchitectingAiSymbolName }[] = [{ label:"Business Outcomes", icon:"business-outcome" }, { label:"Enterprise Data", icon:"enterprise-data" }, { label:"AI & Intelligence", icon:"ai-intelligence" }, { label:"Integration", icon:"integration-api" }, { label:"Security & Governance", icon:"security" }, { label:"Observability & Operations", icon:"observability" }];
@@ -39,15 +41,27 @@ function LessonCard({ lesson }: { lesson: CurriculumLessonMetadata }) {
   return <Link className="journey-card" href={lesson.href}>{content}</Link>;
 }
 
+function CourseOverviewModal({ onClose }: { onClose: () => void }) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [onClose]);
+  return <div className="course-overview-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}><section className="course-overview-modal" role="dialog" aria-modal="true" aria-labelledby="course-overview-title"><button ref={closeButtonRef} className="course-overview-close" type="button" onClick={onClose} aria-label="Close course overview video">×</button><p className="home-eyebrow">Watch · Approx. {part1IntroductionVideo.durationLabel}</p><h2 id="course-overview-title">{part1IntroductionVideo.title}</h2><p>{part1IntroductionVideo.description}</p><div className="course-overview-frame"><video controls playsInline preload="metadata" aria-label={part1IntroductionVideo.title}><source src={part1IntroductionVideo.src} type="video/mp4" />Your browser does not support HTML5 video.</video></div><p className="instructional-video-note">AI-assisted instructional video.</p></section></div>;
+}
+
 export function PublicHomepage() {
   const [expanded, setExpanded] = useState(false);
+  const [overviewOpen, setOverviewOpen] = useState(false);
   const toggle = () => setExpanded((value) => !value);
   const controlLabel = expanded ? "Collapse 16-lesson learning journey" : "Show all 16 lessons";
   return <div className="public-home" id="top">
     <header className="public-header"><Brand /><nav aria-label="Primary navigation"><a href="#learning-journey">Learning Journey</a><Link href={labRoute}>Architecture Lab</Link><a href="#resources">Resources</a><a href="#about">About</a></nav><Link className="header-sign-in" href="/login"><ArchitectingAiIcon name="identity" size={16} /> Sign In</Link></header>
     <RegistrationTicker />
     <main>
-      <section className="home-hero"><div className="hero-inner"><div className="hero-copy"><p className="home-eyebrow">Enterprise AI Learning Studio</p><h1>Architecting AI</h1><p className="hero-lede">Master the art and science of designing, building, and operating enterprise AI solutions that deliver real business value.</p><div className="value-grid">{([{ icon:"learning-progress", title:"16-Lesson Learning Journey", copy:"A growing curriculum from foundations to advanced architectural patterns" },{ icon:"lab", title:"Hands-on Architecture Labs", copy:"Apply concepts with practical exercises and scenarios" },{ icon:"architecture", title:"Enterprise Focused", copy:"Learn principles, trade-offs and sound practices" }] as { icon: ArchitectingAiSymbolName; title: string; copy: string }[]).map((item) => <div className="hero-value" key={item.title}><span><ArchitectingAiIcon name={item.icon} size={21} /></span><div><strong>{item.title}</strong><p>{item.copy}</p></div></div>)}</div><div className="hero-actions"><Link className="home-button primary" href="/workshops/enterprise-ai-foundations">Start Learning <span aria-hidden="true">→</span></Link><Link className="home-button secondary-dark" href={labRoute}>Explore Architecture Lab <ArchitectingAiIcon name="lab" size={16} /></Link></div></div><ArchitectureVisual /></div></section>
+      <section className="home-hero"><div className="hero-inner"><div className="hero-copy"><p className="home-eyebrow">Enterprise AI Learning Studio</p><h1>Architecting AI</h1><p className="hero-lede">Master the art and science of designing, building, and operating enterprise AI solutions that deliver real business value.</p><div className="value-grid">{([{ icon:"learning-progress", title:"16-Lesson Learning Journey", copy:"A growing curriculum from foundations to advanced architectural patterns" },{ icon:"lab", title:"Hands-on Architecture Labs", copy:"Apply concepts with practical exercises and scenarios" },{ icon:"architecture", title:"Enterprise Focused", copy:"Learn principles, trade-offs and sound practices" }] as { icon: ArchitectingAiSymbolName; title: string; copy: string }[]).map((item) => <div className="hero-value" key={item.title}><span><ArchitectingAiIcon name={item.icon} size={21} /></span><div><strong>{item.title}</strong><p>{item.copy}</p></div></div>)}</div><div className="hero-actions"><Link className="home-button primary" href="/workshops/enterprise-ai-foundations">Start Learning <span aria-hidden="true">→</span></Link><button className="home-button secondary-dark course-overview-trigger" type="button" onClick={() => setOverviewOpen(true)}>Watch Course Overview <small>2 min</small></button><Link className="home-button secondary-dark" href={labRoute}>Explore Architecture Lab <ArchitectingAiIcon name="lab" size={16} /></Link></div><p className="course-overview-microcopy">See how Architecting AI takes you from AI prototypes to enterprise-ready architecture.</p></div><ArchitectureVisual /></div></section>
       <DifferentiationSection />
       <section className="home-section journey-section" id="learning-journey"><div className="journey-layout"><div className="journey-intro"><p className="home-eyebrow">The curriculum</p><h2>Your Learning Journey</h2><p>A structured path from understanding AI solutions to architecting enterprise-ready AI systems.</p><div className="journey-controls"><button className="text-control" type="button" onClick={toggle} aria-expanded={expanded} aria-controls="complete-curriculum">{expanded ? "Collapse Learning Journey" : "View Full Learning Journey"} <span aria-hidden="true">{expanded ? "↑" : "→"}</span></button><button className="journey-expander" type="button" onClick={toggle} aria-expanded={expanded} aria-controls="complete-curriculum" aria-label={controlLabel}><span aria-hidden="true">{expanded ? "−" : "+"}</span><b>{expanded ? "Collapse learning journey" : "Explore all 16 lessons"}</b></button></div><Link className="workshops-context-link" href="/workshops">Explore Workshops <span aria-hidden="true">→</span></Link></div>{!expanded && <div className="journey-preview">{publishedCurriculumLessons.map((lesson) => <LessonCard key={lesson.slug} lesson={lesson} />)}</div>}</div>
         <div id="complete-curriculum" className={`complete-curriculum ${expanded ? "is-expanded" : ""}`} aria-hidden={!expanded}>{expanded && curriculum.map((group, groupIndex) => { const start = curriculum.slice(0,groupIndex).reduce((sum,item) => sum + item.lessons.length,0); return <section className="curriculum-part" key={group.part}><header><span>{group.part}</span><h3>{group.title}</h3></header><div className="curriculum-list">{group.lessons.map((lesson,index) => { const number=start+index+1; return <div className="curriculum-row" key={lesson.title}><span>{String(number).padStart(2,"0")}</span><div><strong>{lesson.title}</strong><small>{lesson.status === "available" ? `${lesson.experienceCount} Experiences · Available` : "Coming Soon"}</small></div>{"href" in lesson && <Link href={lesson.href} aria-label={`Open Lesson ${number}: ${lesson.title}`}>Open <span aria-hidden="true">→</span></Link>}</div>})}</div></section>})}</div>
@@ -57,6 +71,7 @@ export function PublicHomepage() {
       <section className="reference-band" id="resources"><div><p className="home-eyebrow">Reference sources</p><h2>Authoritative References</h2><p>The curriculum uses vendor-neutral teaching supported by current primary-source architecture, security, governance and AI guidance. These references inform learning; their inclusion does not imply endorsement or affiliation.</p></div><ul><li>Microsoft Learn / Well-Architected</li><li>NIST AI Risk Management Framework</li><li>AWS Well-Architected</li><li>Google Cloud Architecture Center</li></ul></section>
       <section className="home-section about-section" id="about"><p className="home-eyebrow">Why Architecting AI?</p><h2>Move beyond isolated AI features.</h2><p>Architecting AI helps technology professionals understand how AI systems are designed, integrated, secured, governed and operated in the enterprise.</p><Link className="home-button primary" href="/workshops">Explore Workshops <span aria-hidden="true">→</span></Link></section>
     </main>
+    {overviewOpen && <CourseOverviewModal onClose={() => setOverviewOpen(false)} />}
     <footer className="public-footer"><div><Brand /><p>Enterprise AI architecture learning for technology professionals.</p></div><nav aria-label="Footer navigation"><a href="#top">Home</a><a href="#learning-journey">Learning Journey</a><Link href="/workshops">Workshops</Link><Link href="/experience/mission-zero">Mission Zero</Link><a href="#resources">Resources</a><a href="#about">About</a><Link href="/login">Login</Link><Link href="/register">Register</Link></nav><p>© {new Date().getFullYear()} Architecting AI</p></footer>
   </div>;
 }

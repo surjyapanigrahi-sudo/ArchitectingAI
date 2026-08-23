@@ -20,7 +20,8 @@ export async function GET(request: NextRequest) {
 
     if (error || !data.user) return confirmationError();
     if (await upsertUserProfile(supabase, data.user)) return confirmationError("Your email was confirmed, but your learner profile could not be prepared. Please sign in and try again.");
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    const destination = request.nextUrl.searchParams.get("destination") === "part-1-assessment" ? "/workshops/enterprise-ai-foundations/part-1-assessment" : "/dashboard";
+    return NextResponse.redirect(new URL(destination, request.url));
   } catch { return confirmationError(); }
 }
 
