@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { getCurrentUser } from "@/modules/auth/current-user";
 import { PartOneAssessment } from "@/modules/assessment/part-1-assessment";
 import { createClient } from "@/lib/supabase/server";
+import { getDashboardData } from "@/modules/dashboard/dashboard-data";
+import { LearningContextBar } from "@/modules/dashboard/components/learning-context-bar";
 
-export default async function PartOneAssessmentPage({ params }: { params: Promise<{ workshopSlug: string }> }) {
+export default async function PartOneAssessmentPage({ params, searchParams }: { params: Promise<{ workshopSlug: string }>; searchParams: Promise<{ view?: string }> }) {
   const { workshopSlug } = await params;
   if (workshopSlug !== "enterprise-ai-foundations") notFound();
   const user = await getCurrentUser();
@@ -22,5 +24,7 @@ export default async function PartOneAssessmentPage({ params }: { params: Promis
     if (certificate) initialCertificate = { certificateReference: certificate.certificate_reference as string, scorePercent: certificate.score_percent as number, issuedAt: certificate.issued_at as string };
     if (attempt?.submitted_at && attempt.score_percent !== null && attempt.correct_count !== null && attempt.passed !== null) initialResult = { scorePercent: attempt.score_percent as number, correctCount: attempt.correct_count as number, passed: attempt.passed as boolean, submittedAt: attempt.submitted_at as string };
   }
-  return <PartOneAssessment learnerName={learnerName} initialCertificate={initialCertificate} initialResult={initialResult} persistenceEnabled={persistenceEnabled} />;
+  const dashboardData = await getDashboardData(user);
+  const showCertificateInitially = (await searchParams).view === "certificate" && Boolean(initialCertificate);
+  return <div className="learning-activity-page"><LearningContextBar data={dashboardData} /><PartOneAssessment learnerName={learnerName} initialCertificate={initialCertificate} initialResult={initialResult} persistenceEnabled={persistenceEnabled} showCertificateInitially={showCertificateInitially} /></div>;
 }

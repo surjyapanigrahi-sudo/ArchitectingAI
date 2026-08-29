@@ -32,8 +32,8 @@ export function calculatePartOneScore(correct: number) { return Math.round((corr
 function optionLabel(options: AssessmentOption[], optionId?: string) { return options.find((option) => option.id === optionId)?.label ?? "Not answered"; }
 type Phase = "entry" | "questions" | "review" | "result" | "feedback" | "certificate";
 
-export function PartOneAssessment({ learnerName, initialCertificate, initialResult, persistenceEnabled }: { learnerName: string | null; initialCertificate: PersistentCertificate | null; initialResult: PersistentAssessmentResult | null; persistenceEnabled: boolean }) {
-  const [phase, setPhase] = useState<Phase>(initialResult ? "result" : "entry");
+export function PartOneAssessment({ learnerName, initialCertificate, initialResult, persistenceEnabled, showCertificateInitially = false }: { learnerName: string | null; initialCertificate: PersistentCertificate | null; initialResult: PersistentAssessmentResult | null; persistenceEnabled: boolean; showCertificateInitially?: boolean }) {
+  const [phase, setPhase] = useState<Phase>(showCertificateInitially ? "certificate" : initialResult ? "result" : "entry");
   const [questions, setQuestions] = useState<AttemptQuestion[]>([]);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [questionIndex, setQuestionIndex] = useState(0);

@@ -5,6 +5,8 @@ import { enterpriseAiFoundations } from "@/modules/workshops/enterprise-ai-found
 import { getDevelopmentAuthContext } from "@/modules/auth/development-auth";
 import { part1Lesson1, part1Lesson2, part1Lesson3, productionPart1Lessons } from "@/modules/learning-experience/data/part-1-lessons";
 import { architectThinkingLesson } from "@/modules/learning-experience/data/architect-thinking-lesson";
+import { getCurrentUser } from "@/modules/auth/current-user";
+import { getDashboardData, getLessonResume } from "@/modules/dashboard/dashboard-data";
 
 const lessons = [demoLearningExperience, ...productionPart1Lessons, architectThinkingLesson];
 
@@ -14,6 +16,10 @@ export default async function LessonPage({ params }: { params: Promise<{ worksho
   const lesson = lessons.find((item) => item.slug === lessonSlug);
   if (workshopSlug !== enterpriseAiFoundations.slug || !lesson) notFound();
   const developmentAuth = getDevelopmentAuthContext();
+  const user = await getCurrentUser();
+  const productionLesson = productionPart1Lessons.some((item) => item.id === lesson.id);
+  const dashboardData = user && productionLesson ? await getDashboardData(user) : undefined;
+  const resume = user && productionLesson ? await getLessonResume(user.id, lesson.id, lesson.experiences.map((item) => item.id)) : { completedExperienceIds: [], currentExperienceId: null, hasActivity: false };
   const nextLesson = lesson.id === part1Lesson1.id ? { href: `/workshops/${workshopSlug}/${part1Lesson2.slug}`, label: "Continue to Lesson 2", takeaway: ["You have established the first architectural principle:", "A working AI capability is only one part of an enterprise AI workload.", "Next, you will examine how the major architecture domains work together."] } : lesson.id === part1Lesson2.id ? { href: `/workshops/${workshopSlug}/${part1Lesson3.slug}`, label: "Continue to Lesson 3", takeaway: ["You can now identify the major concerns an Enterprise AI Architect must consider and reason about their relationships and trade-offs.", "Next, you will apply these ideas by designing an enterprise AI workload."] } : lesson.id === part1Lesson3.id ? { href: `/workshops/${workshopSlug}/${architectThinkingLesson.slug}`, label: "Continue Learning", takeaway: ["Part 1 is complete.", "Next, practice making architecture decisions that can be explained and defended."] } : undefined;
-  return <LearningWorkspace lesson={lesson} workshopTitle={enterpriseAiFoundations.title} developmentLearnerName={developmentAuth.user?.name} nextLesson={nextLesson} />;
+  return <LearningWorkspace key={lesson.id} lesson={lesson} workshopTitle={enterpriseAiFoundations.title} developmentLearnerName={developmentAuth.user?.name} nextLesson={nextLesson} dashboardData={dashboardData} persistenceEnabled={Boolean(user && user.id !== "dev-user" && productionLesson)} initialCompletedExperienceIds={resume.completedExperienceIds} initialCurrentExperienceId={resume.currentExperienceId} hasPersistedActivity={resume.hasActivity} />;
 }
