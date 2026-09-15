@@ -5,7 +5,7 @@ import { LessonCompletionSummary } from "@/modules/learning-experience/component
 import { part1Lesson1, part1Lesson2, part1Lesson3 } from "@/modules/learning-experience/data/part-1-lessons";
 
 const destinationGroups = [
-  { title: "Current Development", links: [{ label: "Student Dashboard", href: "/dashboard" }, { label: "Learning Journey", href: "/workshops/enterprise-ai-foundations" }] },
+  { title: "Current Development", links: [{ label: "Student Dashboard", href: "/dashboard" }, { label: "Learning Journey", href: "/workshops/enterprise-ai-foundations" }, { label: "Lesson 4 — Content Preview", href: "/dev/lesson-4" }] },
   { title: "Videos", links: [{ label: "Course Overview", href: "/" }, { label: "Lesson 1", href: `/workshops/enterprise-ai-foundations/${part1Lesson1.slug}` }, { label: "Lesson 2", href: `/workshops/enterprise-ai-foundations/${part1Lesson2.slug}` }] },
   { title: "Summaries", links: [{ label: "Lesson 1", href: "/dev/current-work?view=lesson-1-summary" }, { label: "Lesson 2", href: "/dev/current-work?view=lesson-2-summary" }, { label: "Lesson 3", href: "/dev/current-work?view=lesson-3-summary" }] },
   { title: "Assessment & Certificate", links: [{ label: "Assessment", href: "/workshops/enterprise-ai-foundations/part-1-assessment" }, { label: "Certificate", href: "/dev/current-work?view=certificate" }, { label: "Verify Certificate", href: "/verify-certificate" }] },

@@ -48,20 +48,21 @@ export async function getDashboardData(user: User | { id: "dev-user"; name: stri
   const experienceCount = lessons.reduce((total, lesson) => total + lesson.experienceCount, 0);
   const submitted = attempts.filter((attempt) => attempt.status === "submitted" && attempt.score_percent !== null);
   const passed = submitted.filter((attempt) => attempt.passed === true);
-  const assessmentScore = passed.length ? Math.max(...passed.map((attempt) => attempt.score_percent!)) : submitted[0]?.score_percent ?? null;
-  const assessmentStatus = passed.length ? "Passed" : attempts.length ? "Attempted" : "Not Started";
+  const assessmentScore = submitted.length ? Math.max(...submitted.map((attempt) => attempt.score_percent!)) : null;
+  const assessmentStatus = passed.length ? "Passed" : submitted.length ? "Not Passed" : attempts.length ? "In Progress" : "Not Attempted";
   const currentLesson = current ? lessons.find((lesson) => lesson.id === current.current_lesson_id) : null;
   const currentExperienceValid = currentLesson && productionPart1Lessons.find((lesson) => lesson.id === currentLesson.id)?.experiences.some((experience) => experience.id === current?.current_experience_id);
   const activeLesson = currentLesson?.status === "in-progress" && currentExperienceValid ? currentLesson : lessons.find((lesson) => lesson.status === "in-progress");
   const nextLesson = activeLesson ?? lessons.find((lesson) => lesson.status !== "completed");
+  const currentExperienceId = nextLesson && current?.current_lesson_id === nextLesson.id && currentExperienceValid ? current.current_experience_id : nextLesson ? productionPart1Lessons.find((lesson) => lesson.id === nextLesson.id)?.experiences.find((experience) => !completedIds.has(`${nextLesson.id}:${experience.id}`))?.id ?? null : null;
+  const currentExperienceNumber = nextLesson && currentExperienceId ? (productionPart1Lessons.find((lesson) => lesson.id === nextLesson.id)?.experiences.findIndex((experience) => experience.id === currentExperienceId) ?? -1) + 1 : 0;
   const continueAction = nextLesson
-    ? { label: nextLesson.status === "not-started" ? "Start Learning" : "Continue Learning", href: nextLesson.href, detail: `Lesson ${nextLesson.number} · ${nextLesson.title}` }
+    ? { label: nextLesson.status === "not-started" ? "Start Learning" : "Continue Learning", href: `/dashboard?lesson=${nextLesson.number}`, detail: `Lesson ${nextLesson.number} · Experience ${Math.max(currentExperienceNumber, 1)}` }
     : assessmentStatus !== "Passed"
       ? { label: "Take Part 1 Assessment", href: assessmentHref, detail: "All Part 1 learning experiences completed" }
       : { label: "View Certificate", href: `${assessmentHref}?view=certificate`, detail: "Part 1 complete · No future Part published" };
   const metadataName = "user_metadata" in user && typeof user.user_metadata.full_name === "string" ? user.user_metadata.full_name.trim() : "";
   const learnerName = profileName ?? (("name" in user ? user.name : metadataName) || "Learner");
-  const currentExperienceId = nextLesson && current?.current_lesson_id === nextLesson.id && currentExperienceValid ? current.current_experience_id : nextLesson ? productionPart1Lessons.find((lesson) => lesson.id === nextLesson.id)?.experiences.find((experience) => !completedIds.has(`${nextLesson.id}:${experience.id}`))?.id ?? null : null;
   const latestSubmitted = submitted[0];
 
   return {

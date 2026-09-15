@@ -1,7 +1,7 @@
 import type { ReactNode, SVGProps } from "react";
 
 export const architectingAiSymbolNames = [
-  "business-outcome", "users-experience", "application-capability", "ai-intelligence", "enterprise-data", "integration-api", "identity", "security", "governance", "observability", "operations", "cost", "reliability", "performance", "architecture", "think", "design", "decide", "trade-off", "lab", "assessment", "certificate", "learning-progress", "risk", "complete",
+  "business-outcome", "users-experience", "application-capability", "ai-intelligence", "enterprise-data", "integration-api", "identity", "security", "governance", "observability", "operations", "cost", "reliability", "performance", "architecture", "think", "design", "decide", "trade-off", "lab", "assessment", "certificate", "learning-progress", "risk", "complete", "file-text", "message", "folder", "globe",
 ] as const;
 
 export type ArchitectingAiSymbolName = (typeof architectingAiSymbolNames)[number];
@@ -38,6 +38,10 @@ const symbols: Record<ArchitectingAiSymbolName, ReactNode> = {
   "learning-progress": <><path d="M4 18V9M10 18V6M16 18v-4M22 18V3M3 21h19"/><path d="m4 12 6-3 6 4 6-6"/></>,
   risk: <><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v5M12 17h.01"/></>,
   complete: <><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3 3 6-7"/></>,
+  "file-text": <><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M9 12h6M9 16h6"/></>,
+  message: <><path d="M4 4h16v12H9l-5 4z"/><path d="M8 9h8M8 13h5"/></>,
+  folder: <><path d="M3 6h7l2 2h9v11H3z"/></>,
+  globe: <><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></>,
 };
 
 export function ArchitectingAiIcon({ name, size = 24, label, className, ...props }: ArchitectingAiIconProps) {

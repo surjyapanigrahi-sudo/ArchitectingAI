@@ -20,6 +20,6 @@ export interface DashboardData {
   lastActivity: { lessonNumber: number; experienceNumber: number; occurredAt: string } | null;
   continueAction: { label: string; href: string; detail: string };
   resume: { kind: "lesson"; lessonId: string; experienceId: string | null } | { kind: "assessment"; showCertificate: boolean };
-  assessment: { status: "Not Started" | "Attempted" | "Passed"; score: number | null; attemptCount: number; href: string; latestResult: { scorePercent: number; correctCount: number; passed: boolean; submittedAt: string } | null };
+  assessment: { status: "Not Attempted" | "In Progress" | "Not Passed" | "Passed"; score: number | null; attemptCount: number; href: string; latestResult: { scorePercent: number; correctCount: number; passed: boolean; submittedAt: string } | null };
   certificate: { earned: boolean; reference: string | null; score: number | null; issuedAt: string | null; href: string; verifyHref: string | null };
 }

@@ -4,6 +4,7 @@ import { PartOneAssessment } from "@/modules/assessment/part-1-assessment";
 import { getDashboardData, getLessonResume } from "@/modules/dashboard/dashboard-data";
 import { LearnerWorkspaceShell } from "@/modules/dashboard/components/learner-workspace-shell";
 import { DashboardLessonWorkspace } from "@/modules/dashboard/components/dashboard-lesson-workspace";
+import { LearnerDashboardOverview } from "@/modules/dashboard/components/learner-dashboard-overview";
 import { part1Lesson1, part1Lesson2, part1Lesson3, productionPart1Lessons } from "@/modules/learning-experience/data/part-1-lessons";
 import { enterpriseAiFoundations } from "@/modules/workshops/enterprise-ai-foundations";
 
@@ -13,6 +14,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
   const data = await getDashboardData(user);
   const requested = await searchParams;
   const requestedLesson = Number(requested.lesson);
+  if (!requested.lesson && !requested.activity) return <LearnerDashboardOverview data={data} />;
   let resumeActivity = data.resume;
   if (Number.isInteger(requestedLesson) && requestedLesson >= 1 && requestedLesson <= productionPart1Lessons.length) {
     resumeActivity = { kind: "lesson", lessonId: productionPart1Lessons[requestedLesson - 1].id, experienceId: null };
