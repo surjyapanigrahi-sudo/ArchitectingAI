@@ -31,4 +31,4 @@ export const shiftedPlannedLessons: ShiftedPlannedLesson[] = originalLaterCurric
   status: "coming-soon",
 }));
 
-export const remainingShiftedPlannedLessons = shiftedPlannedLessons.filter((lesson) => lesson.originalNumber !== 2);
+export const remainingShiftedPlannedLessons = shiftedPlannedLessons.filter((lesson) => ![2, 4].includes(lesson.originalNumber));

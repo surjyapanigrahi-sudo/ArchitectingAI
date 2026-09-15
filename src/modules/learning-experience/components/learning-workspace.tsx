@@ -58,7 +58,7 @@ export function LearningWorkspace({ lesson, workshopTitle, developmentLearnerNam
   };
   const lessonMeta = lesson.status === "in-development" ? `${lesson.experiences.length} of ${lesson.plannedExperienceCount} experiences · In development` : `${lesson.estimatedMinutes} min demo`;
   const lessonNumber = lesson.id.match(/lesson-(\d+)/)?.[1] ?? "";
-  const isLessonThree = lessonNumber === "3";
+  const isPartOneComplete = lessonNumber === "3" && !nextLesson;
   const learningJourneyHref = `/workshops/${lesson.workshopId}`;
 
   if (lessonHasVideo && videoIntroVisible && lesson.instructionalVideo) return <div className={`learning-workspace ${focusMode ? "is-focus-mode" : ""}`}>
@@ -75,11 +75,11 @@ export function LearningWorkspace({ lesson, workshopTitle, developmentLearnerNam
     <div className="workspace-grid">{!focusMode && <LearningMap lesson={lesson} currentExperienceId={state.currentExperienceId} completedExperienceIds={state.completedExperienceIds} onNavigate={(currentExperienceId) => { setSummaryVisible(false); setState((current) => ({ ...current, currentExperienceId })); }} />}
       <main className="experience-workspace summary-workspace" ref={workspaceRef}>
         <LessonCompletionSummary summary={lesson.lessonSummary} lessonNumber={lessonNumber} />
-        {isLessonThree && <section className="part-one-assessment-entry" aria-labelledby="part-one-complete-title"><p className="eyebrow">Part 1 complete</p><h2 id="part-one-complete-title">Enterprise AI Architecture Foundations</h2><p>You have completed the learning content for Part 1.</p><p>The next step is a formal assessment covering the architecture principles from Lessons 1–3.</p></section>}
+        {isPartOneComplete && <section className="part-one-assessment-entry" aria-labelledby="part-one-complete-title"><p className="eyebrow">Part 1 complete</p><h2 id="part-one-complete-title">Enterprise AI Architecture Foundations</h2><p>You have completed the learning content for Part 1.</p><p>The next step is a formal assessment covering the architecture principles from Lessons 1–3.</p></section>}
         <nav className="summary-actions" aria-label="Lesson summary actions">
           <button className="secondary-button" type="button" onClick={() => setSummaryVisible(false)}>Back to final experience</button>
-          {!isLessonThree && nextLesson && <Link className="primary-button button-link" href={nextLesson.href}>{nextLesson.label}</Link>}
-          {isLessonThree && <Link className="primary-button button-link" href={`${learningJourneyHref}/part-1-assessment`}>Take Part 1 Assessment</Link>}
+          {!isPartOneComplete && nextLesson && <Link className="primary-button button-link" href={nextLesson.href}>{nextLesson.label}</Link>}
+          {isPartOneComplete && <Link className="primary-button button-link" href={`${learningJourneyHref}/part-1-assessment`}>Take Part 1 Assessment</Link>}
           <Link className="secondary-button button-link" href={learningJourneyHref}>Back to Learning Journey</Link>
         </nav>
       </main>

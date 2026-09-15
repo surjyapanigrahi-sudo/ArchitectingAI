@@ -3,7 +3,7 @@ import { lesson1Block1 } from "./lesson-1-block-1";
 import { lesson3CompletionExperiences } from "./lesson-3-completion-experiences";
 import { publishedCurriculumLessons } from "./curriculum-catalog";
 
-const [lesson1Metadata, lesson2Metadata, lesson3Metadata] = publishedCurriculumLessons;
+const [lesson1Metadata, lesson2Metadata, lesson3Metadata, lesson4Metadata] = publishedCurriculumLessons;
 
 export const part1IntroductionVideo = { src: "https://ajmwgzrosqixvoletzgu.supabase.co/storage/v1/object/public/course-videos/Part1/course-overview.mp4", title: "Architecting Enterprise AI: From Prototype to Production", description: "Begin with a short overview of how a working AI capability evolves into an enterprise-ready architecture, and what you will learn across Part 1.", durationLabel: "2 min" } as const;
 
@@ -74,4 +74,25 @@ export const part1Lesson3: LearningLesson = {
   },
 };
 
-export const productionPart1Lessons = [part1Lesson1, part1Lesson2, part1Lesson3];
+export const part1Lesson4: LearningLesson = {
+  id: "part-1-lesson-4-foundation-models-prompting-context-engineering",
+  slug: lesson4Metadata.slug,
+  workshopId: lesson1Block1.workshopId,
+  part: "Part II · Build the Intelligence",
+  title: lesson4Metadata.title,
+  description: lesson4Metadata.description,
+  estimatedMinutes: 60,
+  status: "published",
+  experiences: [
+    { id: "foundation-models", type: "concept", title: "Foundation Models" },
+    { id: "model-request", type: "concept", title: "Anatomy of a Model Request" },
+    { id: "prompt-engineering", type: "concept", title: "Prompt Engineering & Prompting Strategies" },
+    { id: "context-engineering", type: "concept", title: "Context Engineering" },
+    { id: "model-selection", type: "concept", title: "Model Selection & Architecture Lab 04" },
+    { id: "knowledge-summary", type: "concept", title: "Knowledge Check & Lesson Summary" },
+  ],
+  resources: lesson1Block1.resources,
+  glossary: lesson1Block1.glossary,
+};
+
+export const productionPart1Lessons = [part1Lesson1, part1Lesson2, part1Lesson3, part1Lesson4];

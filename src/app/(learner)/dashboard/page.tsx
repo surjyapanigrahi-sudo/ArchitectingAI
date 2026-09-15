@@ -5,7 +5,8 @@ import { getDashboardData, getLessonResume } from "@/modules/dashboard/dashboard
 import { LearnerWorkspaceShell } from "@/modules/dashboard/components/learner-workspace-shell";
 import { DashboardLessonWorkspace } from "@/modules/dashboard/components/dashboard-lesson-workspace";
 import { LearnerDashboardOverview } from "@/modules/dashboard/components/learner-dashboard-overview";
-import { part1Lesson1, part1Lesson2, part1Lesson3, productionPart1Lessons } from "@/modules/learning-experience/data/part-1-lessons";
+import { LessonFourPreview } from "@/modules/learning-experience/components/lesson-4-preview";
+import { part1Lesson1, part1Lesson2, part1Lesson3, part1Lesson4, productionPart1Lessons } from "@/modules/learning-experience/data/part-1-lessons";
 import { enterpriseAiFoundations } from "@/modules/workshops/enterprise-ai-foundations";
 
 export default async function DashboardPage({ searchParams }: { searchParams: Promise<{ lesson?: string; activity?: string }> }) {
@@ -32,7 +33,11 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
     const firstIncompleteExperience = lesson.experiences.find((experience) => !resume.completedExperienceIds.includes(experience.id));
     const resolvedExperience = requestedExperience ?? firstIncompleteExperience ?? lesson.experiences.at(-1);
     const currentId = resolvedExperience?.id ?? "";
-    const nextLesson = lesson.id === part1Lesson1.id ? { href: `/workshops/${enterpriseAiFoundations.slug}/${part1Lesson2.slug}`, label: "Continue to Lesson 2", takeaway: [] } : lesson.id === part1Lesson2.id ? { href: `/workshops/${enterpriseAiFoundations.slug}/${part1Lesson3.slug}`, label: "Continue to Lesson 3", takeaway: [] } : undefined;
+    if (lesson.id === part1Lesson4.id) return <LearnerWorkspaceShell data={data}>
+      <section className="resume-context"><p>Welcome back, <strong>{data.learnerName}</strong></p><span>Continue Learning: Lesson 4 · Experience {Math.max(lesson.experiences.findIndex((experience) => experience.id === currentId) + 1, 1)}</span><small>{data.lessons.find((item) => item.id === lesson.id)?.completedCount ?? 0} of {lesson.experiences.length} experiences completed</small></section>
+      <div className="resumable-learning-content"><LessonFourPreview embedded learnerName={data.learnerName} persistenceEnabled={user.id !== "dev-user"} initialCompletedExperienceIds={resume.completedExperienceIds} initialCurrentExperienceId={currentId} /></div>
+    </LearnerWorkspaceShell>;
+    const nextLesson = lesson.id === part1Lesson1.id ? { href: `/workshops/${enterpriseAiFoundations.slug}/${part1Lesson2.slug}`, label: "Continue to Lesson 2", takeaway: [] } : lesson.id === part1Lesson2.id ? { href: `/workshops/${enterpriseAiFoundations.slug}/${part1Lesson3.slug}`, label: "Continue to Lesson 3", takeaway: [] } : lesson.id === part1Lesson3.id ? { href: `/workshops/${enterpriseAiFoundations.slug}/${part1Lesson4.slug}`, label: "Continue to Lesson 4", takeaway: [] } : undefined;
     return <DashboardLessonWorkspace initialData={data} lesson={lesson} workshopTitle={enterpriseAiFoundations.title} nextLesson={nextLesson} persistenceEnabled={user.id !== "dev-user"} initialCompletedExperienceIds={resume.completedExperienceIds} initialCurrentExperienceId={currentId} />;
   }
 

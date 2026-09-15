@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { enterpriseAiFoundations } from "@/modules/workshops/enterprise-ai-foundations";
-import { part1Lesson1, part1Lesson2, part1Lesson3 } from "@/modules/learning-experience/data/part-1-lessons";
+import { productionPart1Lessons } from "@/modules/learning-experience/data/part-1-lessons";
 import { remainingShiftedPlannedLessons as shiftedPlannedLessons } from "@/modules/learning-experience/data/shifted-planned-lessons";
-import { architectThinkingLesson } from "@/modules/learning-experience/data/architect-thinking-lesson";
 
 export default async function WorkshopOverview({ params }: { params: Promise<{ workshopSlug: string }> }) {
   const { workshopSlug } = await params;
   if (workshopSlug !== enterpriseAiFoundations.slug) notFound();
-  const lessons = [part1Lesson1, part1Lesson2, part1Lesson3, architectThinkingLesson];
+  const lessons = productionPart1Lessons;
 
   return <section className="workshop-overview">
     <p className="eyebrow">Part 1</p>

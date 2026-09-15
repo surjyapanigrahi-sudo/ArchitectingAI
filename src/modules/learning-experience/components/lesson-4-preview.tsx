@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArchitectureLabFourWorkbench } from "@/modules/architecture-lab/components/architecture-lab-four-workbench";
+import { recordExperienceProgress } from "@/modules/progress/client";
+import { LearnerProfileMenu } from "@/modules/auth/components/learner-profile-menu";
+import { part1Lesson4 } from "@/modules/learning-experience/data/part-1-lessons";
 
 const experiences = [
   { id: "foundation-models", number: "4.1", title: "Foundation Models" },
@@ -13,9 +16,22 @@ const experiences = [
   { id: "knowledge-summary", number: "4.6", title: "Knowledge Check & Lesson Summary" },
 ] as const;
 
-export function LessonFourPreview() {
-  const [index, setIndex] = useState(0);
+interface LessonFourPreviewProps {
+  developmentPreview?: boolean;
+  embedded?: boolean;
+  learnerName?: string;
+  persistenceEnabled?: boolean;
+  initialCompletedExperienceIds?: string[];
+  initialCurrentExperienceId?: string | null;
+}
+
+export function LessonFourPreview({ developmentPreview = false, embedded = false, learnerName, persistenceEnabled = false, initialCompletedExperienceIds = [], initialCurrentExperienceId = null }: LessonFourPreviewProps) {
+  const initialIndex = Math.max(0, experiences.findIndex((experience) => experience.id === initialCurrentExperienceId));
+  const [index, setIndex] = useState(initialIndex);
+  const [completedExperienceIds, setCompletedExperienceIds] = useState(initialCompletedExperienceIds);
   const [learningMapOpen, setLearningMapOpen] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [persistenceError, setPersistenceError] = useState<string | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => { headingRef.current?.focus(); window.scrollTo({ top: 0, behavior: "smooth" }); }, [index]);
   const current = experiences[index];
@@ -24,14 +40,39 @@ export function LessonFourPreview() {
     setIndex(nextIndex);
     setLearningMapOpen(nextIndex !== 4);
   };
+  const selectExperience = async (nextIndex: number) => {
+    if (isSaving || nextIndex === index) return;
+    setIsSaving(true); setPersistenceError(null);
+    try {
+      if (persistenceEnabled) await recordExperienceProgress(part1Lesson4.id, experiences[nextIndex].id, false);
+      navigateToExperience(nextIndex);
+    } catch { setPersistenceError("Progress could not be saved. Please try again."); }
+    finally { setIsSaving(false); }
+  };
+  const continueLesson = async () => {
+    if (isSaving) return;
+    const nextIndex = Math.min(index + 1, experiences.length - 1);
+    setIsSaving(true); setPersistenceError(null);
+    try {
+      if (persistenceEnabled) {
+        await recordExperienceProgress(part1Lesson4.id, current.id, true);
+        if (nextIndex !== index) await recordExperienceProgress(part1Lesson4.id, experiences[nextIndex].id, false);
+      }
+      setCompletedExperienceIds((ids) => ids.includes(current.id) ? ids : [...ids, current.id]);
+      if (nextIndex !== index) navigateToExperience(nextIndex);
+    } catch { setPersistenceError("Progress could not be saved. Please try again."); }
+    finally { setIsSaving(false); }
+  };
+  const lessonComplete = completedExperienceIds.includes(experiences.at(-1)!.id);
   return <div className="lesson-four-preview">
-    <header className="lesson-four-header"><Link className="brand" href="/dev/current-work"><span className="brand-mark" aria-hidden="true">A</span><span>Architecting AI</span></Link><span>Development content preview · No progress is recorded</span></header>
+    {!embedded && <header className="lesson-four-header"><Link className="brand" href={developmentPreview ? "/dev/current-work" : "/dashboard"}><span className="brand-mark" aria-hidden="true">A</span><span>Architecting AI</span></Link>{developmentPreview ? <span>Development content preview · No progress is recorded</span> : learnerName ? <LearnerProfileMenu learnerName={learnerName} /> : <Link href="/login">Sign in to save progress</Link>}</header>}
     <div className="lesson-four-context"><div><p className="eyebrow">Part II · Build the Intelligence</p><strong>Lesson 4 · Foundation Models, Prompting & Context Engineering</strong></div><span>{current.number} of 4.6</span></div>
     <div className={`lesson-four-layout ${wideWorkbench ? "is-wide-workbench" : ""} ${wideWorkbench && !learningMapOpen ? "is-map-collapsed" : ""}`}>
-      {(!wideWorkbench || learningMapOpen) && <nav className="lesson-four-map" aria-label="Lesson 4 experiences"><div className="lesson-four-map-heading"><p className="eyebrow">Learning Map</p>{wideWorkbench && <button type="button" onClick={() => setLearningMapOpen(false)} aria-label="Collapse Learning Map">×</button>}</div><ol>{experiences.map((item, itemIndex) => <li key={item.id}><button className={itemIndex === index ? "is-current" : ""} type="button" aria-current={itemIndex === index ? "step" : undefined} onClick={() => navigateToExperience(itemIndex)}><span>{item.number}</span><strong>{item.title}</strong></button></li>)}</ol></nav>}
+      {(!wideWorkbench || learningMapOpen) && <nav className="lesson-four-map" aria-label="Lesson 4 experiences"><div className="lesson-four-map-heading"><p className="eyebrow">Learning Map</p>{wideWorkbench && <button type="button" onClick={() => setLearningMapOpen(false)} aria-label="Collapse Learning Map">×</button>}</div><ol>{experiences.map((item, itemIndex) => <li key={item.id}><button className={`${itemIndex === index ? "is-current" : ""} ${completedExperienceIds.includes(item.id) ? "is-complete" : ""}`} type="button" disabled={isSaving} aria-current={itemIndex === index ? "step" : undefined} onClick={() => void selectExperience(itemIndex)}><span>{item.number}</span><strong>{item.title}</strong></button></li>)}</ol></nav>}
       <main className="lesson-four-main">{wideWorkbench && !learningMapOpen && <button className="wide-workbench-map-trigger" type="button" onClick={() => setLearningMapOpen(true)} aria-expanded="false">☰ Learning Map</button>}<header className="lesson-four-title"><p className="eyebrow">Experience {current.number}</p><h1 ref={headingRef} tabIndex={-1}>{current.title}</h1></header><Experience index={index} /></main>
     </div>
-    <nav className={`lesson-four-navigation ${wideWorkbench && !learningMapOpen ? "is-map-collapsed" : ""}`} aria-label="Experience navigation"><button className="secondary-button" type="button" disabled={index === 0} onClick={() => navigateToExperience(index - 1)}>Previous</button><span>{index + 1} of {experiences.length}</span><button className="primary-button" type="button" disabled={index === experiences.length - 1} onClick={() => navigateToExperience(index + 1)}>Continue</button></nav>
+    {persistenceError && <p className="progress-save-error" role="alert">{persistenceError}</p>}
+    <nav className={`lesson-four-navigation ${wideWorkbench && !learningMapOpen ? "is-map-collapsed" : ""}`} aria-label="Experience navigation"><button className="secondary-button" type="button" disabled={index === 0 || isSaving} onClick={() => void selectExperience(index - 1)}>Previous</button><span>{index + 1} of {experiences.length}</span><button className="primary-button" type="button" disabled={isSaving || (index === experiences.length - 1 && lessonComplete)} onClick={() => void continueLesson()}>{isSaving ? "Saving…" : index === experiences.length - 1 ? lessonComplete ? "Lesson Complete" : "Complete Lesson" : "Continue"}</button></nav>
   </div>;
 }
 

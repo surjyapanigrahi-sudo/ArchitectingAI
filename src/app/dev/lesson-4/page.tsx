@@ -5,5 +5,5 @@ import { LessonFourPreview } from "@/modules/learning-experience/components/less
 export default function LessonFourPreviewPage() {
   const developmentAuth = getDevelopmentAuthContext();
   if (process.env.NODE_ENV !== "development" && !developmentAuth.bypassEnabled) notFound();
-  return <LessonFourPreview />;
+  return <LessonFourPreview developmentPreview />;
 }
