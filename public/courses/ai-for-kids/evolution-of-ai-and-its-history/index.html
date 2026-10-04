@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evolution of AI and its History</title>
+<style>
+:root{--bg:#f6f4ff;--card:#fff;--ink:#1f1b3a;--muted:#6a6591;--brand:#7c5cf0;--brand2:#ff5f5f;--ok:#16a34a;--bad:#dc2626;--line:#e3defa}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;padding:20px 16px}
+header .in{max-width:1540px;margin:0 auto;padding:0 24px}
+main{max-width:1640px;margin:0 auto;padding:0 24px}
+header h1{margin:0 0 4px;font-size:clamp(1.25rem,3vw,1.9rem)}
+header p{margin:0;opacity:.92}
+a.back{display:inline-block;color:#fff;text-decoration:none;background:rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;margin-bottom:10px;font-size:.92rem}
+a.back:hover{background:rgba(255,255,255,.35)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:rgba(255,255,255,.2);border-radius:999px;padding:3px 12px;font-size:.88rem}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font-size:.95rem;cursor:pointer}
+nav button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+nav .course-tab{margin-left:auto;border:1px solid var(--brand);background:#fff;color:var(--brand);border-radius:999px;padding:8px 16px;font-size:.95rem;font-weight:700;text-decoration:none}
+nav .course-tab:hover{background:#ece6ff}
+@media(max-width:720px){nav .course-tab{margin-left:0}}
+.tab{display:none}.tab.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:minmax(0,3.35fr) minmax(280px,1fr);gap:18px;align-items:start}
+@media(max-width:1050px){.grid{grid-template-columns:1fr}.lesson-parts{max-height:none}}
+@media(max-width:600px){header .in,main{padding-left:14px;padding-right:14px}}
+.player{position:relative;background:#000;border-radius:14px;overflow:hidden}
+video{width:100%;display:block;max-height:78vh;aspect-ratio:16/9;object-fit:contain;background:#000}
+.overlay{position:absolute;inset:0;background:rgba(20,16,50,.93);color:#fff;display:none;overflow:auto;padding:18px}
+.overlay.on{display:flex;flex-direction:column;justify-content:center}
+.overlay .q{max-width:720px;margin:0 auto;width:100%}
+.q h3{margin:0 0 12px;font-size:clamp(1.05rem,2.4vw,1.35rem)}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:11px 14px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink);font-size:1rem;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--brand)}
+.opt.good{border-color:var(--ok);background:#e8f8ee}.opt.bad{border-color:var(--bad);background:#fdecec}
+.opt:disabled{cursor:default}
+.fb{margin:10px 0;padding:10px 14px;border-radius:12px;font-size:.98rem}
+.fb.good{background:#e8f8ee;color:#14532d}.fb.bad{background:#fdecec;color:#7f1d1d}.fb.info{background:#eef2ff;color:#312e81}
+.btn{border:0;background:var(--brand);color:#fff;border-radius:12px;padding:10px 18px;font-size:1rem;cursor:pointer;margin:6px 8px 0 0}
+.btn.alt{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.btn:disabled{opacity:.5;cursor:default}
+.lesson-parts{max-height:min(78vh,780px);overflow:auto;scrollbar-gutter:stable}
+ul.scenes{list-style:none;margin:0;padding:0}
+ul.scenes li{display:flex;gap:10px;align-items:center;padding:8px 6px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:8px}
+ul.scenes li:hover{background:#f1edff}
+ul.scenes li.cur{background:#ece6ff;font-weight:600}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex:none}
+.dot.ok{background:var(--ok);border-color:var(--ok);color:#fff}.dot.part{background:#f59e0b;border-color:#f59e0b;color:#fff}
+.tag{display:inline-block;background:#ece6ff;color:#4c1d95;border-radius:8px;padding:2px 10px;margin:3px 6px 3px 0;font-size:.9rem}
+h2{margin-top:0}h3.sub{margin:18px 0 6px}
+.example{border-left:5px solid var(--brand);padding:8px 14px;margin:10px 0;background:#faf8ff;border-radius:0 12px 12px 0}
+.muted{color:var(--muted)}
+.bar{height:10px;background:#e9e5fb;border-radius:999px;overflow:hidden}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0}
+img.sec{max-width:100%;border-radius:12px;margin:8px 0}
+footer{max-width:1180px;margin:20px auto;padding:0 16px 30px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <a class="back" href="/courses/ai-for-kids">&larr; Back to the course</a>
+  <h1 id="title"></h1><p id="desc"></p>
+  <div class="chips"><span class="chip" id="chipAud"></span><span class="chip" id="chipTime"></span><span class="chip" id="chipChecks"></span></div>
+</div></header>
+<main>
+  <nav id="nav"></nav>
+
+  <section class="tab on" id="t-video">
+    <div class="grid">
+      <div>
+        <div class="player">
+          <video id="vid" controls preload="metadata" playsinline poster="poster.jpg"><source src="https://aimwqzrosqixyoletzgu.supabase.co/storage/v1/object/public/course-videos/ai-for-students/evolution-of-ai-and-its-history/video.mp4" type="video/mp4">Your browser cannot play this video.</video>
+          <div class="overlay" id="overlay"></div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div id="resumeBox" style="display:none" class="fb info"></div>
+          <strong>You will learn to:</strong>
+          <ul id="objectives"></ul>
+        </div>
+      </div>
+      <div class="card lesson-parts"><strong>Lesson parts</strong><div class="bar" style="margin:8px 0"><i id="bar"></i></div><ul class="scenes" id="scenes"></ul>
+        <p class="muted" style="font-size:.88rem">The video pauses after each part with a quick question. Click a part to jump to it.</p></div>
+    </div>
+  </section>
+
+  <section class="tab" id="t-summary"><div class="card" id="summaryBox"></div></section>
+  <section class="tab" id="t-examples"><div class="card" id="examplesBox"></div></section>
+  <section class="tab" id="t-check"><div class="card"><h2>Check the concept</h2><div id="checkBox"></div></div></section>
+  <section class="tab" id="t-lesson"><div class="card" id="lessonBox"></div></section>
+  <section class="tab" id="t-quiz"><div class="card"><h2>Final quiz</h2><div id="quizBox"></div></div></section>
+</main>
+<footer>Your progress is saved on this device only (in your browser).</footer>
+
+<script id="lesson-data" type="application/json">{"slug":"evolution-of-ai-and-its-history","title":"Evolution of AI and its History","description":"A friendly and exciting journey through the history of Artificial Intelligence, from early ideas and tests to the amazing smart apps we use today.","audience":"Class 7 Students (age 12-13)","minutes":15,"objectives":["Understand what Artificial Intelligence is and how it started at the Dartmouth Conference.","Explain the Turing Test and how we check if a machine can think like a human.","Describe what AI winters were and why computer science faced slow periods.","Discover the modern AI revolution and how smart technology helps us today."],"sections":[{"title":"Introduction to AI History","content":"Welcome, young explorers! Have you ever wondered how your mobile phone knows what video you want to watch next, or how video games have characters that seem to think? This is called Artificial Intelligence, or AI for short. AI means making computers or machines smart so they can do things that usually need human brainpower, like solving puzzles, translating languages, or recognizing faces. Today, we are going to travel back in time to see how computers went from being giant, simple calculator boxes to the super-smart helpers we use in our daily lives.","image":null,"caption":null},{"title":"The Dartmouth Conference","content":"Our story begins in the year 1956 at a place called Dartmouth College in the United States. A group of smart scientists, including famous thinkers like John McCarthy and Marvin Minsky, got together for a summer workshop. They wanted to explore a bold idea: Can machines be made to think like humans? During this meeting, they invented the term Artificial Intelligence. They believed that every part of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it. Real-Life Example: Imagine a group of school friends meeting in the school library to invent a brand-new board game that no one has ever played before. That summer meeting in Dartmouth was like inventors gathering to dream up the game of AI!","image":null,"caption":null},{"title":"The Turing Test","content":"A few years before the Dartmouth meeting, a brilliant British mathematician named Alan Turing asked a big question: How can we tell if a machine is truly smart? To answer this, he created a famous challenge called the Turing Test. In this test, a human judge talks through a computer keyboard and screen with two hidden players—one player is a real human, and the other is a computer. If the human judge chats with both and cannot figure out which one is the machine and which one is the human, the computer passes the test! Alan Turing suggested that if a machine can fool us into thinking it is human through conversation, we can call it intelligent. Real-Life Example: Think of playing a text-based chat game on your phone with a friend, but you are actually talking to a clever computer bot that replies so naturally that you think it is your classmate.","image":null,"caption":null},{"title":"AI Winters","content":"Making smart computers was not easy. After the exciting start, scientists faced huge problems. The computers of the 1960s and 1970s were as big as large cupboards, but they were much slower and had far less memory than your modern smartphone. They could not handle big tasks, and people expected them to do magic too quickly. When governments and companies saw that computers were still making silly mistakes and could not solve real-world problems easily, they stopped giving money for AI research. This cold, dark period where funding dried up and research slowed down is called an AI winter. Real-Life Example: Imagine you plant a magic bean in your garden, expecting a huge beanstalk to grow by tomorrow. When nothing grows for weeks, you stop watering it and give up for a long time. That is similar to how people gave up on AI during the AI winters.","image":null,"caption":null},{"title":"The Modern AI Revolution","content":"After waiting through the cold winters, the sun finally came out for AI! In recent years, computers became super fast, and scientists collected huge amounts of data from the internet. This combination of powerful computers and massive data led to the modern AI revolution. Today, AI is everywhere. It helps map apps find the fastest route past traffic, translates languages instantly, and helps doctors spot illnesses early. Real-Life Example: Think of how a video app on your tablet magically suggests your favorite cartoon or song right when you open it, getting better at knowing your taste every single day.","image":null,"caption":null},{"title":"Activity: Spot the Smart Technology","content":"Let us test our knowledge with three everyday examples. Read the question on each slide, think about it, and reveal the answer! Question 1: Your school report card calculator adds up your marks automatically. Is this Artificial Intelligence? Answer: No, because it is just following strict, simple math rules and does not learn or think like a human. Question 2: Your phone unlocks instantly when you look at its camera using Face ID. Is this Artificial Intelligence? Answer: Yes, because the phone uses AI to recognize your unique facial features even if your hair changes or you wear glasses. Question 3: A kitchen toaster pops your bread up when a timer runs out. Is this Artificial Intelligence? Answer: No, because it is just a mechanical timer and has no brain to learn or make decisions.","image":null,"caption":null}],"key_concepts":["Artificial Intelligence (AI)","The Dartmouth Conference (1956)","The Turing Test","AI Winters","Modern AI Revolution"],"practical_examples":["A group of inventors brainstorming a brand new idea together like at the Dartmouth Conference.","Chatting with an online helper bot that feels just like talking to a real person, inspired by the Turing Test.","Waiting for a new technology trend to return after a long period of being ignored, like an AI winter.","Using a smart map application on a mobile phone that avoids traffic jams in real time."],"takeaways":["AI started with a group of visionary scientists meeting at the Dartmouth Conference in 1956.","The Turing Test checks if a computer can converse so well that it tricks a human into thinking it is a person.","AI winters were slow, cold periods when research funding stopped because early computers were too weak."],"simple_summary":"Artificial Intelligence began in 1956 at the Dartmouth Conference. Scientists dreamed of making smart machines, tested them with Alan Turing\u0027s conversation test, survived slow periods called AI winters, and now enjoy a modern revolution where fast computers make our daily lives easier.","real_life_examples":["Smart home assistants that play your favorite music when you ask them out loud.","Video streaming apps that learn what kind of cartoons or educational shows you love to watch.","Spam email filters that automatically keep messy junk messages away from your important school notes."],"glossary":[{"term":"Artificial Intelligence (AI)","definition":"Making computers or machines smart so they can solve problems and do things that usually need human thinking."},{"term":"The Dartmouth Conference","definition":"A 1956 summer workshop where scientists first used the term Artificial Intelligence."},{"term":"Turing Test","definition":"A test created by Alan Turing to check if a computer can converse well enough to fool a human judge."},{"term":"AI Winters","definition":"Periods when computer technology was too weak, leading people to stop funding AI research."}],"lesson_summary":"In this lesson, we explored the fascinating history of Artificial Intelligence. We learned how scientists gathered at the Dartmouth Conference in 1956 to birth the idea, how Alan Turing created a test to measure machine thinking, how difficult early years called AI winters slowed progress down, and how fast modern computers sparked today\u0027s AI revolution.","concept_check":[{"id":"cc001","question":"In which year did the famous Dartmouth Conference take place?","options":["1945","1956","1980","2010"],"correct":"1956","explanation":"The Dartmouth Conference took place in 1956, where scientists officially named the field of Artificial Intelligence."},{"id":"cc002","question":"What was the main goal of the Turing Test?","options":["To check how fast a computer can print a page","To see if a machine can trick a human into thinking it is human during a chat","To test how much electricity a computer needs","To find out how many video games can run at once"],"correct":"To see if a machine can trick a human into thinking it is human during a chat","explanation":"The Turing Test evaluates whether a computer\u0027s conversational ability is indistinguishable from that of a real human."},{"id":"cc003","question":"What is an \u0027AI winter\u0027?","options":["A season when computers freeze in the snow","A time when AI research slowed down and funding stopped due to slow computers","A holiday software update","A computer game played in winter"],"correct":"A time when AI research slowed down and funding stopped due to slow computers","explanation":"An AI winter refers to periods in history when enthusiasm and funding for AI dropped because technology was not yet advanced enough."}],"quiz":[{"id":"q001","question":"What major event happened in 1956 that started AI history?","options":["The first smartphone was launched","The Dartmouth Conference","The invention of the internet","The first video game was created"],"correct":"The Dartmouth Conference","explanation":"The Dartmouth Conference in 1956 brought scientists together to officially start the study of Artificial Intelligence."},{"id":"q002","question":"Who created the famous test involving a human judge talking to a hidden machine and a human?","options":["Alan Turing","John McCarthy","Albert Einstein","Thomas Edison"],"correct":"Alan Turing","explanation":"Alan Turing proposed the Turing Test to measure whether a machine can exhibit human-like conversation."},{"id":"q003","question":"Why did AI winters happen?","options":["Computers were kept in cold rooms","Scientists lost interest and computers were too slow and limited","There was no electricity anywhere","People only wanted to play sports"],"correct":"Scientists lost interest and computers were too slow and limited","explanation":"AI winters happened because early computers lacked the speed and memory needed to solve complex real-world problems."},{"id":"q004","question":"What helped cause the modern AI revolution?","options":["Super-fast computers and massive amounts of data","Writing programs on paper with pencils","Using smaller calculators with no screens","Stopping all computer research"],"correct":"Super-fast computers and massive amounts of data","explanation":"Today\u0027s AI boom is powered by incredibly fast modern computers and huge sets of data from the internet."},{"id":"q005","question":"Which of the following is a real-life example of modern AI?","options":["A wooden wooden pencil","A traditional paper notebook","A map app that helps you avoid traffic","A metal door key"],"correct":"A map app that helps you avoid traffic","explanation":"Map apps use modern AI to analyze live traffic data and guide you along the fastest route."}],"scenes":[{"n":1,"title":"Introduction to AI History","start":0,"end":25,"gate":25,"interaction":"none","pause_after":false,"role":"opening_agenda"},{"n":2,"title":"The Dartmouth Conference","start":25,"end":50,"gate":50,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"cc001","question":"In which year did the famous Dartmouth Conference take place?","options":["1945","1956","1980","2010"],"correct":"1956","explanation":"The Dartmouth Conference took place in 1956, where scientists officially named the field of Artificial Intelligence."}},{"n":3,"title":"The Turing Test","start":50,"end":75,"gate":75,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"cc002","question":"What was the main goal of the Turing Test?","options":["To check how fast a computer can print a page","To see if a machine can trick a human into thinking it is human during a chat","To test how much electricity a computer needs","To find out how many video games can run at once"],"correct":"To see if a machine can trick a human into thinking it is human during a chat","explanation":"The Turing Test evaluates whether a computer\u0027s conversational ability is indistinguishable from that of a real human."}},{"n":4,"title":"AI Winters","start":75,"end":100,"gate":100,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"cc003","question":"What is an \u0027AI winter\u0027?","options":["A season when computers freeze in the snow","A time when AI research slowed down and funding stopped due to slow computers","A holiday software update","A computer game played in winter"],"correct":"A time when AI research slowed down and funding stopped due to slow computers","explanation":"An AI winter refers to periods in history when enthusiasm and funding for AI dropped because technology was not yet advanced enough."}},{"n":5,"title":"The Modern AI Revolution","start":100,"end":128,"gate":128,"interaction":"none","pause_after":false,"role":"teaching"},{"n":6,"title":"Spot the Smart Technology","start":128,"end":156,"gate":156,"interaction":"none","pause_after":false,"role":"activity"},{"n":7,"title":"Key Takeaways","start":156,"end":173.733,"gate":173.733,"interaction":"none","pause_after":false,"role":"teaching_summary"}]}</script>
+<script>
+(function(){
+"use strict";
+var D = JSON.parse(document.getElementById("lesson-data").textContent);
+var KEY = "lms:" + D.slug;
+var S = {done:{}, quiz:null, pos:0, checks:{}};
+try { var saved = JSON.parse(localStorage.getItem(KEY) || "null"); if (saved) S = Object.assign(S, saved); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+function esc(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function $(id){ return document.getElementById(id); }
+function fmt(s){ s = Math.max(0, Math.floor(s)); return Math.floor(s/60) + ":" + ("0" + (s % 60)).slice(-2); }
+
+/* ---------- header ---------- */
+$("title").textContent = D.title; $("desc").textContent = D.description || "";
+$("chipAud").textContent = D.audience || ""; $("chipTime").textContent = D.minutes ? "About " + D.minutes + " min of learning" : "";
+document.title = D.title;
+(D.objectives || []).forEach(function(o){ var li = document.createElement("li"); li.textContent = o; $("objectives").appendChild(li); });
+
+/* ---------- tabs ---------- */
+var TABS = [["video","Watch & answer"],["summary","Summary"],["examples","Real-life examples"],["check","Check the concept"],["lesson","Lesson notes"],["quiz","Final quiz"]];
+TABS.forEach(function(t, i){
+  var b = document.createElement("button"); b.textContent = t[1]; b.dataset.tab = t[0]; if (!i) b.className = "on";
+  b.onclick = function(){ show(t[0]); }; $("nav").appendChild(b);
+});
+var courseTab = document.createElement("a"); courseTab.className = "course-tab"; courseTab.href = "/courses/ai-for-kids"; courseTab.textContent = "Go to course →"; nav.appendChild(courseTab);
+function show(name){
+  Array.prototype.forEach.call($("nav").querySelectorAll("button"), function(b){ b.className = b.dataset.tab === name ? "on" : ""; });
+  TABS.forEach(function(t){ $("t-" + t[0]).className = "tab" + (t[0] === name ? " on" : ""); });
+  if (name !== "video") $("vid").pause();
+}
+
+/* ---------- question card (used by the video pauses, Check the concept and the final quiz) ---------- */
+function questionCard(q, opts){
+  var wrap = document.createElement("div"); wrap.className = "q";
+  var h = document.createElement("h3"); h.textContent = q.question; wrap.appendChild(h);
+  var tries = 0, finished = false, buttons = [];
+  var fb = document.createElement("div");
+  function end(correct){
+    finished = true;
+    buttons.forEach(function(b){ b.disabled = true; if (b.dataset.v === q.correct) b.classList.add("good"); });
+    if (q.explanation) fb.innerHTML = '<div class="fb ' + (correct ? "good" : "info") + '">' + (correct ? "Correct! " : "The answer is: <b>" + esc(q.correct) + "</b>. ") + esc(q.explanation) + "</div>";
+    if (opts.onDone) opts.onDone(correct, tries);
+  }
+  q.options.forEach(function(text){
+    var b = document.createElement("button"); b.className = "opt"; b.textContent = text; b.dataset.v = text; buttons.push(b);
+    b.onclick = function(){
+      if (finished) return; tries++;
+      if (text === q.correct){ b.classList.add("good"); end(true); }
+      else if (opts.oneShot || tries >= 2){ b.classList.add("bad"); end(false); }
+      else { b.classList.add("bad"); b.disabled = true; fb.innerHTML = '<div class="fb bad">Not quite. Think again and try another answer.</div>'; }
+    };
+    wrap.appendChild(b);
+  });
+  wrap.appendChild(fb);
+  return wrap;
+}
+
+/* ---------- video with pauses ---------- */
+var vid = $("vid"), ov = $("overlay");
+var gates = D.scenes.filter(function(s){ return (s.interaction === "concept_check" && s.question) || (s.interaction === "pause_continue" && s.pause_after); });
+var activeGate = null;
+function doneCount(){ return Object.keys(S.done).length; }
+function refreshProgress(){
+  var total = gates.filter(function(g){ return g.interaction === "concept_check"; }).length;
+  var ok = Object.keys(S.done).filter(function(k){ return S.done[k] && S.done[k].correct; }).length;
+  $("chipChecks").textContent = "Checks answered right: " + ok + " / " + total;
+  $("bar").style.width = (total ? Math.round(100 * doneCount() / total) : 0) + "%";
+  drawScenes();
+}
+function drawScenes(){
+  var ul = $("scenes"); ul.innerHTML = "";
+  D.scenes.forEach(function(s){
+    var li = document.createElement("li"); var d = S.done[s.n];
+    var cls = "dot" + (d ? (d.correct ? " ok" : " part") : ""); var sym = d ? (d.correct ? "&#10003;" : "&#8226;") : s.n;
+    li.innerHTML = '<span class="' + cls + '">' + sym + '</span><span>' + esc(s.title) + ' <span class="muted">(' + fmt(s.start) + ')</span></span>';
+    li.onclick = function(){ closeOverlay(); vid.currentTime = s.start + 0.05; vid.play(); show("video"); };
+    ul.appendChild(li);
+  });
+}
+function closeOverlay(){ ov.className = "overlay"; ov.innerHTML = ""; activeGate = null; }
+function openGate(g){
+  activeGate = g; vid.pause(); if (document.fullscreenElement) document.exitFullscreen();
+  ov.innerHTML = ""; ov.className = "overlay on";
+  var box = document.createElement("div"); box.className = "q";
+  var tag = document.createElement("div"); tag.className = "tag"; tag.textContent = "Quick check - " + g.title; box.appendChild(tag);
+  function actions(){
+    var rep = document.createElement("button"); rep.className = "btn alt"; rep.textContent = "Replay this part";
+    rep.onclick = function(){ closeOverlay(); vid.currentTime = g.start + 0.05; vid.play(); };
+    var go = document.createElement("button"); go.className = "btn"; go.textContent = "Continue";
+    go.onclick = function(){ var t = g.gate + 0.1; closeOverlay(); vid.currentTime = t; vid.play(); };
+    box.appendChild(rep); box.appendChild(go);
+  }
+  if (g.interaction === "concept_check"){
+    var prev = S.done[g.n];
+    box.appendChild(questionCard(g.question, {onDone: function(correct, tries){
+      S.done[g.n] = {correct: correct, tries: tries}; save(); refreshProgress(); actions();
+    }}));
+  } else {
+    var p = document.createElement("div"); p.className = "fb info"; p.textContent = "Take a moment to think about what you just learned."; box.appendChild(p);
+    S.done[g.n] = {correct: true, tries: 0}; save(); refreshProgress(); actions();
+  }
+  ov.appendChild(box);
+}
+var lastSave = 0;
+vid.addEventListener("timeupdate", function(){
+  var t = vid.currentTime;
+  if (t - lastSave > 5 || t < lastSave){ lastSave = t; S.pos = t; save(); }
+  if (activeGate) return;
+  for (var i = 0; i < gates.length; i++){
+    var g = gates[i];
+    if (!S.done[g.n] && t >= g.gate - 0.12 && t < g.gate + 1.5){ openGate(g); return; }
+  }
+});
+vid.addEventListener("play", function(){ if (activeGate){ vid.pause(); } });
+vid.addEventListener("ended", function(){
+  ov.className = "overlay on"; ov.innerHTML = "";
+  var box = document.createElement("div"); box.className = "q";
+  var ok = Object.keys(S.done).filter(function(k){ return S.done[k].correct; }).length;
+  box.innerHTML = "<h3>Lesson complete!</h3><div class='fb good'>You answered " + ok + " of " + gates.length + " quick checks correctly.</div>";
+  var quiz = document.createElement("button"); quiz.className = "btn"; quiz.textContent = "Take the final quiz";
+  quiz.onclick = function(){ closeOverlay(); show("quiz"); };
+  var again = document.createElement("button"); again.className = "btn alt"; again.textContent = "Watch again";
+  again.onclick = function(){ closeOverlay(); vid.currentTime = 0; vid.play(); };
+  box.appendChild(quiz); box.appendChild(again); ov.appendChild(box);
+});
+if (S.pos > 15){
+  var rb = $("resumeBox"); rb.style.display = "block";
+  rb.innerHTML = "You stopped at <b>" + fmt(S.pos) + "</b>. ";
+  var bt = document.createElement("button"); bt.className = "btn"; bt.textContent = "Resume from " + fmt(S.pos);
+  bt.onclick = function(){ vid.currentTime = S.pos; vid.play(); rb.style.display = "none"; };
+  rb.appendChild(bt);
+}
+
+/* ---------- summary / examples ---------- */
+(function(){
+  var h = "<h2>Summary</h2><p>" + esc(D.simple_summary || D.lesson_summary || "") + "</p>";
+  if ((D.key_concepts || []).length){ h += "<h3 class='sub'>Key ideas</h3>" + D.key_concepts.map(function(k){ return "<span class='tag'>" + esc(k) + "</span>"; }).join(""); }
+  if ((D.takeaways || []).length){ h += "<h3 class='sub'>Remember</h3><ul>" + D.takeaways.map(function(k){ return "<li>" + esc(k) + "</li>"; }).join("") + "</ul>"; }
+  $("summaryBox").innerHTML = h;
+  var e = "<h2>Real-life examples</h2>" + (D.real_life_examples || []).map(function(x){ return "<div class='example'>" + esc(x) + "</div>"; }).join("");
+  if ((D.practical_examples || []).length){ e += "<h3 class='sub'>More examples</h3>" + D.practical_examples.map(function(x){ return "<div class='example'>" + esc(typeof x === "string" ? x : (x.title ? x.title + ": " : "") + (x.description || x.example || "")) + "</div>"; }).join(""); }
+  $("examplesBox").innerHTML = e;
+})();
+
+/* ---------- check the concept ---------- */
+(function(){
+  var box = $("checkBox");
+  (D.concept_check || []).forEach(function(q, i){
+    var card = document.createElement("div"); card.className = "card"; card.style.background = "#faf8ff";
+    var n = document.createElement("div"); n.className = "muted"; n.textContent = "Question " + (i + 1) + " of " + D.concept_check.length; card.appendChild(n);
+    card.appendChild(questionCard(q, {onDone: function(c){ S.checks[q.id] = c; save(); }}));
+    box.appendChild(card);
+  });
+  if (!(D.concept_check || []).length) box.textContent = "No questions in this lesson.";
+})();
+
+/* ---------- lesson notes ---------- */
+(function(){
+  var h = "<h2>Lesson notes</h2>";
+  (D.sections || []).forEach(function(s){
+    h += "<h3 class='sub'>" + esc(s.title) + "</h3>";
+    if (s.image) h += "<img class='sec' src='" + esc(s.image) + "' alt='" + esc(s.caption || s.title) + "'>" + (s.caption ? "<div class='muted'>" + esc(s.caption) + "</div>" : "");
+    h += String(s.content || "").split(/\n+/).map(function(p){ return "<p>" + esc(p) + "</p>"; }).join("");
+  });
+  if ((D.glossary || []).length){ h += "<h3 class='sub'>Glossary</h3>" + D.glossary.map(function(g){ return "<p><b>" + esc(g.term) + ":</b> " + esc(g.definition) + "</p>"; }).join(""); }
+  $("lessonBox").innerHTML = h;
+})();
+
+/* ---------- final quiz ---------- */
+function buildQuiz(){
+  var box = $("quizBox"); box.innerHTML = "";
+  var qs = D.quiz || [];
+  if (!qs.length){ box.textContent = "No quiz in this lesson."; return; }
+  if (S.quiz){ var p = document.createElement("div"); p.className = "fb info"; p.textContent = "Your best score so far: " + S.quiz.best + "%."; box.appendChild(p); }
+  var results = {}, count = 0;
+  qs.forEach(function(q, i){
+    var card = document.createElement("div"); card.className = "card"; card.style.background = "#faf8ff";
+    var n = document.createElement("div"); n.className = "muted"; n.textContent = "Question " + (i + 1) + " of " + qs.length; card.appendChild(n);
+    card.appendChild(questionCard(q, {oneShot: true, onDone: function(c){
+      results[q.id] = c; count++;
+      if (count === qs.length){
+        var right = Object.keys(results).filter(function(k){ return results[k]; }).length, pct = Math.round(100 * right / qs.length);
+        S.quiz = {best: Math.max(pct, S.quiz ? S.quiz.best : 0), last: pct}; save();
+        var done = document.createElement("div"); done.className = "fb " + (pct >= 70 ? "good" : "bad");
+        done.innerHTML = "<b>You scored " + right + " / " + qs.length + " (" + pct + "%).</b> " + (pct >= 70 ? "Well done!" : "Watch the lesson again and try once more.");
+        var again = document.createElement("button"); again.className = "btn"; again.textContent = "Try the quiz again"; again.onclick = buildQuiz;
+        done.appendChild(document.createElement("br")); done.appendChild(again); box.appendChild(done); done.scrollIntoView({behavior: "smooth", block: "center"});
+      }
+    }}));
+    box.appendChild(card);
+  });
+}
+buildQuiz();
+refreshProgress();
+})();
+</script>
+</body>
+</html>

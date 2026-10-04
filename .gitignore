@@ -6,3 +6,4 @@
 *.tsbuildinfo
 *.log
 public/videos/*.mp4
+public/courses/ai-for-kids/*/video.mp4

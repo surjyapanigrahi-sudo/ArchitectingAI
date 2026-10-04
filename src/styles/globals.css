@@ -1497,3 +1497,51 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 @media(max-width:900px){.academy-ticker-track>span{font-size:11px}.academy-carousel .academy-hero-content{padding-top:11rem}}
 @media(max-width:600px){.academy-ticker{top:70px}.academy-carousel .academy-hero-content{padding-top:10.5rem}}
 @media(prefers-reduced-motion:reduce){.academy-ticker-track{animation:none;transform:none}.academy-ticker-track>span:nth-child(2){display:none}}
+
+/* AI for Students course detail hero */
+.course-detail-hero.accent-teal{position:relative;isolation:isolate;max-width:none;min-height:clamp(430px,55vw,610px);margin:calc(-5rem) calc(-1 * clamp(1.25rem,6vw,6rem)) 4.5rem;padding:clamp(4rem,8vw,7rem) clamp(1.25rem,6vw,6rem);display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:#102d45}
+.course-detail-hero.accent-teal::before{content:"";position:absolute;inset:0;z-index:-2;background:url("/images/hero-ai-students-course.png") center center/cover no-repeat;transform:scale(1.015)}
+.course-detail-hero.accent-teal::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,24,39,.96) 0%,rgba(7,24,39,.86) 38%,rgba(7,24,39,.34) 68%,rgba(7,24,39,.12) 100%)}
+.course-detail-hero.accent-teal h1{max-width:min(680px,43vw);margin:.65rem 0 1rem;font-size:clamp(2.25rem,3.7vw,3.9rem);line-height:1.04;letter-spacing:-.04em;text-wrap:balance}
+.course-detail-hero.accent-teal>p:not(.academy-kicker){max-width:min(620px,43vw);color:#e2edf3;font-size:clamp(.95rem,1.2vw,1.08rem)}
+.course-detail-hero.accent-teal .detail-meta span{border-color:rgba(255,255,255,.38);background:rgba(5,22,36,.42);backdrop-filter:blur(7px)}
+@media(max-width:900px){.course-detail-hero.accent-teal{min-height:520px;background:#102d45}.course-detail-hero.accent-teal::before{background-position:58% center}.course-detail-hero.accent-teal::after{background:linear-gradient(90deg,rgba(7,24,39,.98) 0%,rgba(7,24,39,.88) 50%,rgba(7,24,39,.5) 100%)}.course-detail-hero.accent-teal h1,.course-detail-hero.accent-teal>p:not(.academy-kicker){max-width:68%}}
+@media(max-width:600px){.course-detail-hero.accent-teal{margin-top:-3rem;padding-top:5rem;padding-bottom:4rem;min-height:500px}.course-detail-hero.accent-teal::before{background-position:66% center;opacity:.45}.course-detail-hero.accent-teal::after{background:rgba(7,24,39,.78)}.course-detail-hero.accent-teal h1,.course-detail-hero.accent-teal>p:not(.academy-kicker){max-width:100%}.course-detail-hero.accent-teal h1{font-size:clamp(2.15rem,10vw,3rem)}}
+
+
+/* AI for Students motion and interaction */
+@keyframes students-hero-drift{0%{transform:scale(1.025) translate3d(1.2%,0,0)}50%{transform:scale(1.08) translate3d(-1.6%,-.45%,0)}100%{transform:scale(1.045) translate3d(-3%,.35%,0)}}
+@keyframes students-hero-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes students-hero-glow{0%,100%{box-shadow:0 10px 28px rgba(21,155,145,.2)}50%{box-shadow:0 14px 38px rgba(116,103,200,.3)}}
+.course-detail-hero.accent-teal::before{animation:students-hero-drift 11s ease-in-out infinite alternate;will-change:transform}
+.course-detail-hero.accent-teal>.academy-kicker{animation:students-hero-enter .5s ease-out both}
+.course-detail-hero.accent-teal>h1{animation:students-hero-enter .65s .08s ease-out both}
+.course-detail-hero.accent-teal>p:not(.academy-kicker){animation:students-hero-enter .65s .16s ease-out both}
+.course-detail-hero.accent-teal>.detail-meta{animation:students-hero-enter .65s .24s ease-out both}
+.course-detail-hero.accent-teal>.academy-button{animation:students-hero-enter .65s .32s ease-out both,students-hero-glow 4s 1.2s ease-in-out infinite;transition:transform .22s ease,background-color .22s ease,box-shadow .22s ease}
+.course-detail-hero.accent-teal>.academy-button:hover{transform:translateY(-3px)}
+.course-detail-hero.accent-teal .detail-meta span{transition:transform .2s ease,border-color .2s ease,background-color .2s ease}
+.course-detail-hero.accent-teal .detail-meta span:hover{transform:translateY(-2px);border-color:rgba(94,234,212,.75);background:rgba(10,45,60,.65)}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li{transition:transform .22s ease,background-color .22s ease,border-color .22s ease}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li:hover{transform:translateX(7px);border-color:rgba(94,234,212,.42);background:linear-gradient(90deg,rgba(21,155,145,.1),transparent)}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li>a{transition:color .2s ease,transform .2s ease}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li:hover>a{color:#7cf4dd;transform:translateX(3px)}
+@media(prefers-reduced-motion:reduce){.course-detail-hero.accent-teal::before,.course-detail-hero.accent-teal>.academy-kicker,.course-detail-hero.accent-teal>h1,.course-detail-hero.accent-teal>p:not(.academy-kicker),.course-detail-hero.accent-teal>.detail-meta,.course-detail-hero.accent-teal>.academy-button{animation:none}.course-detail-hero.accent-teal>.academy-button,.course-detail-hero.accent-teal .detail-meta span,.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li,.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li>a{transition:none}}
+
+
+/* AI for Students clickable availability tab */
+.course-detail-hero.accent-teal .detail-meta .course-availability-link{display:inline-flex;align-items:center;padding:.5rem .95rem;border:1px solid #5eead4;border-radius:99px;color:#062b30;background:#5eead4;font-size:.72rem;font-weight:800;text-decoration:none;box-shadow:0 8px 22px rgba(94,234,212,.22);transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease}
+.course-detail-hero.accent-teal .detail-meta .course-availability-link:hover{transform:translateY(-2px);background:#8df5e4;box-shadow:0 12px 28px rgba(94,234,212,.32)}
+@media(prefers-reduced-motion:reduce){.course-detail-hero.accent-teal .detail-meta .course-availability-link{transition:none}}
+
+
+/* AI for Students curriculum modules */
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li.course-module-row{display:block;padding:1.8rem 0 .45rem;border-top:0;background:none;transform:none}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-syllabus li.course-module-row:hover{transform:none;background:none}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-module-heading{display:grid;gap:.28rem;margin:0;padding:1rem 1.15rem;border-left:3px solid #5eead4;background:linear-gradient(90deg,rgba(21,155,145,.14),rgba(116,103,200,.05));border-radius:0 10px 10px 0}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-module-heading span{color:#5eead4;font:800 .64rem/1.2 monospace;letter-spacing:.13em;text-transform:uppercase}
+.academy-inner-page:has(.course-detail-hero.accent-teal) .course-module-heading strong{color:#eef8fa;font-size:clamp(1rem,1.5vw,1.25rem)}
+
+
+/* Course index anchor spacing */
+#course-index{scroll-margin-top:96px}

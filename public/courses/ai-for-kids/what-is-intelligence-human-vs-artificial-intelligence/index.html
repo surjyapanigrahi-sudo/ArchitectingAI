@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is Intelligence? (Human vs. Artificial Intelligence)</title>
+<style>
+:root{--bg:#f6f4ff;--card:#fff;--ink:#1f1b3a;--muted:#6a6591;--brand:#7c5cf0;--brand2:#ff5f5f;--ok:#16a34a;--bad:#dc2626;--line:#e3defa}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;padding:20px 16px}
+header .in{max-width:1540px;margin:0 auto;padding:0 24px}
+main{max-width:1640px;margin:0 auto;padding:0 24px}
+header h1{margin:0 0 4px;font-size:clamp(1.25rem,3vw,1.9rem)}
+header p{margin:0;opacity:.92}
+a.back{display:inline-block;color:#fff;text-decoration:none;background:rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;margin-bottom:10px;font-size:.92rem}
+a.back:hover{background:rgba(255,255,255,.35)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:rgba(255,255,255,.2);border-radius:999px;padding:3px 12px;font-size:.88rem}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font-size:.95rem;cursor:pointer}
+nav button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+nav .course-tab{margin-left:auto;border:1px solid var(--brand);background:#fff;color:var(--brand);border-radius:999px;padding:8px 16px;font-size:.95rem;font-weight:700;text-decoration:none}
+nav .course-tab:hover{background:#ece6ff}
+@media(max-width:720px){nav .course-tab{margin-left:0}}
+.tab{display:none}.tab.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:minmax(0,3.35fr) minmax(280px,1fr);gap:18px;align-items:start}
+@media(max-width:1050px){.grid{grid-template-columns:1fr}.lesson-parts{max-height:none}}
+@media(max-width:600px){header .in,main{padding-left:14px;padding-right:14px}}
+.player{position:relative;background:#000;border-radius:14px;overflow:hidden}
+video{width:100%;display:block;max-height:78vh;aspect-ratio:16/9;object-fit:contain;background:#000}
+.overlay{position:absolute;inset:0;background:rgba(20,16,50,.93);color:#fff;display:none;overflow:auto;padding:18px}
+.overlay.on{display:flex;flex-direction:column;justify-content:center}
+.overlay .q{max-width:720px;margin:0 auto;width:100%}
+.q h3{margin:0 0 12px;font-size:clamp(1.05rem,2.4vw,1.35rem)}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:11px 14px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink);font-size:1rem;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--brand)}
+.opt.good{border-color:var(--ok);background:#e8f8ee}.opt.bad{border-color:var(--bad);background:#fdecec}
+.opt:disabled{cursor:default}
+.fb{margin:10px 0;padding:10px 14px;border-radius:12px;font-size:.98rem}
+.fb.good{background:#e8f8ee;color:#14532d}.fb.bad{background:#fdecec;color:#7f1d1d}.fb.info{background:#eef2ff;color:#312e81}
+.btn{border:0;background:var(--brand);color:#fff;border-radius:12px;padding:10px 18px;font-size:1rem;cursor:pointer;margin:6px 8px 0 0}
+.btn.alt{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.btn:disabled{opacity:.5;cursor:default}
+.lesson-parts{max-height:min(78vh,780px);overflow:auto;scrollbar-gutter:stable}
+ul.scenes{list-style:none;margin:0;padding:0}
+ul.scenes li{display:flex;gap:10px;align-items:center;padding:8px 6px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:8px}
+ul.scenes li:hover{background:#f1edff}
+ul.scenes li.cur{background:#ece6ff;font-weight:600}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex:none}
+.dot.ok{background:var(--ok);border-color:var(--ok);color:#fff}.dot.part{background:#f59e0b;border-color:#f59e0b;color:#fff}
+.tag{display:inline-block;background:#ece6ff;color:#4c1d95;border-radius:8px;padding:2px 10px;margin:3px 6px 3px 0;font-size:.9rem}
+h2{margin-top:0}h3.sub{margin:18px 0 6px}
+.example{border-left:5px solid var(--brand);padding:8px 14px;margin:10px 0;background:#faf8ff;border-radius:0 12px 12px 0}
+.muted{color:var(--muted)}
+.bar{height:10px;background:#e9e5fb;border-radius:999px;overflow:hidden}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0}
+img.sec{max-width:100%;border-radius:12px;margin:8px 0}
+footer{max-width:1180px;margin:20px auto;padding:0 16px 30px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <a class="back" href="/courses/ai-for-kids">&larr; Back to the course</a>
+  <h1 id="title"></h1><p id="desc"></p>
+  <div class="chips"><span class="chip" id="chipAud"></span><span class="chip" id="chipTime"></span><span class="chip" id="chipChecks"></span></div>
+</div></header>
+<main>
+  <nav id="nav"></nav>
+
+  <section class="tab on" id="t-video">
+    <div class="grid">
+      <div>
+        <div class="player">
+          <video id="vid" controls preload="metadata" playsinline poster="poster.jpg"><source src="https://aimwqzrosqixyoletzgu.supabase.co/storage/v1/object/public/course-videos/ai-for-students/what-is-intelligence-human-vs-artificial-intelligence/video.mp4" type="video/mp4">Your browser cannot play this video.</video>
+          <div class="overlay" id="overlay"></div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div id="resumeBox" style="display:none" class="fb info"></div>
+          <strong>You will learn to:</strong>
+          <ul id="objectives"></ul>
+        </div>
+      </div>
+      <div class="card lesson-parts"><strong>Lesson parts</strong><div class="bar" style="margin:8px 0"><i id="bar"></i></div><ul class="scenes" id="scenes"></ul>
+        <p class="muted" style="font-size:.88rem">The video pauses after each part with a quick question. Click a part to jump to it.</p></div>
+    </div>
+  </section>
+
+  <section class="tab" id="t-summary"><div class="card" id="summaryBox"></div></section>
+  <section class="tab" id="t-examples"><div class="card" id="examplesBox"></div></section>
+  <section class="tab" id="t-check"><div class="card"><h2>Check the concept</h2><div id="checkBox"></div></div></section>
+  <section class="tab" id="t-lesson"><div class="card" id="lessonBox"></div></section>
+  <section class="tab" id="t-quiz"><div class="card"><h2>Final quiz</h2><div id="quizBox"></div></div></section>
+</main>
+<footer>Your progress is saved on this device only (in your browser).</footer>
+
+<script id="lesson-data" type="application/json">{"slug": "what-is-intelligence-human-vs-artificial-intelligence", "title": "What is Intelligence? (Human vs. Artificial Intelligence)", "description": "An engaging beginner-friendly introduction to intelligence, natural intelligence, artificial intelligence, rule-based systems, and learning systems for Class 7 students.", "audience": "Class 7 Students (age 12-13)", "minutes": 30, "objectives": ["Define intelligence and identify everyday signs of human intelligence.", "Understand natural intelligence in humans and animals through experience.", "Recognize artificial intelligence in everyday tools like voice assistants and map apps.", "Compare human intelligence and artificial intelligence across speed, feelings, and understanding.", "Distinguish between rule-based systems and learning systems with everyday examples."], "sections": [{"title": "What is Intelligence?", "content": "Intelligence is the ability to learn, remember, solve problems, understand language, and create new things. Imagine you are studying for your school exams, remembering the rules of cricket, solving a tricky puzzle, speaking to your friends in Hindi or English, or drawing a colorful painting for a school festival. All of these are everyday signs of human intelligence. In this section, you will learn how your amazing brain does all of this effortlessly.", "image": null, "caption": null}, {"title": "Natural Intelligence", "content": "Natural intelligence is the ability of living things, like humans and animals, to learn and grow from their own experiences. A definition helps us here: experience means things that happen to you in real life. Think of a child learning to ride a bicycle for the first time by falling down and trying again, or a clever crow dropping small stones into a pot of water to raise the level so it can drink. Both are using natural intelligence to figure out the world.", "image": null, "caption": null}, {"title": "Artificial Intelligence", "content": "Artificial intelligence is a branch of technology where machines do tasks that normally need human intelligence. Before we use this term, let us define it: a machine is a piece of equipment with moving parts or computer code designed to do a particular job. Think about the voice assistant on your phone that answers when you speak, map apps that guide you through busy Delhi traffic, or video recommendations that show your favorite cartoons. These are all examples of artificial intelligence in action.", "image": null, "caption": null}, {"title": "Human vs. Artificial Intelligence", "content": "Let us compare humans and artificial intelligence side by side. Humans have feelings, common sense, creativity, and the ability to understand why things happen. Artificial intelligence, on the other hand, has incredible speed, never gets tired, and can handle huge data, but it has no feelings or real understanding of what it is doing. For example, a music app can play thousands of songs instantly, but it does not actually feel happy when a cheerful song plays.", "image": null, "caption": null}, {"title": "Rule-Based Systems", "content": "A rule-based system is a machine that follows fixed rules written by a person. A rule is a clear instruction that tells a computer what to do step by step. Examples include a traffic signal timer, a calculator adding two numbers, or a teacher's rule saying 'if the marks are above 90 then grade A'. A rule-based system cannot handle anything outside the rules its creator wrote for it.", "image": null, "caption": null}, {"title": "Learning Systems", "content": "A learning system is a machine that finds patterns from many examples instead of using fixed rules. To understand this, data means a collection of facts, numbers, or pictures used for analysis. The flow works like this: Examples or data go into Learning, which creates a Model, which then gives the Answer. For instance, instead of writing rules for what a cat looks like, you show the machine thousands of photos of cats so it learns to recognize them on its own. Other examples include spam filters in your email and song recommendations on mobile music apps.", "image": null, "caption": null}, {"title": "Rule-Based vs. Learning Systems", "content": "Let us compare rule-based and learning systems. A rule-based system uses strict human-written instructions and cannot adapt. A learning system studies many examples to find patterns and improve itself over time. For example, a simple digital calculator is a rule-based system because it always follows strict math formulas. A YouTube video recommendation system is a learning system because it learns from the videos you watch every day to suggest new ones.", "image": null, "caption": null}, {"title": "Activity: Is it AI or Not? - Part 1", "content": "Let us test your skills with some everyday items. First item: A calculator adding two numbers. Is it AI or not? Answer: Not AI, because it follows fixed rules. Second item: YouTube suggesting videos you may like. Is it AI or not? Answer: AI, because it learns from what you watch. Third item: An automatic door that opens when someone is near. Is it AI or not? Answer: Not AI, because it relies on a simple sensor rule.", "image": null, "caption": null}, {"title": "Activity: Is it AI or Not? - Part 2", "content": "Let us continue our activity with three more items. Fourth item: A mobile phone unlocking with your face. Is it AI or not? Answer: AI, because it recognizes facial patterns. Fifth item: A washing machine running a fixed 30-minute cycle. Is it AI or not? Answer: Not AI, because it follows a fixed timer rule. Sixth item: A chatbot answering your questions. Is it AI or not? Answer: AI, because it understands and responds to human language.", "image": null, "caption": null}], "key_concepts": ["Intelligence", "Natural Intelligence", "Artificial Intelligence", "Rule-Based Systems", "Learning Systems"], "practical_examples": ["A child learning to ride a bicycle by trying and falling", "A map app guiding you through traffic", "A calculator following fixed addition rules", "A YouTube recommendation system learning from watch history"], "takeaways": ["Intelligence involves learning, remembering, solving problems, and being creative.", "Artificial intelligence differs from humans because machines have speed and handle data, but lack true feelings.", "Rule-based systems follow strict human instructions, whereas learning systems find patterns from data."], "simple_summary": "In this lesson, we explored intelligence as the ability to learn and solve problems. We learned that humans and animals have natural intelligence built on experience, while machines can have artificial intelligence. We also looked at how some machines follow rigid rules (rule-based systems) while others learn from examples (learning systems).", "real_life_examples": ["Using a map app on a smartphone to find the fastest route to a birthday party during heavy festival traffic.", "Playing an online mobile game where computer opponents adapt their strategy based on how well you play.", "Receiving customized video song suggestions on your tablet based on the music videos you watched earlier in the week."], "glossary": [{"term": "Intelligence", "definition": "The ability to learn, remember, solve problems, understand language, and be creative."}, {"term": "Experience", "definition": "Things that happen to you in real life."}, {"term": "Machine", "definition": "A piece of equipment with moving parts or computer code designed to do a particular job."}, {"term": "Rule", "definition": "A clear instruction that tells a computer what to do step by step."}, {"term": "Data", "definition": "A collection of facts, numbers, or pictures used for analysis."}], "lesson_summary": "This chapter introduced Class 7 students to the core concepts of intelligence. We explored how humans and animals use natural intelligence through experiences, how artificial intelligence powers modern tools, and how machines process information either through rigid rule-based systems or flexible learning systems.", "concept_check": [{"id": "cc001", "question": "What is natural intelligence?", "options": ["Intelligence found only in computers", "The ability of living things to learn and grow from experience", "A machine following fixed rules", "A calculator adding numbers"], "correct": "The ability of living things to learn and grow from experience", "explanation": "Natural intelligence refers to humans and animals learning from real-life experiences, such as riding a bicycle."}, {"id": "cc002", "question": "Which of the following describes a rule-based system?", "options": ["A system that learns from thousands of cat photos", "A machine that follows fixed rules written by a person", "A system that feels happy when it wins a game", "An animal solving a puzzle"], "correct": "A machine that follows fixed rules written by a person", "explanation": "Rule-based systems operate strictly according to pre-written instructions, like a traffic signal timer or calculator."}, {"id": "cc003", "question": "What is the correct flow for a learning system?", "options": ["Answer -> Model -> Learning -> Examples", "Examples -> Learning -> Model -> Answer", "Rules -> Calculator -> Traffic -> Score", "Feelings -> Speed -> Machine -> Human"], "correct": "Examples -> Learning -> Model -> Answer", "explanation": "Learning systems start with examples (data), go through a learning process to build a model, and then produce an answer."}], "quiz": [{"id": "q001", "question": "Which of the following is an everyday sign of human intelligence?", "options": ["Running on electricity without a battery", "Understanding language and solving problems", "Following a fixed 30-minute washing machine cycle", "Adding two numbers using a digital calculator"], "correct": "Understanding language and solving problems", "explanation": "Understanding language, learning, and solving problems are core signs of human intelligence."}, {"id": "q002", "question": "How does a crow demonstrate natural intelligence?", "options": ["By running a mobile phone app", "By dropping stones into water to raise the level so it can drink", "By following a strict traffic signal timer", "By using pre-written computer code"], "correct": "By dropping stones into water to raise the level so it can drink", "explanation": "Animals like crows use natural intelligence and experience to solve practical problems in their environment."}, {"id": "q003", "question": "Which of these is a key feature of artificial intelligence?", "options": ["It experiences true emotional happiness", "It has great speed and can handle huge data without tiredness", "It always makes human-like common sense choices on its own", "It never requires electricity or computer code"], "correct": "It has great speed and can handle huge data without tiredness", "explanation": "AI excels at speed and processing massive data, but it lacks genuine feelings or true understanding."}, {"id": "q004", "question": "What is a rule-based system?", "options": ["A system that learns from millions of cat photos", "A machine that follows fixed rules written by a person", "A human student studying for exams", "A song recommendation app on a mobile phone"], "correct": "A machine that follows fixed rules written by a person", "explanation": "Rule-based systems operate strictly on pre-determined human rules and cannot handle situations outside those rules."}, {"id": "q005", "question": "In a learning system, what comes right before generating the model?", "options": ["Learning", "A traffic signal", "Human feelings", "A fixed 30-minute timer"], "correct": "Learning", "explanation": "The flow is Examples (data) -> Learning -> Model -> Answer."}, {"id": "q006", "question": "Why is a calculator adding two numbers classified as Not AI?", "options": ["Because it learns from what you type every day", "Because it follows fixed rules and does not learn", "Because it has human feelings", "Because it recognizes human faces"], "correct": "Because it follows fixed rules and does not learn", "explanation": "A calculator is a rule-based system that uses strict math formulas rather than learning from data."}, {"id": "q007", "question": "Why is a chatbot answering questions considered AI?", "options": ["It follows a simple sensor rule", "It runs a fixed 30-minute washing cycle", "It understands and responds to human language", "it is just like a digital calculator"], "correct": "It understands and responds to human language", "explanation": "Chatbots use artificial intelligence to process, understand, and generate human-like text responses."}], "scenes": [{"n": 1, "title": "What is Intelligence? Human vs. Artificial Intelligence", "start": 0.0, "end": 34.3, "gate": 34.3, "interaction": "none", "pause_after": false, "role": "opening_agenda"}, {"n": 2, "title": "What is Intelligence?", "start": 34.3, "end": 64.63, "gate": 64.63, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_02_question", "question": "Which of the following is considered an everyday sign of human intelligence?", "options": ["Learning, remembering, and being creative", "Following a traffic signal timer", "Running a fixed 30-minute washing cycle", "Operating as a basic calculator"], "correct": "Learning, remembering, and being creative", "explanation": "Human intelligence is defined by everyday signs such as learning, remembering, solving problems, understanding language, and being creative."}}, {"n": 3, "title": "Natural Intelligence", "start": 64.63, "end": 98.23, "gate": 98.23, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_03_question", "question": "How do living beings with natural intelligence primarily learn?", "options": ["By processing millions of rows of spreadsheet data", "By following computer code written by humans", "By learning directly from experience and practice", "By executing rigid rule-based timers"], "correct": "By learning directly from experience and practice", "explanation": "Natural intelligence means learning directly from experience and the world around us, such as a child learning to ride a bicycle."}}, {"n": 4, "title": "What is Artificial Intelligence?", "start": 98.23, "end": 133.9, "gate": 133.9, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_04_question", "question": "What best describes Artificial Intelligence (AI)?", "options": ["Fixed human instructions like a traffic signal timer", "A biological process of falling down and trying again", "Biological brains found in animals", "Machines performing tasks that normally require human intelligence"], "correct": "Machines performing tasks that normally require human intelligence", "explanation": "AI refers to machines that carry out tasks that normally need human intelligence, such as voice assistants and map navigation apps."}}, {"n": 5, "title": "Human vs. Artificial Intelligence", "start": 133.9, "end": 166.1, "gate": 166.1, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_05_question", "question": "Which of the following traits belongs specifically to Artificial Intelligence rather than humans?", "options": ["Biological brains and emotional happiness", "True feelings and understanding why", "Incredible speed and handling huge mountains of data", "Common sense and creativity"], "correct": "Incredible speed and handling huge mountains of data", "explanation": "AI excels in speed and handling huge data instantly without getting tired, but it lacks true feelings and real understanding."}}, {"n": 6, "title": "Rule-Based Systems", "start": 166.1, "end": 197.63, "gate": 197.63, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_06_question", "question": "What is a major limitation of a rule-based system?", "options": ["It cannot handle anything its fixed rules do not cover", "It learns new patterns independently from pictures", "It possesses too many unpredictable human emotions", "It takes too long to process simple math questions"], "correct": "It cannot handle anything its fixed rules do not cover", "explanation": "Rule-based systems follow strict instructions written by people and cannot adapt to situations outside their pre-written rules."}}, {"n": 7, "title": "Learning Systems", "start": 197.63, "end": 230.17, "gate": 230.17, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_07_question", "question": "In a learning system, what is the correct flow of data processing?", "options": ["Rules -> Answer -> Examples -> Learning", "Learning -> Answer -> Model -> Examples", "Examples -> Learning -> Model -> Answer", "Model -> Learning -> Answer -> Examples"], "correct": "Examples -> Learning -> Model -> Answer", "explanation": "Learning systems follow the flow where many examples (data) go through learning, build a model, and finally produce an answer."}}, {"n": 8, "title": "Rule-Based vs. Learning Systems", "start": 230.17, "end": 263.57, "gate": 263.57, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_08_question", "question": "Which of the following is given as an example of a rule-based system?", "options": ["An email app filtering out spam messages", "A video app learning from your watch history", "A washing machine running a set 30-minute cycle", "A phone unlocking with your facial features"], "correct": "A washing machine running a set 30-minute cycle", "explanation": "A washing machine running a fixed 30-minute cycle is rule-based because it follows rigid human-set timer instructions."}}, {"n": 9, "title": "Is it AI or Not? (Part 1)", "start": 263.57, "end": 303.53, "gate": 303.53, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_09_question", "question": "Why is a calculator adding two numbers classified as 'Not AI'?", "options": ["Because it learns from your daily habits", "Because it understands human language", "Because it follows fixed human rules", "Because it has true feelings and creativity"], "correct": "Because it follows fixed human rules", "explanation": "A calculator is not AI because it simply operates on rigid, fixed mathematical rules rather than learning from data."}}, {"n": 10, "title": "Is it AI or Not? (Part 2)", "start": 303.53, "end": 339.73, "gate": 339.73, "interaction": "concept_check", "pause_after": true, "role": "teaching", "question": {"id": "scene_10_question", "question": "Which of the following items is classified as AI because it understands language and generates replies?", "options": ["A chatbot answering your questions", "A basic traffic signal timer", "A washing machine running a 30-minute cycle", "An automatic door with a motion sensor"], "correct": "A chatbot answering your questions", "explanation": "A chatbot is an example of AI because it understands language and generates appropriate conversational replies."}}, {"n": 11, "title": "Key Takeaways", "start": 339.73, "end": 370.6, "gate": 370.6, "interaction": "concept_check", "pause_after": true, "role": "teaching_summary", "question": {"id": "scene_11_question", "question": "According to the key takeaways, what is the core difference between rule-based and learning systems?", "options": ["Rule-based systems learn from examples, while learning systems use rigid traffic timers.", "Rule-based systems follow fixed instructions, while learning systems find data patterns.", "Rule-based systems have feelings, while learning systems are made of biological tissue.", "Rule-based systems never get tired, while learning systems lack any form of instructions."], "correct": "Rule-based systems follow fixed instructions, while learning systems find data patterns.", "explanation": "The summary points out that rule-based systems follow fixed instructions, whereas learning systems spot patterns in data."}}, {"n": 12, "title": "Thank You", "start": 370.6, "end": 373.93, "gate": 373.93, "interaction": "none", "pause_after": false, "role": "thank_you"}]}</script>
+<script>
+(function(){
+"use strict";
+var D = JSON.parse(document.getElementById("lesson-data").textContent);
+var KEY = "lms:" + D.slug;
+var S = {done:{}, quiz:null, pos:0, checks:{}};
+try { var saved = JSON.parse(localStorage.getItem(KEY) || "null"); if (saved) S = Object.assign(S, saved); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+function esc(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function $(id){ return document.getElementById(id); }
+function fmt(s){ s = Math.max(0, Math.floor(s)); return Math.floor(s/60) + ":" + ("0" + (s % 60)).slice(-2); }
+
+/* ---------- header ---------- */
+$("title").textContent = D.title; $("desc").textContent = D.description || "";
+$("chipAud").textContent = D.audience || ""; $("chipTime").textContent = D.minutes ? "About " + D.minutes + " min of learning" : "";
+document.title = D.title;
+(D.objectives || []).forEach(function(o){ var li = document.createElement("li"); li.textContent = o; $("objectives").appendChild(li); });
+
+/* ---------- tabs ---------- */
+var TABS = [["video","Watch & answer"],["summary","Summary"],["examples","Real-life examples"],["check","Check the concept"],["lesson","Lesson notes"],["quiz","Final quiz"]];
+TABS.forEach(function(t, i){
+  var b = document.createElement("button"); b.textContent = t[1]; b.dataset.tab = t[0]; if (!i) b.className = "on";
+  b.onclick = function(){ show(t[0]); }; $("nav").appendChild(b);
+});
+var courseTab = document.createElement("a"); courseTab.className = "course-tab"; courseTab.href = "/courses/ai-for-kids"; courseTab.textContent = "Go to course →"; nav.appendChild(courseTab);
+function show(name){
+  Array.prototype.forEach.call($("nav").querySelectorAll("button"), function(b){ b.className = b.dataset.tab === name ? "on" : ""; });
+  TABS.forEach(function(t){ $("t-" + t[0]).className = "tab" + (t[0] === name ? " on" : ""); });
+  if (name !== "video") $("vid").pause();
+}
+
+/* ---------- question card (used by the video pauses, Check the concept and the final quiz) ---------- */
+function questionCard(q, opts){
+  var wrap = document.createElement("div"); wrap.className = "q";
+  var h = document.createElement("h3"); h.textContent = q.question; wrap.appendChild(h);
+  var tries = 0, finished = false, buttons = [];
+  var fb = document.createElement("div");
+  function end(correct){
+    finished = true;
+    buttons.forEach(function(b){ b.disabled = true; if (b.dataset.v === q.correct) b.classList.add("good"); });
+    if (q.explanation) fb.innerHTML = '<div class="fb ' + (correct ? "good" : "info") + '">' + (correct ? "Correct! " : "The answer is: <b>" + esc(q.correct) + "</b>. ") + esc(q.explanation) + "</div>";
+    if (opts.onDone) opts.onDone(correct, tries);
+  }
+  q.options.forEach(function(text){
+    var b = document.createElement("button"); b.className = "opt"; b.textContent = text; b.dataset.v = text; buttons.push(b);
+    b.onclick = function(){
+      if (finished) return; tries++;
+      if (text === q.correct){ b.classList.add("good"); end(true); }
+      else if (opts.oneShot || tries >= 2){ b.classList.add("bad"); end(false); }
+      else { b.classList.add("bad"); b.disabled = true; fb.innerHTML = '<div class="fb bad">Not quite. Think again and try another answer.</div>'; }
+    };
+    wrap.appendChild(b);
+  });
+  wrap.appendChild(fb);
+  return wrap;
+}
+
+/* ---------- video with pauses ---------- */
+var vid = $("vid"), ov = $("overlay");
+var gates = D.scenes.filter(function(s){ return (s.interaction === "concept_check" && s.question) || (s.interaction === "pause_continue" && s.pause_after); });
+var activeGate = null;
+function doneCount(){ return Object.keys(S.done).length; }
+function refreshProgress(){
+  var total = gates.filter(function(g){ return g.interaction === "concept_check"; }).length;
+  var ok = Object.keys(S.done).filter(function(k){ return S.done[k] && S.done[k].correct; }).length;
+  $("chipChecks").textContent = "Checks answered right: " + ok + " / " + total;
+  $("bar").style.width = (total ? Math.round(100 * doneCount() / total) : 0) + "%";
+  drawScenes();
+}
+function drawScenes(){
+  var ul = $("scenes"); ul.innerHTML = "";
+  D.scenes.forEach(function(s){
+    var li = document.createElement("li"); var d = S.done[s.n];
+    var cls = "dot" + (d ? (d.correct ? " ok" : " part") : ""); var sym = d ? (d.correct ? "&#10003;" : "&#8226;") : s.n;
+    li.innerHTML = '<span class="' + cls + '">' + sym + '</span><span>' + esc(s.title) + ' <span class="muted">(' + fmt(s.start) + ')</span></span>';
+    li.onclick = function(){ closeOverlay(); vid.currentTime = s.start + 0.05; vid.play(); show("video"); };
+    ul.appendChild(li);
+  });
+}
+function closeOverlay(){ ov.className = "overlay"; ov.innerHTML = ""; activeGate = null; }
+function openGate(g){
+  activeGate = g; vid.pause(); if (document.fullscreenElement) document.exitFullscreen();
+  ov.innerHTML = ""; ov.className = "overlay on";
+  var box = document.createElement("div"); box.className = "q";
+  var tag = document.createElement("div"); tag.className = "tag"; tag.textContent = "Quick check - " + g.title; box.appendChild(tag);
+  function actions(){
+    var rep = document.createElement("button"); rep.className = "btn alt"; rep.textContent = "Replay this part";
+    rep.onclick = function(){ closeOverlay(); vid.currentTime = g.start + 0.05; vid.play(); };
+    var go = document.createElement("button"); go.className = "btn"; go.textContent = "Continue";
+    go.onclick = function(){ var t = g.gate + 0.1; closeOverlay(); vid.currentTime = t; vid.play(); };
+    box.appendChild(rep); box.appendChild(go);
+  }
+  if (g.interaction === "concept_check"){
+    var prev = S.done[g.n];
+    box.appendChild(questionCard(g.question, {onDone: function(correct, tries){
+      S.done[g.n] = {correct: correct, tries: tries}; save(); refreshProgress(); actions();
+    }}));
+  } else {
+    var p = document.createElement("div"); p.className = "fb info"; p.textContent = "Take a moment to think about what you just learned."; box.appendChild(p);
+    S.done[g.n] = {correct: true, tries: 0}; save(); refreshProgress(); actions();
+  }
+  ov.appendChild(box);
+}
+var lastSave = 0;
+vid.addEventListener("timeupdate", function(){
+  var t = vid.currentTime;
+  if (t - lastSave > 5 || t < lastSave){ lastSave = t; S.pos = t; save(); }
+  if (activeGate) return;
+  for (var i = 0; i < gates.length; i++){
+    var g = gates[i];
+    if (!S.done[g.n] && t >= g.gate - 0.12 && t < g.gate + 1.5){ openGate(g); return; }
+  }
+});
+vid.addEventListener("play", function(){ if (activeGate){ vid.pause(); } });
+vid.addEventListener("ended", function(){
+  ov.className = "overlay on"; ov.innerHTML = "";
+  var box = document.createElement("div"); box.className = "q";
+  var ok = Object.keys(S.done).filter(function(k){ return S.done[k].correct; }).length;
+  box.innerHTML = "<h3>Lesson complete!</h3><div class='fb good'>You answered " + ok + " of " + gates.length + " quick checks correctly.</div>";
+  var quiz = document.createElement("button"); quiz.className = "btn"; quiz.textContent = "Take the final quiz";
+  quiz.onclick = function(){ closeOverlay(); show("quiz"); };
+  var again = document.createElement("button"); again.className = "btn alt"; again.textContent = "Watch again";
+  again.onclick = function(){ closeOverlay(); vid.currentTime = 0; vid.play(); };
+  box.appendChild(quiz); box.appendChild(again); ov.appendChild(box);
+});
+if (S.pos > 15){
+  var rb = $("resumeBox"); rb.style.display = "block";
+  rb.innerHTML = "You stopped at <b>" + fmt(S.pos) + "</b>. ";
+  var bt = document.createElement("button"); bt.className = "btn"; bt.textContent = "Resume from " + fmt(S.pos);
+  bt.onclick = function(){ vid.currentTime = S.pos; vid.play(); rb.style.display = "none"; };
+  rb.appendChild(bt);
+}
+
+/* ---------- summary / examples ---------- */
+(function(){
+  var h = "<h2>Summary</h2><p>" + esc(D.simple_summary || D.lesson_summary || "") + "</p>";
+  if ((D.key_concepts || []).length){ h += "<h3 class='sub'>Key ideas</h3>" + D.key_concepts.map(function(k){ return "<span class='tag'>" + esc(k) + "</span>"; }).join(""); }
+  if ((D.takeaways || []).length){ h += "<h3 class='sub'>Remember</h3><ul>" + D.takeaways.map(function(k){ return "<li>" + esc(k) + "</li>"; }).join("") + "</ul>"; }
+  $("summaryBox").innerHTML = h;
+  var e = "<h2>Real-life examples</h2>" + (D.real_life_examples || []).map(function(x){ return "<div class='example'>" + esc(x) + "</div>"; }).join("");
+  if ((D.practical_examples || []).length){ e += "<h3 class='sub'>More examples</h3>" + D.practical_examples.map(function(x){ return "<div class='example'>" + esc(typeof x === "string" ? x : (x.title ? x.title + ": " : "") + (x.description || x.example || "")) + "</div>"; }).join(""); }
+  $("examplesBox").innerHTML = e;
+})();
+
+/* ---------- check the concept ---------- */
+(function(){
+  var box = $("checkBox");
+  (D.concept_check || []).forEach(function(q, i){
+    var card = document.createElement("div"); card.className = "card"; card.style.background = "#faf8ff";
+    var n = document.createElement("div"); n.className = "muted"; n.textContent = "Question " + (i + 1) + " of " + D.concept_check.length; card.appendChild(n);
+    card.appendChild(questionCard(q, {onDone: function(c){ S.checks[q.id] = c; save(); }}));
+    box.appendChild(card);
+  });
+  if (!(D.concept_check || []).length) box.textContent = "No questions in this lesson.";
+})();
+
+/* ---------- lesson notes ---------- */
+(function(){
+  var h = "<h2>Lesson notes</h2>";
+  (D.sections || []).forEach(function(s){
+    h += "<h3 class='sub'>" + esc(s.title) + "</h3>";
+    if (s.image) h += "<img class='sec' src='" + esc(s.image) + "' alt='" + esc(s.caption || s.title) + "'>" + (s.caption ? "<div class='muted'>" + esc(s.caption) + "</div>" : "");
+    h += String(s.content || "").split(/\n+/).map(function(p){ return "<p>" + esc(p) + "</p>"; }).join("");
+  });
+  if ((D.glossary || []).length){ h += "<h3 class='sub'>Glossary</h3>" + D.glossary.map(function(g){ return "<p><b>" + esc(g.term) + ":</b> " + esc(g.definition) + "</p>"; }).join(""); }
+  $("lessonBox").innerHTML = h;
+})();
+
+/* ---------- final quiz ---------- */
+function buildQuiz(){
+  var box = $("quizBox"); box.innerHTML = "";
+  var qs = D.quiz || [];
+  if (!qs.length){ box.textContent = "No quiz in this lesson."; return; }
+  if (S.quiz){ var p = document.createElement("div"); p.className = "fb info"; p.textContent = "Your best score so far: " + S.quiz.best + "%."; box.appendChild(p); }
+  var results = {}, count = 0;
+  qs.forEach(function(q, i){
+    var card = document.createElement("div"); card.className = "card"; card.style.background = "#faf8ff";
+    var n = document.createElement("div"); n.className = "muted"; n.textContent = "Question " + (i + 1) + " of " + qs.length; card.appendChild(n);
+    card.appendChild(questionCard(q, {oneShot: true, onDone: function(c){
+      results[q.id] = c; count++;
+      if (count === qs.length){
+        var right = Object.keys(results).filter(function(k){ return results[k]; }).length, pct = Math.round(100 * right / qs.length);
+        S.quiz = {best: Math.max(pct, S.quiz ? S.quiz.best : 0), last: pct}; save();
+        var done = document.createElement("div"); done.className = "fb " + (pct >= 70 ? "good" : "bad");
+        done.innerHTML = "<b>You scored " + right + " / " + qs.length + " (" + pct + "%).</b> " + (pct >= 70 ? "Well done!" : "Watch the lesson again and try once more.");
+        var again = document.createElement("button"); again.className = "btn"; again.textContent = "Try the quiz again"; again.onclick = buildQuiz;
+        done.appendChild(document.createElement("br")); done.appendChild(again); box.appendChild(done); done.scrollIntoView({behavior: "smooth", block: "center"});
+      }
+    }}));
+    box.appendChild(card);
+  });
+}
+buildQuiz();
+refreshProgress();
+})();
+</script>
+</body>
+</html>

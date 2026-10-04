@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everyday Use of AI and its Impact</title>
+<style>
+:root{--bg:#f6f4ff;--card:#fff;--ink:#1f1b3a;--muted:#6a6591;--brand:#7c5cf0;--brand2:#ff5f5f;--ok:#16a34a;--bad:#dc2626;--line:#e3defa}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;padding:20px 16px}
+header .in{max-width:1540px;margin:0 auto;padding:0 24px}
+main{max-width:1640px;margin:0 auto;padding:0 24px}
+header h1{margin:0 0 4px;font-size:clamp(1.25rem,3vw,1.9rem)}
+header p{margin:0;opacity:.92}
+a.back{display:inline-block;color:#fff;text-decoration:none;background:rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;margin-bottom:10px;font-size:.92rem}
+a.back:hover{background:rgba(255,255,255,.35)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:rgba(255,255,255,.2);border-radius:999px;padding:3px 12px;font-size:.88rem}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font-size:.95rem;cursor:pointer}
+nav button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+nav .course-tab{margin-left:auto;border:1px solid var(--brand);background:#fff;color:var(--brand);border-radius:999px;padding:8px 16px;font-size:.95rem;font-weight:700;text-decoration:none}
+nav .course-tab:hover{background:#ece6ff}
+@media(max-width:720px){nav .course-tab{margin-left:0}}
+.tab{display:none}.tab.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:minmax(0,3.35fr) minmax(280px,1fr);gap:18px;align-items:start}
+@media(max-width:1050px){.grid{grid-template-columns:1fr}.lesson-parts{max-height:none}}
+@media(max-width:600px){header .in,main{padding-left:14px;padding-right:14px}}
+.player{position:relative;background:#000;border-radius:14px;overflow:hidden}
+video{width:100%;display:block;max-height:78vh;aspect-ratio:16/9;object-fit:contain;background:#000}
+.overlay{position:absolute;inset:0;background:rgba(20,16,50,.93);color:#fff;display:none;overflow:auto;padding:18px}
+.overlay.on{display:flex;flex-direction:column;justify-content:center}
+.overlay .q{max-width:720px;margin:0 auto;width:100%}
+.q h3{margin:0 0 12px;font-size:clamp(1.05rem,2.4vw,1.35rem)}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:11px 14px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink);font-size:1rem;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--brand)}
+.opt.good{border-color:var(--ok);background:#e8f8ee}.opt.bad{border-color:var(--bad);background:#fdecec}
+.opt:disabled{cursor:default}
+.fb{margin:10px 0;padding:10px 14px;border-radius:12px;font-size:.98rem}
+.fb.good{background:#e8f8ee;color:#14532d}.fb.bad{background:#fdecec;color:#7f1d1d}.fb.info{background:#eef2ff;color:#312e81}
+.btn{border:0;background:var(--brand);color:#fff;border-radius:12px;padding:10px 18px;font-size:1rem;cursor:pointer;margin:6px 8px 0 0}
+.btn.alt{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.btn:disabled{opacity:.5;cursor:default}
+.lesson-parts{max-height:min(78vh,780px);overflow:auto;scrollbar-gutter:stable}
+ul.scenes{list-style:none;margin:0;padding:0}
+ul.scenes li{display:flex;gap:10px;align-items:center;padding:8px 6px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:8px}
+ul.scenes li:hover{background:#f1edff}
+ul.scenes li.cur{background:#ece6ff;font-weight:600}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex:none}
+.dot.ok{background:var(--ok);border-color:var(--ok);color:#fff}.dot.part{background:#f59e0b;border-color:#f59e0b;color:#fff}
+.tag{display:inline-block;background:#ece6ff;color:#4c1d95;border-radius:8px;padding:2px 10px;margin:3px 6px 3px 0;font-size:.9rem}
+h2{margin-top:0}h3.sub{margin:18px 0 6px}
+.example{border-left:5px solid var(--brand);padding:8px 14px;margin:10px 0;background:#faf8ff;border-radius:0 12px 12px 0}
+.muted{color:var(--muted)}
+.bar{height:10px;background:#e9e5fb;border-radius:999px;overflow:hidden}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0}
+img.sec{max-width:100%;border-radius:12px;margin:8px 0}
+footer{max-width:1180px;margin:20px auto;padding:0 16px 30px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <a class="back" href="/courses/ai-for-kids">&larr; Back to the course</a>
+  <h1 id="title"></h1><p id="desc"></p>
+  <div class="chips"><span class="chip" id="chipAud"></span><span class="chip" id="chipTime"></span><span class="chip" id="chipChecks"></span></div>
+</div></header>
+<main>
+  <nav id="nav"></nav>
+
+  <section class="tab on" id="t-video">
+    <div class="grid">
+      <div>
+        <div class="player">
+          <video id="vid" controls preload="metadata" playsinline poster="poster.jpg"><source src="https://aimwqzrosqixyoletzgu.supabase.co/storage/v1/object/public/course-videos/ai-for-students/everyday-use-of-ai-and-its-impact/video.mp4" type="video/mp4">Your browser cannot play this video.</video>
+          <div class="overlay" id="overlay"></div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div id="resumeBox" style="display:none" class="fb info"></div>
+          <strong>You will learn to:</strong>
+          <ul id="objectives"></ul>
+        </div>
+      </div>
+      <div class="card lesson-parts"><strong>Lesson parts</strong><div class="bar" style="margin:8px 0"><i id="bar"></i></div><ul class="scenes" id="scenes"></ul>
+        <p class="muted" style="font-size:.88rem">The video pauses after each part with a quick question. Click a part to jump to it.</p></div>
+    </div>
+  </section>
+
+  <section class="tab" id="t-summary"><div class="card" id="summaryBox"></div></section>
+  <section class="tab" id="t-examples"><div class="card" id="examplesBox"></div></section>
+  <section class="tab" id="t-check"><div class="card"><h2>Check the concept</h2><div id="checkBox"></div></div></section>
+  <section class="tab" id="t-lesson"><div class="card" id="lessonBox"></div></section>
+  <section class="tab" id="t-quiz"><div class="card"><h2>Final quiz</h2><div id="quizBox"></div></div></section>
+</main>
+<footer>Your progress is saved on this device only (in your browser).</footer>
+
+<script id="lesson-data" type="application/json">{"slug":"everyday-use-of-ai-and-its-impact","title":"Everyday Use of AI and its Impact","description":"Discover how Artificial Intelligence (AI) powers the apps you watch, the gadgets you talk to, your home devices, and future transport, tailored for Class 7 students.","audience":"Class 7 Students (age 12-13)","minutes":15,"objectives":["Understand what Artificial Intelligence (AI) means through daily life examples.","Explain how recommendation algorithms work on video apps like YouTube and Netflix.","Describe how voice assistants and smart home devices help us daily.","Explore how automated transport uses AI to move safely."],"sections":[{"title":"Introduction to AI in Daily Life","content":"Welcome! Have you ever wondered how your favorite video app always seems to know what cartoon or cricket highlight you want to watch next? Or how a phone unlocks just by looking at your face? That magic is called Artificial Intelligence, or AI for short. AI is a technology that helps computers and machines think, learn, and make decisions a bit like humans do. When we talk about everyday use of AI, we mean all the smart tools we use without even realizing it. AI looks at past patterns—like the videos you watched last week—to guess what you might like today. It makes our lives easier, helps us save time, and sometimes even keeps us safe. Throughout this lesson, we will explore four main areas where AI works behind the scenes.","image":null,"caption":null},{"title":"Recommendation Algorithms","content":"Have you ever opened YouTube or Netflix and seen a list of videos picked just for you? That list is created by a recommendation algorithm. An algorithm is simply a set of step-by-step instructions that a computer follows to solve a problem. A recommendation algorithm is a smart rule-follower that looks at what you watch, how long you watch it, and what you skip. Based on your choices, it guesses what you will enjoy next. Real-life example: If you watch three fun science experiment videos on YouTube, the recommendation algorithm notices your interest and shows you five more science videos on your home screen next time you log in.","image":null,"caption":null},{"title":"Voice Assistants","content":"Have you ever spoken into a phone or a smart speaker and asked it to play a song or check the weather? That helper is called a voice assistant. A voice assistant is software that listens to your spoken words, translates the sound into text, figures out what you want, and speaks back or does the task. It uses AI to understand different accents, tones, and languages. Real-life example: When you say, \u0027Hey phone, what is the capital of India?\u0027 into your mobile phone, the voice assistant processes your voice and instantly replies \u0027New Delhi\u0027.","image":null,"caption":null},{"title":"Smart Devices","content":"Smart devices are everyday gadgets connected to the internet that use AI to make our homes and lives more convenient. Unlike old electronic items that just do one fixed task, smart devices can learn our habits. For instance, a smart lightbulb can change brightness based on the time of day, or a smart AC can adjust its cooling depending on how hot the room is. Real-life example: A smart robotic vacuum cleaner uses AI sensors to map out your living room floor, avoiding your school bag and cleaning up dust all by itself.","image":null,"caption":null},{"title":"Automated Transport","content":"Automated transport refers to vehicles like cars, buses, and trains that can move around with little or no help from a human driver. These vehicles use AI connected to cameras, radars, and sensors to \u0027see\u0027 the road, detect traffic lights, and spot pedestrians crossing the street. Real-life example: Self-driving test cars use AI cameras to spot a stray dog on the road ahead and automatically apply the brakes to stop safely without crashing.","image":null,"caption":null},{"title":"Interactive Activity: Spot the AI","content":"Let us test our understanding with an interactive activity. We will look at 5 everyday examples one by one. First, consider the question. Then, reveal the answer and the reason behind it. Example 1 question: Does a basic wooden pencil use AI? Answer: No. Reason: A wooden pencil is a simple tool with no computer chip or software to learn or make decisions. Example 2 question: Does a video app recommending your favorite cartoon use AI? Answer: Yes. Reason: It tracks your viewing history and uses an algorithm to suggest new videos you will like. Example 3 question: Does a regular mechanical clock on the wall use AI? Answer: No. Reason: It simply moves gears based on spring tension, without learning or thinking. Example 4 question: Does a voice-controlled speaker playing your favorite song use AI? Answer: Yes. Reason: It uses speech recognition software to understand your spoken words and fetch the music. Example 5 question: Does an automatic sliding door at a shopping mall use AI? Answer: No. Reason: It just uses a basic motion sensor to detect movement and open, without learning from past patterns.","image":null,"caption":null}],"key_concepts":["Artificial Intelligence (AI)","Recommendation Algorithm","Voice Assistant"],"practical_examples":["YouTube suggesting science videos based on watch history","Asking a mobile phone voice assistant for weather updates","A robotic vacuum cleaner navigating around obstacles in a room"],"takeaways":["AI helps machines learn from patterns to make smart guesses and help us in daily life.","Recommendation algorithms, voice assistants, smart devices, and automated transport are common ways we use AI every day.","AI tools make our lives easier, but they rely on data and instructions created by humans."],"simple_summary":"AI is technology that helps computers think and learn like humans. We use it daily when YouTube recommends videos, when voice assistants answer our questions, when smart vacuums clean our floors, and when advanced cars drive safely on roads.","real_life_examples":["A student opens an educational app, and the app notices they struggle with fractions, so it automatically offers easier math practice questions.","A family uses a smart thermostat that learns when everyone goes to sleep and automatically turns down the room cooling to save electricity."],"glossary":[{"term":"Artificial Intelligence (AI)","definition":"A technology that helps computers and machines think, learn, and solve problems like humans."},{"term":"Algorithm","definition":"A step-by-step set of instructions that a computer follows to solve a problem or complete a task."},{"term":"Voice Assistant","definition":"Software that listens to spoken words, translates them, and responds or performs tasks."},{"term":"Smart Device","definition":"An internet-connected gadget that uses sensors and AI to learn habits and make life easier."}],"lesson_summary":"In this lesson, you explored how Artificial Intelligence surrounds us in daily life. You learned how recommendation algorithms suggest videos, how voice assistants talk back to our questions, how smart devices clean and adjust our homes, and how automated transport keeps roads safe.","concept_check":[{"id":"cc001","question":"What does AI stand for in technology?","options":["Automated Internet","Artificial Intelligence","Audio Interface","Active Invention"],"correct":"Artificial Intelligence","explanation":"AI stands for Artificial Intelligence, which is technology that helps machines think and learn."},{"id":"cc002","question":"How does a recommendation algorithm on Netflix or YouTube work?","options":["It picks videos completely at random.","It looks at what you watched before to suggest new things you might like.","It only shows videos uploaded on your birthday.","It deletes your watch history automatically."],"correct":"It looks at what you watched before to suggest new things you might like.","explanation":"Recommendation algorithms study your past choices to guess what content you will enjoy watching next."},{"id":"cc003","question":"Which of the following is an example of a smart device?","options":["A standard metal spoon","A wooden cricket bat","A robotic vacuum cleaner with AI sensors","A paper notebook"],"correct":"A robotic vacuum cleaner with AI sensors","explanation":"Smart devices use internet connectivity and AI sensors to learn and perform tasks like cleaning."}],"quiz":[{"id":"q001","question":"What is Artificial Intelligence (AI)?","options":["A type of video game controller","Technology that helps machines think and learn like humans","A battery used in mobile phones","A social media app for chatting"],"correct":"Technology that helps machines think and learn like humans","explanation":"AI is computer technology designed to mimic human thinking, learning, and decision-making."},{"id":"q002","question":"Why do video streaming apps use recommendation algorithms?","options":["To make the video screen brighter","To suggest videos based on your past watch history","To test your internet speed","To lock your account for security"],"correct":"To suggest videos based on your past watch history","explanation":"Recommendation algorithms analyze what you enjoy watching to recommend similar content you will like."},{"id":"q003","question":"How does a voice assistant understand what you are saying?","options":["It reads your thoughts directly.","It listens to your spoken words, translates them, and processes the meaning.","It guesses randomly without listening.","It only works if you write an email."],"correct":"It listens to your spoken words, translates them, and processes the meaning.","explanation":"Voice assistants use speech recognition software to convert sound waves into text and understand your request."},{"id":"q004","question":"Which of these is a real-life feature of automated transport vehicles?","options":["They cook food for passengers.","They use AI cameras and sensors to detect obstacles and stop safely.","They run entirely on paper maps.","They do not need any power source."],"correct":"They use AI cameras and sensors to detect obstacles and stop safely.","explanation":"Automated transport relies on AI sensors and cameras to navigate roads and avoid collisions."},{"id":"q005","question":"Why is a robotic vacuum cleaner considered a smart device?","options":["Because it is painted in bright colors","Because it uses AI sensors to map rooms and avoid obstacles while cleaning","Because it requires no electricity","Because it can speak five human languages"],"correct":"Because it uses AI sensors to map rooms and avoid obstacles while cleaning","explanation":"Smart devices use AI and sensors to adapt to their surroundings and perform tasks autonomously."}],"scenes":[{"n":1,"title":"Everyday Use of AI and its Impact","start":0.0,"end":29.53,"gate":29.53,"interaction":"none","pause_after":false,"role":"opening_agenda"},{"n":2,"title":"Recommendation Algorithms","start":29.53,"end":56.13,"gate":56.13,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"scene_02_question","question":"What information do recommendation algorithms primarily study to predict what you might want to watch next?","options":["Watch history, likes, and watch time","Your phone contacts and home address","Your device battery level and storage space","The screen brightness and volume settings"],"correct":"Watch history, likes, and watch time","explanation":"Recommendation algorithms study watch history, likes, and watch time to predict future user preferences on platforms like YouTube or Netflix."}},{"n":3,"title":"Voice Assistants","start":56.13,"end":81.67,"gate":81.67,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"scene_03_question","question":"Which technology do voice assistants use to understand the meaning of spoken words after turning sound waves into text?","options":["Fixed math calculation rules","Traffic jam rerouting","Natural language processing","Physical sensor mats"],"correct":"Natural language processing","explanation":"Voice assistants use natural language processing to understand the meaning of the converted text from your speech."}},{"n":4,"title":"Smart Devices \u0026 Automated Transport","start":81.67,"end":106.63,"gate":106.63,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"scene_04_question","question":"What do automated transport systems rely on to spot traffic lights and pedestrians?","options":["Manual human steering","Fixed multiplication rules","Sensors and cameras","Headphones and microphones"],"correct":"Sensors and cameras","explanation":"Automated transport uses sensors and cameras to navigate and spot road elements like traffic lights and pedestrians."}},{"n":5,"title":"Spotting AI Activity: Part 1","start":106.63,"end":131.5,"gate":131.5,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"scene_05_question","question":"Why is a music app that creates a custom study playlist considered an example of artificial intelligence?","options":["It analyzes past listening habits to group similar tracks","It follows fixed math rules without learning","It uses a physical floor mat sensor to open doors","It multiplies two numbers typed into a keyboard"],"correct":"It analyzes past listening habits to group similar tracks","explanation":"The music app is AI because it studies past listening behavior to generate a customized playlist."}},{"n":6,"title":"Spotting AI Activity: Part 2","start":131.5,"end":156.43,"gate":156.43,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"scene_06_question","question":"Why is a standard electronic calculator classified as NOT being an example of artificial intelligence?","options":["It uses cameras to spot pedestrians","It analyzes watch history and likes","It follows fixed math rules without learning from past calculations","It predicts live delays using map data"],"correct":"It follows fixed math rules without learning from past calculations","explanation":"Calculators are basic tools that follow fixed rules instead of learning or adapting from past inputs."}},{"n":7,"title":"Spotting AI Activity: Part 3","start":156.43,"end":179.5,"gate":179.5,"interaction":"concept_check","pause_after":true,"role":"teaching","question":{"id":"scene_07_question","question":"Which of the following scenarios from the activity is identified as using computer vision AI?","options":["An automatic sliding door opening from a floor mat sensor","An analog clock ticking on a classroom wall","A mobile photo gallery grouping pictures by recognized faces","A standard electronic calculator multiplying numbers"],"correct":"A mobile photo gallery grouping pictures by recognized faces","explanation":"Grouping pictures by recognized faces and places uses computer vision AI to sort memories, unlike simple triggers like door sensors."}},{"n":8,"title":"Key Takeaways","start":179.5,"end":205.03,"gate":205.03,"interaction":"concept_check","pause_after":true,"role":"teaching_summary","question":{"id":"scene_08_question","question":"According to the key takeaways, what do smart devices and automated transport use to make daily life easier and safer?","options":["Watch history and video likes","Sensors and predictive logic","Paper maps and manual triggers","Fixed calculators and door mats"],"correct":"Sensors and predictive logic","explanation":"Smart devices and automated transport rely on sensors and predictive logic to operate safely and efficiently."}},{"n":9,"title":"Thank You","start":205.03,"end":208.37,"gate":208.37,"interaction":"none","pause_after":false,"role":"thank_you"}]}</script>
+<script>
+(function(){
+"use strict";
+var D = JSON.parse(document.getElementById("lesson-data").textContent);
+var KEY = "lms:" + D.slug;
+var S = {done:{}, quiz:null, pos:0, checks:{}};
+try { var saved = JSON.parse(localStorage.getItem(KEY) || "null"); if (saved) S = Object.assign(S, saved); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+function esc(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function $(id){ return document.getElementById(id); }
+function fmt(s){ s = Math.max(0, Math.floor(s)); return Math.floor(s/60) + ":" + ("0" + (s % 60)).slice(-2); }
+
+/* ---------- header ---------- */
+$("title").textContent = D.title; $("desc").textContent = D.description || "";
+$("chipAud").textContent = D.audience || ""; $("chipTime").textContent = D.minutes ? "About " + D.minutes + " min of learning" : "";
+document.title = D.title;
+(D.objectives || []).forEach(function(o){ var li = document.createElement("li"); li.textContent = o; $("objectives").appendChild(li); });
+
+/* ---------- tabs ---------- */
+var TABS = [["video","Watch & answer"],["summary","Summary"],["examples","Real-life examples"],["check","Check the concept"],["lesson","Lesson notes"],["quiz","Final quiz"]];
+TABS.forEach(function(t, i){
+  var b = document.createElement("button"); b.textContent = t[1]; b.dataset.tab = t[0]; if (!i) b.className = "on";
+  b.onclick = function(){ show(t[0]); }; $("nav").appendChild(b);
+});
+var courseTab = document.createElement("a"); courseTab.className = "course-tab"; courseTab.href = "/courses/ai-for-kids"; courseTab.textContent = "Go to course →"; nav.appendChild(courseTab);
+function show(name){
+  Array.prototype.forEach.call($("nav").querySelectorAll("button"), function(b){ b.className = b.dataset.tab === name ? "on" : ""; });
+  TABS.forEach(function(t){ $("t-" + t[0]).className = "tab" + (t[0] === name ? " on" : ""); });
+  if (name !== "video") $("vid").pause();
+}
+
+/* ---------- question card (used by the video pauses, Check the concept and the final quiz) ---------- */
+function questionCard(q, opts){
+  var wrap = document.createElement("div"); wrap.className = "q";
+  var h = document.createElement("h3"); h.textContent = q.question; wrap.appendChild(h);
+  var tries = 0, finished = false, buttons = [];
+  var fb = document.createElement("div");
+  function end(correct){
+    finished = true;
+    buttons.forEach(function(b){ b.disabled = true; if (b.dataset.v === q.correct) b.classList.add("good"); });
+    if (q.explanation) fb.innerHTML = '<div class="fb ' + (correct ? "good" : "info") + '">' + (correct ? "Correct! " : "The answer is: <b>" + esc(q.correct) + "</b>. ") + esc(q.explanation) + "</div>";
+    if (opts.onDone) opts.onDone(correct, tries);
+  }
+  q.options.forEach(function(text){
+    var b = document.createElement("button"); b.className = "opt"; b.textContent = text; b.dataset.v = text; buttons.push(b);
+    b.onclick = function(){
+      if (finished) return; tries++;
+      if (text === q.correct){ b.classList.add("good"); end(true); }
+      else if (opts.oneShot || tries >= 2){ b.classList.add("bad"); end(false); }
+      else { b.classList.add("bad"); b.disabled = true; fb.innerHTML = '<div class="fb bad">Not quite. Think again and try another answer.</div>'; }
+    };
+    wrap.appendChild(b);
+  });
+  wrap.appendChild(fb);
+  return wrap;
+}
+
+/* ---------- video with pauses ---------- */
+var vid = $("vid"), ov = $("overlay");
+var gates = D.scenes.filter(function(s){ return (s.interaction === "concept_check" && s.question) || (s.interaction === "pause_continue" && s.pause_after); });
+var activeGate = null;
+function doneCount(){ return Object.keys(S.done).length; }
+function refreshProgress(){
+  var total = gates.filter(function(g){ return g.interaction === "concept_check"; }).length;
+  var ok = Object.keys(S.done).filter(function(k){ return S.done[k] && S.done[k].correct; }).length;
+  $("chipChecks").textContent = "Checks answered right: " + ok + " / " + total;
+  $("bar").style.width = (total ? Math.round(100 * doneCount() / total) : 0) + "%";
+  drawScenes();
+}
+function drawScenes(){
+  var ul = $("scenes"); ul.innerHTML = "";
+  D.scenes.forEach(function(s){
+    var li = document.createElement("li"); var d = S.done[s.n];
+    var cls = "dot" + (d ? (d.correct ? " ok" : " part") : ""); var sym = d ? (d.correct ? "&#10003;" : "&#8226;") : s.n;
+    li.innerHTML = '<span class="' + cls + '">' + sym + '</span><span>' + esc(s.title) + ' <span class="muted">(' + fmt(s.start) + ')</span></span>';
+    li.onclick = function(){ closeOverlay(); vid.currentTime = s.start + 0.05; vid.play(); show("video"); };
+    ul.appendChild(li);
+  });
+}
+function closeOverlay(){ ov.className = "overlay"; ov.innerHTML = ""; activeGate = null; }
+function openGate(g){
+  activeGate = g; vid.pause(); if (document.fullscreenElement) document.exitFullscreen();
+  ov.innerHTML = ""; ov.className = "overlay on";
+  var box = document.createElement("div"); box.className = "q";
+  var tag = document.createElement("div"); tag.className = "tag"; tag.textContent = "Quick check - " + g.title; box.appendChild(tag);
+  function actions(){
+    var rep = document.createElement("button"); rep.className = "btn alt"; rep.textContent = "Replay this part";
+    rep.onclick = function(){ closeOverlay(); vid.currentTime = g.start + 0.05; vid.play(); };
+    var go = document.createElement("button"); go.className = "btn"; go.textContent = "Continue";
+    go.onclick = function(){ var t = g.gate + 0.1; closeOverlay(); vid.currentTime = t; vid.play(); };
+    box.appendChild(rep); box.appendChild(go);
+  }
+  if (g.interaction === "concept_check"){
+    var prev = S.done[g.n];
+    box.appendChild(questionCard(g.question, {onDone: function(correct, tries){
+      S.done[g.n] = {correct: correct, tries: tries}; save(); refreshProgress(); actions();
+    }}));
+  } else {
+    var p = document.createElement("div"); p.className = "fb info"; p.textContent = "Take a moment to think about what you just learned."; box.appendChild(p);
+    S.done[g.n] = {correct: true, tries: 0}; save(); refreshProgress(); actions();
+  }
+  ov.appendChild(box);
+}
+var lastSave = 0;
+vid.addEventListener("timeupdate", function(){
+  var t = vid.currentTime;
+  if (t - lastSave > 5 || t < lastSave){ lastSave = t; S.pos = t; save(); }
+  if (activeGate) return;
+  for (var i = 0; i < gates.length; i++){
+    var g = gates[i];
+    if (!S.done[g.n] && t >= g.gate - 0.12 && t < g.gate + 1.5){ openGate(g); return; }
+  }
+});
+vid.addEventListener("play", function(){ if (activeGate){ vid.pause(); } });
+vid.addEventListener("ended", function(){
+  ov.className = "overlay on"; ov.innerHTML = "";
+  var box = document.createElement("div"); box.className = "q";
+  var ok = Object.keys(S.done).filter(function(k){ return S.done[k].correct; }).length;
+  box.innerHTML = "<h3>Lesson complete!</h3><div class='fb good'>You answered " + ok + " of " + gates.length + " quick checks correctly.</div>";
+  var quiz = document.createElement("button"); quiz.className = "btn"; quiz.textContent = "Take the final quiz";
+  quiz.onclick = function(){ closeOverlay(); show("quiz"); };
+  var again = document.createElement("button"); again.className = "btn alt"; again.textContent = "Watch again";
+  again.onclick = function(){ closeOverlay(); vid.currentTime = 0; vid.play(); };
+  box.appendChild(quiz); box.appendChild(again); ov.appendChild(box);
+});
+if (S.pos > 15){
+  var rb = $("resumeBox"); rb.style.display = "block";
+  rb.innerHTML = "You stopped at <b>" + fmt(S.pos) + "</b>. ";
+  var bt = document.createElement("button"); bt.className = "btn"; bt.textContent = "Resume from " + fmt(S.pos);
+  bt.onclick = function(){ vid.currentTime = S.pos; vid.play(); rb.style.display = "none"; };
+  rb.appendChild(bt);
+}
+
+/* ---------- summary / examples ---------- */
+(function(){
+  var h = "<h2>Summary</h2><p>" + esc(D.simple_summary || D.lesson_summary || "") + "</p>";
+  if ((D.key_concepts || []).length){ h += "<h3 class='sub'>Key ideas</h3>" + D.key_concepts.map(function(k){ return "<span class='tag'>" + esc(k) + "</span>"; }).join(""); }
+  if ((D.takeaways || []).length){ h += "<h3 class='sub'>Remember</h3><ul>" + D.takeaways.map(function(k){ return "<li>" + esc(k) + "</li>"; }).join("") + "</ul>"; }
+  $("summaryBox").innerHTML = h;
+  var e = "<h2>Real-life examples</h2>" + (D.real_life_examples || []).map(function(x){ return "<div class='example'>" + esc(x) + "</div>"; }).join("");
+  if ((D.practical_examples || []).length){ e += "<h3 class='sub'>More examples</h3>" + D.practical_examples.map(function(x){ return "<div class='example'>" + esc(typeof x === "string" ? x : (x.title ? x.title + ": " : "") + (x.description || x.example || "")) + "</div>"; }).join(""); }
+  $("examplesBox").innerHTML = e;
+})();
+
+/* ---------- check the concept ---------- */
+(function(){
+  var box = $("checkBox");
+  (D.concept_check || []).forEach(function(q, i){
+    var card = document.createElement("div"); card.className = "card"; card.style.background = "#faf8ff";
+    var n = document.createElement("div"); n.className = "muted"; n.textContent = "Question " + (i + 1) + " of " + D.concept_check.length; card.appendChild(n);
+    card.appendChild(questionCard(q, {onDone: function(c){ S.checks[q.id] = c; save(); }}));
+    box.appendChild(card);
+  });
+  if (!(D.concept_check || []).length) box.textContent = "No questions in this lesson.";
+})();
+
+/* ---------- lesson notes ---------- */
+(function(){
+  var h = "<h2>Lesson notes</h2>";
+  (D.sections || []).forEach(function(s){
+    h += "<h3 class='sub'>" + esc(s.title) + "</h3>";
+    if (s.image) h += "<img class='sec' src='" + esc(s.image) + "' alt='" + esc(s.caption || s.title) + "'>" + (s.caption ? "<div class='muted'>" + esc(s.caption) + "</div>" : "");
+    h += String(s.content || "").split(/\n+/).map(function(p){ return "<p>" + esc(p) + "</p>"; }).join("");
+  });
+  if ((D.glossary || []).length){ h += "<h3 class='sub'>Glossary</h3>" + D.glossary.map(function(g){ return "<p><b>" + esc(g.term) + ":</b> " + esc(g.definition) + "</p>"; }).join(""); }
+  $("lessonBox").innerHTML = h;
+})();
+
+/* ---------- final quiz ---------- */
+function buildQuiz(){
+  var box = $("quizBox"); box.innerHTML = "";
+  var qs = D.quiz || [];
+  if (!qs.length){ box.textContent = "No quiz in this lesson."; return; }
+  if (S.quiz){ var p = document.createElement("div"); p.className = "fb info"; p.textContent = "Your best score so far: " + S.quiz.best + "%."; box.appendChild(p); }
+  var results = {}, count = 0;
+  qs.forEach(function(q, i){
+    var card = document.createElement("div"); card.className = "card"; card.style.background = "#faf8ff";
+    var n = document.createElement("div"); n.className = "muted"; n.textContent = "Question " + (i + 1) + " of " + qs.length; card.appendChild(n);
+    card.appendChild(questionCard(q, {oneShot: true, onDone: function(c){
+      results[q.id] = c; count++;
+      if (count === qs.length){
+        var right = Object.keys(results).filter(function(k){ return results[k]; }).length, pct = Math.round(100 * right / qs.length);
+        S.quiz = {best: Math.max(pct, S.quiz ? S.quiz.best : 0), last: pct}; save();
+        var done = document.createElement("div"); done.className = "fb " + (pct >= 70 ? "good" : "bad");
+        done.innerHTML = "<b>You scored " + right + " / " + qs.length + " (" + pct + "%).</b> " + (pct >= 70 ? "Well done!" : "Watch the lesson again and try once more.");
+        var again = document.createElement("button"); again.className = "btn"; again.textContent = "Try the quiz again"; again.onclick = buildQuiz;
+        done.appendChild(document.createElement("br")); done.appendChild(again); box.appendChild(done); done.scrollIntoView({behavior: "smooth", block: "center"});
+      }
+    }}));
+    box.appendChild(card);
+  });
+}
+buildQuiz();
+refreshProgress();
+})();
+</script>
+</body>
+</html>
