@@ -1545,3 +1545,34 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 
 /* Course index anchor spacing */
 #course-index{scroll-margin-top:96px}
+
+/* Pre-sales marketing consistency; scoped to marketing and enquiry UI. */
+.shell:has(.academy-home)>.secondary-footer{display:none}
+.secondary-footer{background:#f8fafc;color:#17324d;--ink:#17324d;--muted:#526577;--line:#dce7ec}
+.secondary-footer .academy-footer{color:#17324d}.secondary-footer .academy-footer a{color:#17324d}
+.courses-menu>summary{list-style:none;cursor:pointer;font:700 15px/1.2 Arial,Helvetica,sans-serif;color:#17324d;padding:.7rem .2rem}
+.courses-menu>summary::-webkit-details-marker{display:none}.courses-menu>summary::after{content:"\2304";margin-left:.45rem;color:currentColor}
+.academy-subheader .courses-menu>summary{color:#e7f0f5}
+.courses-menu>summary:focus-visible{outline:3px solid #0e9e9a;outline-offset:4px}
+.courses-menu[open]>.courses-dropdown{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.academy-header .courses-dropdown a,.academy-subheader .courses-dropdown a{color:#17324d}
+.academy-header .courses-dropdown a:hover,.academy-subheader .courses-dropdown a:hover{color:#0f766e;background:#eff8f7}
+.motion-toggle{border:1px solid #527485;border-radius:6px;background:#fff;color:#17324d;font:700 12px/1.3 Arial,sans-serif;padding:.5rem .7rem;cursor:pointer}
+.hero-toggle{position:absolute;z-index:4;right:clamp(1rem,5vw,5rem);bottom:1.5rem}
+.ticker-toggle{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);z-index:2}
+.academy-ticker{padding-right:170px}.academy-ticker-track{pointer-events:none}
+.knowledge-workflow{background:#f3f8fa;color:#17324d}.knowledge-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;list-style:none;padding:0;margin:2rem 0}.knowledge-steps li{padding:1.5rem;border:1px solid #dce7ec;border-radius:16px;background:white}.knowledge-steps li>span{float:right;color:#526577}.knowledge-workflow>p{color:#526577}
+.enquiry-panel{max-width:720px;padding:clamp(1rem,4vw,2rem);border:1px solid #496176;border-radius:16px}.enquiry-panel form{display:grid;gap:1rem}.enquiry-panel input,.enquiry-panel select,.enquiry-panel textarea{box-sizing:border-box;width:100%;min-height:44px;padding:.75rem;border:1px solid #657b8c;border-radius:8px;background:#fff;color:#17324d;font:inherit}.enquiry-panel textarea{resize:vertical}.enquiry-panel label{display:block;margin-bottom:.5rem}.enquiry-panel button:disabled{opacity:.65;cursor:not-allowed}.enquiry-panel :is(input,select,textarea,button):focus-visible{outline:3px solid #36c8b5;outline-offset:3px}
+@media(max-width:900px){.academy-subheader{position:relative;display:grid;grid-template-columns:1fr auto auto;gap:1rem;min-height:78px}.academy-subheader .academy-menu{display:block;color:#fff;border:1px solid #8da6b8;background:transparent;border-radius:6px;padding:.6rem}.academy-subheader nav{display:none;position:absolute;top:100%;left:0;right:0;z-index:40;max-height:75vh;overflow-y:auto;background:#102d45;padding:1.25rem;flex-direction:column;align-items:stretch}.academy-subheader nav.is-open{display:flex}.academy-header .courses-menu>summary{color:#17324d}.courses-menu>summary{padding:.7rem 0}.courses-menu[open]>.courses-dropdown{transform:none}.courses-dropdown{max-width:100%;box-sizing:border-box}.knowledge-steps{grid-template-columns:1fr}.academy-header nav{max-height:75vh;overflow-y:auto}.academy-subheader .academy-brand{width:110px}}
+@media(max-width:600px){.hero-toggle{bottom:4.5rem;right:1.25rem}.courses-dropdown a,.courses-dropdown>span{flex-wrap:wrap}.academy-ticker{padding-right:160px}.ticker-toggle{font-size:10px}.academy-subheader{gap:.6rem;padding-left:1rem;padding-right:1rem}.academy-subheader .academy-signin{padding:.65rem;font-size:13px}.academy-subheader .academy-brand{width:95px}}
+@media(prefers-reduced-motion:reduce){.academy-ticker{overflow:auto}.academy-ticker-track{white-space:normal;width:auto;padding-right:0}.academy-ticker-track>span{white-space:normal}.academy-ticker .ticker-toggle{display:none}.academy-ticker{padding-right:0}}
+
+/* Focused pre-deployment verification corrections. */
+.enquiry-panel .form-field label{color:#e7f0f5}
+@media(max-width:900px){.academy-header,.academy-subheader{grid-template-columns:minmax(0,1fr) auto auto}.academy-header .academy-brand,.academy-subheader .academy-brand{grid-column:1;grid-row:1}.academy-header .academy-menu,.academy-subheader .academy-menu{grid-column:2;grid-row:1}.academy-header .academy-signin,.academy-subheader .academy-signin{grid-column:3;grid-row:1}.academy-header .academy-menu{justify-self:end;margin-right:.75rem}}
+
+.enquiry-panel input[type=checkbox]{width:1.15rem;min-height:1.15rem;margin-right:.5rem;vertical-align:middle}.enquiry-panel a{color:#73e6d3}.policy-page .editorial-copy h2{margin-top:2rem}.policy-page .editorial-copy a{color:#73e6d3}
+
+/* Verified dark footer and disabled form controls. */
+.marketing-shell .academy-footer{background:#0b2235;color:#e7f0f5}.marketing-shell .academy-footer a{color:#e7f0f5}.marketing-shell .academy-footer p{color:#adc1cf}.marketing-shell .academy-footer a:hover{color:#73e6d3}.marketing-shell .academy-footer a:focus-visible{outline:3px solid #73e6d3;outline-offset:4px}
+.academy-inner-page .academy-button.primary{background:#63dcc8;color:#082d30;border:1px solid #63dcc8}.enquiry-panel .academy-button.primary:disabled{background:#36545f;border-color:#68828e;color:#e7f0f5;opacity:1}

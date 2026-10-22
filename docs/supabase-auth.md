@@ -49,4 +49,8 @@ For local development, add `http://localhost:3000/auth/confirm` to the Supabase 
 
 ## Known limitations
 
-Password reset remains a placeholder for the next auth increment. No middleware-based session refresh is included yet; protected pages validate the user server-side and Supabase SSR manages cookie exchange in auth operations. Live signup, email delivery, dashboard-table verification, and production redirects require access to the external Supabase project and inbox.
+Password recovery and reset are now implemented locally, using the existing Supabase provider and a recovery callback. A scoped Next.js proxy refreshes session cookies; protected pages continue validating users server-side. See presales-review.md for redirect/template setup and approval requirements. Live signup, email delivery, dashboard-table verification, and production redirects require access to the external Supabase project and inbox.
+
+## Local release gate and final verification
+
+AUTH_ENABLED defaults to false. Login, registration, recovery and confirmation entry points remain unavailable until final privacy/service approval. getCurrentUser keeps learner routes dynamic and rejects missing/unverified users. Proxy refresh is skipped while the gate is off. This is an application gate, not a change to live Supabase signup settings. Public sample lessons remain accessible. See contact-enquiries.md for the full approved-account test checklist and deployment order. NEXT_PUBLIC_SITE_URL must be a canonical HTTPS origin in production; invalid URLs fail safely rather than silently redirecting to localhost.
