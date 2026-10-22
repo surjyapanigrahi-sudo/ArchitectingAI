@@ -8,7 +8,7 @@ export function validateRegistration(values: RegistrationValues): FieldErrors<Re
   if (!emailPattern.test(values.email.trim())) errors.email = "Enter a valid email address.";
   if (values.password.length < 8) errors.password = "Password must contain at least 8 characters.";
   if (values.confirmPassword !== values.password) errors.confirmPassword = "Passwords do not match.";
-  if (!values.acceptedTerms) errors.acceptedTerms = "Accept the Terms and Privacy Policy to continue.";
+  if (!values.acceptedTerms) errors.acceptedTerms = "Confirm that you understand how account details are sent to continue.";
   return errors;
 }
 

@@ -8,7 +8,11 @@ export function getSupabaseEnvironment() {
 }
 
 export function getPublicSiteUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
+  const configured = process.env.NEXT_PUBLIC_SITE_URL;
+  if (!configured && process.env.NODE_ENV === "production") throw new Error("Site URL is not configured.");
+  const url = new URL(configured || "http://localhost:3000");
+  if (url.username || url.password || url.pathname !== "/" || url.search || url.hash || !["http:", "https:"].includes(url.protocol) || (process.env.NODE_ENV === "production" && url.protocol !== "https:")) throw new Error("Invalid site URL.");
+  return url.origin;
 }
 
 export function getSafeAuthError(error: unknown, fallback: string) {

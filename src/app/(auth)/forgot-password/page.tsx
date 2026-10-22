@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { accountCollectionEnabled } from "@/modules/auth/activation";
+export const dynamic="force-dynamic";
 import { AuthFrame } from "@/modules/auth/components/auth-frame";
-
-export default function ForgotPasswordPage() { return <AuthFrame variant="login"><div className="auth-form-wrap auth-info-state"><p className="eyebrow">Password recovery</p><h2>Recovery is not enabled yet.</h2><p>Password recovery will be available when account authentication is enabled.</p><Link className="primary-button button-link" href="/login">Return to Sign In</Link><Link className="auth-home-link" href="/">Back to Home</Link></div></AuthFrame>; }
+import { PasswordRecoveryForm } from "@/modules/auth/components/password-recovery-form";
+export const metadata={title:"Password recovery | Architecting AI"};
+export default function Page(){if(!accountCollectionEnabled())return <AuthFrame variant="login"><div className="auth-form-wrap"><h2>Account recovery is awaiting final verification</h2><Link href="/courses">Explore public courses</Link></div></AuthFrame>;return <AuthFrame variant="login"><PasswordRecoveryForm reset={false}/></AuthFrame>}

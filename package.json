@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "contact:retry": "node --experimental-strip-types scripts/retry-contact-notifications.mjs",
+    "test:contact:sql": "node tests/contact-sql.integration.mjs --isolated"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

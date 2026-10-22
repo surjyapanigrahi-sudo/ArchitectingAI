@@ -1,0 +1,7 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {validateLogin,validateRegistration} from '../src/modules/auth/validation/auth-validation.ts';
+test('login validation requires email and password',()=>{assert.deepEqual(Object.keys(validateLogin({email:'bad',password:''})).sort(),['email','password']);assert.deepEqual(validateLogin({email:'valid@example.test',password:'example123'}),{});});
+test('registration validates identity, password match and acknowledgement',()=>{const good={fullName:'Local Test',email:'valid@example.test',password:'example123',confirmPassword:'example123',acceptedTerms:true};assert.deepEqual(validateRegistration(good),{});assert(validateRegistration({...good,confirmPassword:'different'}).confirmPassword);assert(validateRegistration({...good,acceptedTerms:false}).acceptedTerms);});
+test('privileged keys stay in server-only adapter; no contact reader API',()=>{const adapter=readFileSync(new URL('../src/lib/supabase/contact-server.ts',import.meta.url),'utf8');assert(adapter.includes('import "server-only"'));const route=readFileSync(new URL('../src/app/api/contact/route.ts',import.meta.url),'utf8');assert(!route.includes('export async function GET'));assert(!route.includes('console.'));const form=readFileSync(new URL('../src/components/contact/enquiry-form.tsx',import.meta.url),'utf8');assert(!form.includes('SUPABASE_SECRET_KEY'));assert(!form.includes('__forms.html'));});
