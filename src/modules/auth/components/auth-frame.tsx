@@ -16,14 +16,14 @@ export function AuthFrame({ variant, children, developmentBypassEnabled = false 
       <div className="auth-value-content">
         <p className="eyebrow">Enterprise AI Learning Studio</p>
         <h1 id="auth-value-title">{isRegister ? "Continue your Architecting AI journey." : "Welcome back."}</h1>
-        <p>{isRegister ? "Create a free account to save your learning progress and continue beyond Mission Zero." : "Continue your workshops, assignments and architecture learning journey."}</p>
+        <p>{isRegister ? "Create an adult demonstration account to explore available lessons and supported learning progress." : "Continue your workshops, assignments and architecture learning journey."}</p>
         {isRegister && <>
           <ul className="auth-benefits">
             <li><ArchitectingAiIcon name="learning-progress" size={17} />Save workshop progress</li>
             <li><ArchitectingAiIcon name="assessment" size={17} />Complete quizzes and assignments</li>
             <li><ArchitectingAiIcon name="architecture" size={17} />Submit architecture designs</li>
             <li><ArchitectingAiIcon name="ai-intelligence" size={17} />Receive future AI-assisted reviews</li>
-            <li><ArchitectingAiIcon name="certificate" size={17} />Earn platform completion certificates</li>
+            <li><ArchitectingAiIcon name="certificate" size={17} />Explore assessment demonstrations when enabled</li>
           </ul>
           <p className="auth-note">No payment required to create an account.</p>
         </>}

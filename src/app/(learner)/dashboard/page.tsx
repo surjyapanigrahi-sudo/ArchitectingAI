@@ -1,3 +1,4 @@
+import { assessmentEnabled } from "@/modules/auth/activation";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/modules/auth/current-user";
 import { PartOneAssessment } from "@/modules/assessment/part-1-assessment";
@@ -41,6 +42,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
     return <DashboardLessonWorkspace initialData={data} lesson={lesson} workshopTitle={enterpriseAiFoundations.title} nextLesson={nextLesson} persistenceEnabled={user.id !== "dev-user"} initialCompletedExperienceIds={resume.completedExperienceIds} initialCurrentExperienceId={currentId} />;
   }
 
+  if (!assessmentEnabled()) redirect("/workshops/enterprise-ai-foundations/part-1-assessment");
   const context = <section className="resume-context"><p>Welcome back, <strong>{data.learnerName}</strong></p><span>{data.assessment.status === "Passed" ? "Part 1 completed" : "Continue Learning: Part 1 Assessment"}</span><small>{data.completedCount} of {data.experienceCount} learning experiences completed · {data.overallPercent}%</small></section>;
   const content = <PartOneAssessment learnerName={data.learnerName} initialCertificate={data.certificate.earned ? { certificateReference: data.certificate.reference!, scorePercent: data.certificate.score!, issuedAt: data.certificate.issuedAt! } : null} initialResult={data.assessment.latestResult} persistenceEnabled={user.id !== "dev-user"} showCertificateInitially={resumeActivity.showCertificate} />;
   return <LearnerWorkspaceShell data={data}>{context}<div className="resumable-learning-content">{content}</div></LearnerWorkspaceShell>;

@@ -1,6 +1,7 @@
+import {parseBoolean} from '../src/config/boolean.ts';
 import {createClient} from '@supabase/supabase-js';
 import {processOneNotification} from '../src/modules/contact/notifications.ts';
-if(process.env.CONTACT_NOTIFICATION_ENABLED!=='true'){console.log('Notifications disabled; no work performed.');process.exit(0);}
+if(!parseBoolean(process.env.CONTACT_NOTIFICATION_ENABLED)){console.log('Notifications disabled; no work performed.');process.exit(0);}
 if(!process.argv.includes('--approved-send')){console.error('Explicit --approved-send is required after live-email approval.');process.exit(1);}
 try{
 const url=process.env.NEXT_PUBLIC_SUPABASE_URL,key=process.env.SUPABASE_SECRET_KEY;

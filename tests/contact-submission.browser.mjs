@@ -33,10 +33,10 @@ await new Promise(resolve => storage.listen(0, '127.0.0.1', resolve));
 const storageURL = `http://127.0.0.1:${storage.address().port}`;
 const app = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'dev', '--hostname', '127.0.0.1', '--port', '3101'], {
   cwd: process.cwd(), windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'],
-  env: { ...process.env, NODE_ENV: 'development', NETLIFY: 'false', CONTACT_ENABLED: 'true',
+  env: { ...process.env, NODE_ENV: 'development', NETLIFY: 'false', CONTACT_ENABLED: ' TrUe ',
     CONTACT_ALLOWED_ORIGINS: origin, CONTACT_HASH_SECRET: 'isolated-local-test-secret-at-least-32-characters',
-    CONTACT_NOTIFICATIONS_ENABLED: 'false', NEXT_PUBLIC_SUPABASE_URL: storageURL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: 'local-test-anon-key', SUPABASE_SECRET_KEY: 'local-test-secret-key' },
+    CONTACT_NOTIFICATION_ENABLED: 'false', AUTH_ENABLED: 'false', AUTH_REGISTRATION_ENABLED: 'false', NEXT_PUBLIC_DEV_AUTH_BYPASS: 'false', NEXT_PUBLIC_SUPABASE_URL: storageURL,
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: 'local-test-anon-key', SUPABASE_SECRET_KEY: 'local-test-secret-key' },
 });
 let logs = '';
 app.stdout.on('data', chunk => { logs += chunk; });
@@ -63,6 +63,16 @@ try {
     const button = page.getByRole('button', {name:'Submit Enquiry',exact:true});
     assert.equal(await button.isDisabled(), true);
     await page.locator('#enquiry-name').fill('Local Test Visitor');
+    await page.locator('#enquiry-email').fill('visitor@example.test');
+    await page.locator('#enquiry-name').fill('  ');
+    await page.locator('#enquiry-email').focus();
+    assert.equal(await button.isDisabled(), true);
+    await page.locator('#enquiry-full_name-error').waitFor();
+    await page.locator('#enquiry-name').fill('Local Test Visitor');
+    await page.locator('#enquiry-email').fill('a@b');
+    await page.locator('#enquiry-message').focus();
+    assert.equal(await button.isDisabled(), true);
+    await page.locator('#enquiry-email-error').waitFor();
     await page.locator('#enquiry-email').fill('visitor@example.test');
     await page.locator('#enquiry-phone').fill('5550100123');
     await page.locator('#enquiry-type').selectOption('Course Enquiry');

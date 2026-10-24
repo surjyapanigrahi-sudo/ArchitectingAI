@@ -11,7 +11,7 @@ import { PasswordField } from "./password-field";
 const initialValues: LoginValues = { email: "", password: "" };
 const loginErrorMessage = "We could not sign you in. Check your email and password and try again.";
 
-export function LoginForm({ returnToAssessment = false }: { returnToAssessment?: boolean }) {
+export function LoginForm({ returnToAssessment = false, registrationEnabled = false }: { returnToAssessment?: boolean; registrationEnabled?: boolean }) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<FieldErrors<LoginValues>>({});
   const [showPassword, setShowPassword] = useState(false);
@@ -79,7 +79,7 @@ export function LoginForm({ returnToAssessment = false }: { returnToAssessment?:
         <div className="form-row"><Link href="/forgot-password">Forgot password?</Link></div>
         <button className="primary-button auth-submit" type="submit" disabled={isSubmitting} aria-live="polite">{isSubmitting ? "Signing you in..." : "Sign In"}</button>
       </form>
-      <div className="auth-switch"><span>New to Architecting AI?</span> <Link href={returnToAssessment ? "/register?assessment=part-1" : "/register"}>Create Free Account</Link></div>
+      {registrationEnabled && <div className="auth-switch"><span>New to Architecting AI?</span> <Link href={returnToAssessment ? "/register?assessment=part-1" : "/register"}>Create Free Account</Link></div>}
       <Link className="auth-home-link" href="/">Back to Home</Link>
     </div>
   );

@@ -1583,3 +1583,6 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 
 /* Keep catalogue and contact introductions at a readable scale. */
 .course-catalogue .inner-hero h1, .contact-page .inner-hero h1 { font-size:clamp(2rem,4vw,3rem); line-height:1.1; letter-spacing:-.04em; }
+
+/* Explicit readable colours on white catalogue cards. */
+.academy-course-card h3 { color:#17324d; }

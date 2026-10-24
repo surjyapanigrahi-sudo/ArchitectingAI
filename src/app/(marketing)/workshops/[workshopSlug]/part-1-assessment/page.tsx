@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { assessmentEnabled } from "@/modules/auth/activation";
 import { getCurrentUser } from "@/modules/auth/current-user";
 import { PartOneAssessment } from "@/modules/assessment/part-1-assessment";
 import { createClient } from "@/lib/supabase/server";
@@ -11,6 +12,7 @@ export default async function PartOneAssessmentPage({ params, searchParams }: { 
   if (workshopSlug !== "enterprise-ai-foundations") notFound();
   const user = await getCurrentUser();
   if (!user) return <main className="assessment-page"><section className="assessment-card assessment-access"><p className="eyebrow">Part 1 Assessment</p><h1>Assessment access</h1><p>Free registration is required to take the assessment and earn your certificate.</p><div className="result-actions"><Link className="primary-button button-link" href="/login?assessment=part-1">Sign In</Link><Link className="secondary-button button-link" href="/register?assessment=part-1">Create Free Account</Link><Link className="secondary-button button-link" href="/workshops/enterprise-ai-foundations">Back to Learning Journey</Link></div></section></main>;
+  if (!assessmentEnabled()) return <main className="assessment-page"><section className="assessment-card"><h1>Assessment demonstration</h1><p>Formal assessment and certificate issuance are not enabled for this POC. Public lesson quizzes remain available.</p><Link href="/workshops/enterprise-ai-foundations">Back to Learning Journey</Link></section></main>;
   const learnerName = "name" in user ? user.name : typeof user.user_metadata.full_name === "string" ? user.user_metadata.full_name.trim() || null : null;
   const persistenceEnabled = user.id !== "dev-user";
   let initialCertificate = null;

@@ -1,1 +1,3 @@
-export default function AdminPlaceholder() { return <><h1>Administration</h1><p>Admin capabilities are not implemented.</p></>; }
+import { notFound } from "next/navigation";
+// Retain the route and shell for future role-protected administration.
+export default function AdminPlaceholder() { notFound(); }
