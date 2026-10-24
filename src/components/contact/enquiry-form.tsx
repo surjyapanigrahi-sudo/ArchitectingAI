@@ -36,7 +36,7 @@ export function EnquiryForm({ enabled = false }: { enabled?: boolean }) {
       const result = await response.json();
       if (!response.ok || result.ok !== true) {
         if (response.status === 400 && result.fields) setServerErrors(result.fields);
-        throw new Error(response.status === 429 ? "Too many enquiries. Please try again later." : response.status === 400 ? "Review the highlighted fields and privacy acknowledgement." : response.status === 403 ? "This page cannot submit enquiries from the current address. Please contact us by email." : "We could not save your enquiry. Your draft is still here; please retry.");
+        throw new Error(response.status === 429 ? "Too many enquiries. Please try again later." : response.status === 400 ? "Review the highlighted fields and privacy acknowledgement." : response.status === 403 ? "This page cannot submit enquiries from the current address. Please contact us by email." : response.status === 503 ? "Online enquiries are temporarily unavailable. Your draft is still here; please retry later or contact us by email." : "We could not save your enquiry. Your draft is still here; please retry.");
       }
       setStatus("success"); form.reset(); clearDraft(); setTouched({}); request.current = null;
     } catch (failure) {

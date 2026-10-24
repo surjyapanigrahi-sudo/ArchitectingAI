@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
       : await supabase.auth.verifyOtp({ token_hash: tokenHash!, type: type! });
 
     if (error || !data.user) return confirmationError();
-    if (type === "recovery" || request.nextUrl.searchParams.get("destination") === "reset-password") return NextResponse.redirect(new URL("/reset-password", getPublicSiteUrl()));
+    if (type === "recovery" || ("redirectType" in data && data.redirectType === "recovery") || request.nextUrl.searchParams.get("destination") === "reset-password") return NextResponse.redirect(new URL("/reset-password", getPublicSiteUrl()));
     if (await upsertUserProfile(supabase, data.user)) return confirmationError("Your email was confirmed, but your learner profile could not be prepared. Please sign in and try again.");
     const destination = request.nextUrl.searchParams.get("destination") === "part-1-assessment" ? "/workshops/enterprise-ai-foundations/part-1-assessment" : "/dashboard";
     return NextResponse.redirect(new URL(destination, getPublicSiteUrl()));

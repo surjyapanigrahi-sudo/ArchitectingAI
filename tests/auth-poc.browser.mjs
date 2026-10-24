@@ -157,7 +157,7 @@ try {
   await page.goto(origin+'/forgot-password');await page.waitForLoadState('networkidle');
   await page.locator('#recovery-value').fill(demo.email);await page.getByRole('button',{name:'Send recovery link',exact:true}).click();
   await page.getByRole('status').waitFor();assert.equal(calls.recover,1);
-  const callbackResponse=await page.goto(origin+'/auth/confirm?code=local-recovery&destination=reset-password');
+  const callbackResponse=await page.goto(origin+'/auth/confirm?code=local-recovery');
   assert.equal(new URL(page.url()).pathname,'/reset-password',`Recovery callback HTTP ${callbackResponse.status()}: ${(await page.locator('body').innerText()).slice(0,300)}`);
   await page.waitForLoadState('networkidle');
   assert.equal(new URL(page.url()).origin,origin,'Callback must use the configured public origin, not an internal proxy host');
