@@ -1597,9 +1597,9 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 .academy-carousel .academy-button.ghost{background:#fff;color:#17324d;border:1px solid #527485}
 
 /* Home: animated subject cards and "How learning works" figure. */
-.subject-block{max-width:1300px;margin:3rem auto 0}
-.subject-heading h3{margin:.4rem 0 1.25rem;font-size:30px;color:#17324d}
-.subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.subject-section{padding-top:5rem;padding-bottom:3rem}
+.subject-heading h2{margin:.4rem 0 0}
+.subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;max-width:1400px;margin:2rem auto 0}
 .subject-card{min-height:0}
 .subject-card-image{display:block;width:calc(100% + 4rem);max-width:none;height:auto;aspect-ratio:4/3;margin:-2rem -2rem 1.4rem;background:#f4f8fa}
 .subject-card p{color:#526577}
@@ -1610,4 +1610,4 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 .process-figure{margin:0;border:1px solid #dce8ee;border-radius:14px;background:#fff;box-shadow:0 8px 24px rgba(23,50,77,.05);overflow:hidden}
 .process-image{display:block;width:100%;height:auto}
 @media(max-width:900px){.subject-grid{grid-template-columns:1fr}.process-layout{grid-template-columns:1fr}}
-@media(max-width:600px){.process-layout .academy-step-grid{grid-template-columns:1fr}.subject-heading h3{font-size:26px}}
+@media(max-width:600px){.process-layout .academy-step-grid{grid-template-columns:1fr}}
