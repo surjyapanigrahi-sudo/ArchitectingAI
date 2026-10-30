@@ -1618,3 +1618,16 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 .hero-scene .academy-hero-image.is-photo-hidden{opacity:0;animation:none}
 @keyframes hero-photo-zoom{from{transform:scale(1)}to{transform:scale(1.05)}}
 @media(prefers-reduced-motion:reduce){.hero-scene .academy-hero-image,.hero-scene.is-active .academy-hero-image{animation:none!important;transform:none!important}}
+
+/* Subject section: centred heading, one row of cards, whole Physics card is one link. */
+.subject-section .subject-heading{max-width:760px;margin:0 auto 2.25rem;text-align:center}
+.subject-section .subject-heading .academy-kicker{justify-content:center}
+.subject-section .subject-heading h2{margin:.4rem 0 .75rem}
+.subject-grid{margin:0 auto}
+a.subject-card{text-decoration:none;color:var(--ink)}
+a.subject-card:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(23,50,77,.16);border-color:#159b91}
+a.subject-card:focus-visible{outline:3px solid #159b91;outline-offset:3px}
+.subject-card-cta{margin-top:auto;padding-top:.5rem;color:#0f7f77;font-weight:800;font-size:.85rem}
+.subject-notify{margin-top:auto;padding-top:.5rem;align-self:flex-start;color:#0f7f77;font-weight:700;font-size:.8rem;text-decoration:underline;text-underline-offset:3px}
+.subject-notify:focus-visible{outline:3px solid #159b91;outline-offset:3px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){a.subject-card:hover{transform:none}}
