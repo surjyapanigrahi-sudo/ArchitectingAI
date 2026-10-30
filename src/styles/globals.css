@@ -1611,3 +1611,10 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 .process-image{display:block;width:100%;height:auto}
 @media(max-width:900px){.subject-grid{grid-template-columns:1fr}.process-layout{grid-template-columns:1fr}}
 @media(max-width:600px){.process-layout .academy-step-grid{grid-template-columns:1fr}}
+
+/* Hero photos: gentle 1.0 -> 1.05 zoom that restarts each time a slide appears; subject photos rotate on slide 1. */
+.hero-scene .academy-hero-image{transform:scale(1);transition:none}
+.hero-scene.is-active .academy-hero-image{transform:scale(1);animation:hero-photo-zoom 9s linear forwards}
+.hero-scene .academy-hero-image.is-photo-hidden{opacity:0;animation:none}
+@keyframes hero-photo-zoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.hero-scene .academy-hero-image,.hero-scene.is-active .academy-hero-image{animation:none!important;transform:none!important}}
