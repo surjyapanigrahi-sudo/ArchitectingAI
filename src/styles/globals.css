@@ -1586,3 +1586,22 @@ a.journey-card:hover { transform:translateY(-3px); border-color:#7acfe2; box-sha
 
 /* Explicit readable colours on white catalogue cards. */
 .academy-course-card h3 { color:#17324d; }
+
+/* Home hero redesign: announcement strip (button no longer overlaps moving text) and knowledge-check card. */
+.academy-ticker{gap:.5rem;padding-right:.5rem}
+.academy-ticker-viewport{flex:1;min-width:0;overflow:hidden}
+.academy-ticker .ticker-toggle{position:static;transform:none;flex:none;order:2;white-space:nowrap}
+@media(max-width:600px){.academy-ticker{padding-right:.5rem}.academy-ticker .ticker-toggle{font-size:10px;padding:.35rem .5rem}}
+@media(prefers-reduced-motion:reduce){.academy-ticker-viewport{overflow:auto}}
+.academy-carousel .academy-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.academy-carousel .academy-button.ghost{background:#fff;color:#17324d;border:1px solid #527485}
+.hero-card{position:absolute;z-index:3;right:clamp(1.5rem,8vw,9rem);top:50%;width:min(300px,calc(100% - 2.5rem));padding:1rem 1.1rem;border-radius:12px;background:#fff;color:#17324d;box-shadow:0 18px 40px rgba(23,50,77,.25);font-family:Arial,Helvetica,sans-serif;opacity:0;animation:hero-card-in .7s 1.2s ease-out forwards}
+.hero-card p{margin:0}
+.hero-card-title{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#159b91}
+.hero-card-question{margin:.35rem 0 .7rem!important;font-size:16px;font-weight:700}
+.hero-card ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.hero-card li{padding:.5rem .7rem;border:1px solid #cfdde4;border-radius:8px;font-size:14px}
+.hero-card li.is-correct{border-color:#159b91;background:#e3f6f4;font-weight:700}
+@keyframes hero-card-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.hero-card{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-card{animation:none;opacity:1}}
