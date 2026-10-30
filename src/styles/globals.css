@@ -1633,12 +1633,12 @@ a.subject-card:focus-visible{outline:3px solid #159b91;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){a.subject-card:hover{transform:none}}
 
 /* Institutes hero slide: three short steps in one row, and a small muted note under the button. */
-.hero-steps{list-style:none;margin:1.25rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.25rem .65rem;font-size:15px;font-weight:700;color:#17324d}
+.hero-steps{list-style:none;margin:1.25rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;font-size:15px;font-weight:700;color:#17324d}
 .hero-steps li{display:inline-flex;align-items:center;gap:.65rem}
-.hero-steps li:not(:last-child)::after{content:"\00b7";font-weight:800;color:#159b91}
+.hero-steps li span{display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:#159b91;color:#fff;font-size:12px;font-weight:800}
 .academy-carousel .academy-hero-content>p.hero-note{margin:.9rem 0 0;font-size:14px;line-height:1.5;color:#607789}
 .academy-carousel .academy-hero-content.has-steps .academy-actions{margin-top:1.25rem}
 .academy-carousel .academy-hero-content.has-steps .hero-steps{margin-top:.9rem}
 .academy-carousel .academy-hero-content.has-steps>p:not(.academy-kicker):not(.hero-note){font-size:18px}
 @media(min-width:901px){.academy-carousel .academy-hero-content.has-steps{padding-top:10.25rem}}
-@media(max-width:600px){.academy-carousel .academy-hero-content.has-steps{padding-top:8.75rem}.academy-carousel .academy-hero-content.has-steps .academy-actions{margin-top:1rem}.academy-carousel .academy-hero-content.has-steps>p:not(.academy-kicker):not(.hero-note){font-size:16px}}
+@media(max-width:600px){.academy-carousel .academy-hero-content.has-steps{padding-top:7.5rem}.academy-carousel .academy-hero-content.has-steps .academy-actions{margin-top:1rem}.academy-carousel .academy-hero-content.has-steps>p:not(.academy-kicker):not(.hero-note){font-size:16px}}
