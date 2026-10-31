@@ -1642,3 +1642,15 @@ a.subject-card:focus-visible{outline:3px solid #159b91;outline-offset:3px}
 .academy-carousel .academy-hero-content.has-steps>p:not(.academy-kicker):not(.hero-note){font-size:18px}
 @media(min-width:901px){.academy-carousel .academy-hero-content.has-steps{padding-top:10.25rem}}
 @media(max-width:600px){.academy-carousel .academy-hero-content.has-steps{padding-top:7.5rem}.academy-carousel .academy-hero-content.has-steps .academy-actions{margin-top:1rem}.academy-carousel .academy-hero-content.has-steps>p:not(.academy-kicker):not(.hero-note){font-size:16px}}
+
+/* /courses/cbse overview page. */
+.cbse-classes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;max-width:1300px;margin:2rem auto 0}
+.cbse-class{scroll-margin-top:96px;padding:1.75rem;border:1px solid #e0e9ee;border-radius:16px;background:#fff;color:#17324d;box-shadow:0 10px 30px rgba(23,50,77,.07)}
+.cbse-class h2{margin:0 0 1rem;font-size:28px;color:#17324d}
+.cbse-class ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.cbse-class li{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem .9rem;border:1px solid #dce7ec;border-radius:10px;font-weight:700}
+.cbse-class li a{color:#0f766e;text-decoration:none}
+.cbse-class li a:hover,.cbse-class li a:focus-visible{text-decoration:underline}
+.cbse-sooner{margin:1rem 0 0;font-size:14px;color:#526577}
+.cbse-sooner a{color:#0f766e;font-weight:800}
+@media(max-width:900px){.cbse-classes{grid-template-columns:1fr}}

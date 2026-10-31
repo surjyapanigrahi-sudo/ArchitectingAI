@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArchitectingAiLogo } from "@/components/brand/architecting-ai-logo";
+import { cbseClasses, cbseSubjectHref } from "@/content/cbse";
 import styles from "./marketing-header.module.css";
 
 export function MarketingHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
+  const [aiGroupOpen, setAiGroupOpen] = useState(false);
+  const [cbseGroupOpen, setCbseGroupOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const coursesRef = useRef<HTMLDivElement>(null);
   const coursesButtonRef = useRef<HTMLButtonElement>(null);
@@ -64,10 +67,33 @@ export function MarketingHeader() {
         }}>
           <button ref={coursesButtonRef} type="button" aria-expanded={coursesOpen} aria-controls="marketing-courses" onClick={() => setCoursesOpen(!coursesOpen)}>Courses</button>
           <div id="marketing-courses" className={styles.dropdown} hidden={!coursesOpen}>
-            <Link href="/courses/ai-for-kids"><strong>AI for Students</strong><small>Classes 7-9</small></Link>
-            <Link href="/courses/ai-architect"><strong>Architecting AI</strong><small>Professional</small></Link>
-            <span aria-disabled="true"><strong>AI Agents &amp; Automation</strong><small>Coming soon</small></span>
-            <span aria-disabled="true"><strong>Cybersecurity Essentials</strong><small>Coming soon</small></span>
+            <div className={styles.group}>
+              <h3 className={styles.groupHeading}>AI Courses</h3>
+              <button type="button" className={styles.groupToggle} aria-expanded={aiGroupOpen} aria-controls="menu-ai-courses" onClick={() => setAiGroupOpen(!aiGroupOpen)}>AI Courses</button>
+              <div id="menu-ai-courses" className={`${styles.groupBody} ${aiGroupOpen ? "" : styles.collapsed}`}>
+                <Link href="/courses/ai-for-kids"><strong>Young Explorers</strong><small>Classes 7&ndash;9</small></Link>
+                <Link href="/courses/ai-architect"><strong>Professionals</strong><small>Working professionals</small></Link>
+                <Link className={styles.viewAll} href="/courses">All AI courses &rarr;</Link>
+              </div>
+            </div>
+            <div className={styles.group}>
+              <h3 className={styles.groupHeading}>CBSE Board Revision</h3>
+              <button type="button" className={styles.groupToggle} aria-expanded={cbseGroupOpen} aria-controls="menu-cbse-courses" onClick={() => setCbseGroupOpen(!cbseGroupOpen)}>CBSE Board Revision</button>
+              <div id="menu-cbse-courses" className={`${styles.groupBody} ${cbseGroupOpen ? "" : styles.collapsed}`}>
+                {cbseClasses.map((cls) => (
+                  <div className={styles.classBlock} key={cls.id} role="group" aria-label={cls.label}>
+                    <p className={styles.classLabel}>{cls.label}</p>
+                    {cls.subjects.map((subject) => (
+                      <Link key={subject.name} href={cbseSubjectHref(cls, subject)}>
+                        <strong>{subject.name}</strong>
+                        <small className={subject.status === "live" ? styles.live : styles.soon}>{subject.status === "live" ? "Live" : "Soon"}</small>
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+                <Link className={styles.viewAll} href="/courses/cbse">All CBSE courses &rarr;</Link>
+              </div>
+            </div>
           </div>
         </div>
         <Link href="/learning-paths" aria-current={pathname === "/learning-paths" ? "page" : undefined}>Learning Paths</Link>
