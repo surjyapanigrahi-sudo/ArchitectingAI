@@ -1,0 +1,1030 @@
+WEBVTT
+
+1
+00:00:10.868 --> 00:00:13.582
+Have you ever wondered why light casts sharp
+
+2
+00:00:13.582 --> 00:00:16.978
+shadows even when sound waves bend around corners?
+
+3
+00:00:17.508 --> 00:00:19.368
+Welcome to Ray Optics.
+
+4
+00:00:19.889 --> 00:00:24.392
+In this chapter, we study how light travels and interacts with matter.
+
+5
+00:00:24.925 --> 00:00:29.806
+Light is electromagnetic radiation with a wavelength ranging from 400
+
+6
+00:00:29.806 --> 00:00:36.116
+nm to 750 nm, detected by the human eye.
+
+7
+00:00:36.116 --> 00:00:38.604
+From everyday experience, we know light travels in
+
+8
+00:00:38.604 --> 00:00:41.770
+straight lines and with an enormous speed.
+
+9
+00:00:41.770 --> 00:00:45.949
+Its accepted speed in vacuum is c = 3 * 10^8 m/s.
+
+10
+00:00:45.949 --> 00:00:51.604
+Although light is an electromagnetic wave, its wavelength is extremely small compared
+
+11
+00:00:51.604 --> 00:00:56.282
+to ordinary objects of size around a few centimeters or larger.
+
+12
+00:00:56.282 --> 00:01:02.413
+Because this wavelength is negligible compared to macroscopic obstacles, light effectively
+
+13
+00:01:02.413 --> 00:01:06.747
+travels in straight lines along directed paths called rays of light,
+
+14
+00:01:06.747 --> 00:01:09.747
+while a bundle of such rays forms a beam of light.
+
+15
+00:01:09.747 --> 00:01:14.175
+This ray approximation forms the foundation of ray optics.
+
+16
+00:01:16.840 --> 00:01:20.735
+We have completed Introduction and the Particle Model of Light.
+
+17
+00:01:21.278 --> 00:01:25.007
+Now we start Reflection of Light by Spherical Mirrors.
+
+18
+00:01:25.528 --> 00:01:29.088
+The angle of reflection equals the angle of incidence, and the
+
+19
+00:01:29.088 --> 00:01:32.971
+incident ray, reflected ray and normal lie in one plane.
+
+20
+00:01:33.492 --> 00:01:36.778
+A spherical mirror has a pole, centre of curvature,
+
+21
+00:01:36.778 --> 00:01:40.707
+radius of curvature, principal axis and principal focus.
+
+22
+00:01:42.756 --> 00:01:45.685
+For paraxial rays, the focal length is half the
+
+23
+00:01:45.685 --> 00:01:49.127
+radius of curvature, so f equals R by 2.
+
+24
+00:01:49.646 --> 00:01:53.801
+For a concave mirror, standard rays determine image formation, where
+
+25
+00:01:53.801 --> 00:01:57.563
+standard rays parallel to the principal axis, through the focus,
+
+26
+00:01:57.563 --> 00:02:00.563
+or through the centre form real or virtual images.
+
+27
+00:02:02.600 --> 00:02:05.017
+The mirror equation states that one by v
+
+28
+00:02:05.017 --> 00:02:07.445
+plus one by u equals one by f.
+
+29
+00:02:07.445 --> 00:02:10.493
+Linear magnification m equals minus v by u.
+
+30
+00:02:12.532 --> 00:02:13.808
+Check yourself.
+
+31
+00:02:14.327 --> 00:02:17.470
+What does the focal plane of a spherical mirror represent
+
+32
+00:02:17.470 --> 00:02:20.494
+in relation to rays parallel to the principal axis?
+
+33
+00:02:27.536 --> 00:02:30.548
+The focal plane is the plane through the focus normal to
+
+34
+00:02:30.548 --> 00:02:34.560
+the principal axis where reflected rays converge or appear to diverge
+
+35
+00:02:34.560 --> 00:02:38.084
+when the incident rays make some angle with the principal axis.
+
+36
+00:02:40.108 --> 00:02:43.979
+We have completed Reflection of Light by Spherical Mirrors.
+
+37
+00:02:44.510 --> 00:02:46.775
+Now we start Sign Convention.
+
+38
+00:02:47.296 --> 00:02:50.796
+According to the Cartesian sign convention, all distances
+
+39
+00:02:50.796 --> 00:02:52.953
+are measured from the pole of the mirror.
+
+40
+00:02:53.522 --> 00:02:56.891
+Distances measured along the direction of incident light
+
+41
+00:02:56.891 --> 00:02:59.953
+are positive, and those opposite are negative.
+
+42
+00:03:00.475 --> 00:03:05.465
+Heights above the principal axis are positive, and heights below are negative.
+
+43
+00:03:05.987 --> 00:03:09.308
+For a concave mirror, the object distance u, focal
+
+44
+00:03:09.308 --> 00:03:12.727
+length f, and radius of curvature R are negative.
+
+45
+00:03:13.248 --> 00:03:16.844
+The image distance v is negative for a real image in front
+
+46
+00:03:16.844 --> 00:03:20.608
+of the mirror, but positive for a virtual image behind it.
+
+47
+00:03:21.141 --> 00:03:24.106
+For a convex mirror, f and R are positive.
+
+48
+00:03:26.136 --> 00:03:28.234
+Let us work out a numerical.
+
+49
+00:03:28.753 --> 00:03:31.396
+An object is placed thirty cm in front of
+
+50
+00:03:31.396 --> 00:03:34.195
+a concave mirror of focal length twenty cm.
+
+51
+00:03:34.717 --> 00:03:37.907
+Here object distance u is minus thirty cm,
+
+52
+00:03:37.907 --> 00:03:40.803
+and focal length f is minus twenty cm.
+
+53
+00:03:41.348 --> 00:03:44.884
+Using the mirror equation one over v plus one over u
+
+54
+00:03:44.884 --> 00:03:48.776
+equals one over f, we substitute the values to find v.
+
+55
+00:03:48.776 --> 00:03:53.312
+Solving this gives image distance v equals minus sixty cm, meaning the
+
+56
+00:03:53.312 --> 00:03:57.148
+image is real and formed sixty cm in front of the mirror.
+
+57
+00:03:57.705 --> 00:04:01.693
+The magnification m equals minus v over u, which equals
+
+58
+00:04:01.693 --> 00:04:06.181
+minus two, meaning the image is real, inverted, and magnified.
+
+59
+00:04:08.204 --> 00:04:10.599
+We have completed Sign Convention.
+
+60
+00:04:11.118 --> 00:04:14.073
+Now we start Refraction and Snell's Law.
+
+61
+00:04:14.594 --> 00:04:16.309
+Have you ever seen a straw look
+
+62
+00:04:16.309 --> 00:04:18.133
+bent in a glass of water?
+
+63
+00:04:18.654 --> 00:04:20.916
+When a light beam crosses a transparent
+
+64
+00:04:20.916 --> 00:04:24.264
+interface, its direction of propagation changes.
+
+65
+00:04:24.785 --> 00:04:27.775
+This phenomenon is called refraction of light.
+
+66
+00:04:28.285 --> 00:04:31.297
+The refractive index n is defined as the speed of
+
+67
+00:04:31.297 --> 00:04:34.321
+light in vacuum divided by its speed in the medium.
+
+68
+00:04:36.352 --> 00:04:39.162
+Snell's law states that the ratio of the sine of the
+
+69
+00:04:39.162 --> 00:04:42.126
+angle of incidence to the sine of the angle of refraction
+
+70
+00:04:42.126 --> 00:04:45.019
+is constant for a given pair of media and a given
+
+71
+00:04:45.019 --> 00:04:49.640
+colour of light, and equals the relative refractive index n21.
+
+72
+00:04:50.171 --> 00:04:53.052
+The two laws of refraction are that the incident ray,
+
+73
+00:04:53.052 --> 00:04:56.492
+refracted ray, and normal all lie in the same plane,
+
+74
+00:04:56.492 --> 00:04:59.400
+and that sin i by sin r is constant.
+
+75
+00:04:59.933 --> 00:05:02.909
+In the famous lifeguard story, a lifeguard on the
+
+76
+00:05:02.909 --> 00:05:05.731
+beach running to save a drowning child must balance
+
+77
+00:05:05.731 --> 00:05:09.162
+running fast on sand versus swimming slower in water.
+
+78
+00:05:09.683 --> 00:05:12.409
+By Fermat's principle, light takes the path
+
+79
+00:05:12.409 --> 00:05:14.659
+of least time, which yields Snell's law.
+
+80
+00:05:16.668 --> 00:05:19.811
+Light bends towards the normal in an optically denser
+
+81
+00:05:19.811 --> 00:05:22.930
+medium because its speed decreases, and away from the
+
+82
+00:05:22.930 --> 00:05:26.325
+normal in a rarer medium where its speed increases.
+
+83
+00:05:26.844 --> 00:05:29.525
+Let us work out a numerical example.
+
+84
+00:05:30.047 --> 00:05:33.880
+Light enters glass of refractive index 1.5 from air
+
+85
+00:05:33.880 --> 00:05:36.597
+at an angle of incidence of 30 degrees.
+
+86
+00:05:37.130 --> 00:05:42.977
+Using Snell's law, sin 30 degrees divided by sin r equals 1.5.
+
+87
+00:05:43.499 --> 00:05:47.570
+Since sin 30 degrees is 0.5, sin r equals
+
+88
+00:05:47.570 --> 00:05:51.963
+0.5 divided by 1.5, which is 1 by 3,
+
+89
+00:05:51.963 --> 00:05:56.118
+giving an angle of refraction r of 19.47 degrees.
+
+90
+00:05:58.136 --> 00:05:59.412
+Check yourself.
+
+91
+00:05:59.931 --> 00:06:02.836
+Why does a ray of light bend towards the normal when
+
+92
+00:06:02.836 --> 00:06:06.312
+it enters an optically denser medium from a rarer medium?
+
+93
+00:06:13.332 --> 00:06:16.130
+Light bends towards the normal because its speed
+
+94
+00:06:16.130 --> 00:06:19.225
+decreases upon entering the optically denser medium.
+
+95
+00:06:21.272 --> 00:06:24.262
+We have completed Refraction and Snell's Law.
+
+96
+00:06:24.782 --> 00:06:28.796
+Now we start Total Internal Reflection and the Critical Angle.
+
+97
+00:06:29.329 --> 00:06:32.365
+Have you ever looked into a swimming pool and noticed how the
+
+98
+00:06:32.365 --> 00:06:36.272
+water surface acts like a perfect mirror when viewed from underneath?
+
+99
+00:06:36.805 --> 00:06:39.401
+When light travels from a denser medium to a
+
+100
+00:06:39.401 --> 00:06:42.391
+rarer medium, it bends away from the normal.
+
+101
+00:06:42.912 --> 00:06:45.484
+As the angle of incidence increases, the
+
+102
+00:06:45.484 --> 00:06:48.439
+angle of refraction reaches ninety degrees.
+
+103
+00:06:48.960 --> 00:06:52.508
+The two conditions for total internal reflection are that light must
+
+104
+00:06:52.508 --> 00:06:55.424
+go from a denser to a rarer medium, and the angle
+
+105
+00:06:55.424 --> 00:06:58.258
+of incidence must be greater than the critical angle.
+
+106
+00:07:00.268 --> 00:07:03.044
+Let us define the critical angle formally.
+
+107
+00:07:03.575 --> 00:07:06.135
+The critical angle is the angle of incidence in
+
+108
+00:07:06.135 --> 00:07:08.849
+the denser medium for which the angle of refraction
+
+109
+00:07:08.849 --> 00:07:11.399
+in the rarer medium is ninety degrees.
+
+110
+00:07:11.920 --> 00:07:16.385
+From Snell law, the refractive index n21 equals the sine of the
+
+111
+00:07:16.385 --> 00:07:20.566
+angle of incidence divided by the sine of the angle of refraction.
+
+112
+00:07:21.099 --> 00:07:24.135
+When the angle of incidence equals the critical angle
+
+113
+00:07:24.135 --> 00:07:27.506
+ic, the angle of refraction is ninety degrees.
+
+114
+00:07:28.028 --> 00:07:32.444
+Since the sine of ninety degrees is one, the equation simplifies to
+
+115
+00:07:32.444 --> 00:07:36.051
+the sine of ic equals one divided by n, where n is
+
+116
+00:07:36.051 --> 00:07:39.980
+the refractive index of the denser medium relative to the rarer medium.
+
+117
+00:07:42.024 --> 00:07:46.036
+Let us examine Table 9.1 for various transparent media
+
+118
+00:07:46.036 --> 00:07:49.143
+in air, using sin C = 1 by n.
+
+119
+00:07:49.143 --> 00:07:52.334
+Water with a refractive index of 1.33
+
+120
+00:07:52.334 --> 00:07:56.169
+has a critical angle of 48.75 degrees.
+
+121
+00:07:56.688 --> 00:08:01.500
+Crown glass with 1.52 has 41.14 degrees.
+
+122
+00:08:02.034 --> 00:08:07.155
+Dense flint glass with 1.62 has 37.31 degrees.
+
+123
+00:08:07.688 --> 00:08:11.724
+Finally, diamond with a refractive index of 2.42 has
+
+124
+00:08:11.724 --> 00:08:16.405
+an exceptionally small critical angle of 24.41 degrees.
+
+125
+00:08:16.926 --> 00:08:19.822
+Why does a diamond sparkle so brilliantly?
+
+126
+00:08:20.343 --> 00:08:24.057
+Because its critical angle is so small, most light entering
+
+127
+00:08:24.057 --> 00:08:27.260
+the diamond strikes the cut facets at angles greater than
+
+128
+00:08:27.260 --> 00:08:31.807
+the critical angle and suffers multiple total internal reflections, remaining
+
+129
+00:08:31.807 --> 00:08:35.736
+trapped inside until it emerges intensely from the top faces.
+
+130
+00:08:37.772 --> 00:08:39.048
+Check yourself.
+
+131
+00:08:39.567 --> 00:08:42.924
+What two essential conditions must be met for total internal
+
+132
+00:08:42.924 --> 00:08:46.305
+reflection to occur when light travels between two media?
+
+133
+00:08:53.352 --> 00:08:56.447
+The light must travel from an optically denser medium to
+
+134
+00:08:56.447 --> 00:08:59.173
+a rarer medium, and the angle of incidence in the
+
+135
+00:08:59.173 --> 00:09:02.185
+denser medium must be greater than the critical angle.
+
+136
+00:09:04.220 --> 00:09:08.437
+We have completed Total Internal Reflection and the Critical Angle.
+
+137
+00:09:08.968 --> 00:09:13.899
+Now we start Total Internal Reflection: Demonstration and Applications.
+
+138
+00:09:14.432 --> 00:09:16.670
+Have you ever seen shimmering puddles on a
+
+139
+00:09:16.670 --> 00:09:19.232
+hot road that vanish as you approach?
+
+140
+00:09:19.765 --> 00:09:22.553
+Let us explore total internal reflection.
+
+141
+00:09:23.087 --> 00:09:27.182
+First, a laser pointer directed into slightly milky water in
+
+142
+00:09:27.182 --> 00:09:31.075
+a glass beaker demonstrates partial reflection and refraction at the
+
+143
+00:09:31.075 --> 00:09:35.137
+surface, and total internal reflection at larger angles.
+
+144
+00:09:35.658 --> 00:09:38.896
+Second, a mirage occurs on hot summer days when
+
+145
+00:09:38.896 --> 00:09:41.099
+layers of hot air near the ground have a
+
+146
+00:09:41.099 --> 00:09:44.244
+lower refractive index than cooler air above.
+
+147
+00:09:44.765 --> 00:09:48.325
+Light rays from a distant object bend progressively away from
+
+148
+00:09:48.325 --> 00:09:52.444
+the normal, undergoing total internal reflection and making the sky
+
+149
+00:09:52.444 --> 00:09:54.730
+appear as a pool of water on the ground.
+
+150
+00:09:56.776 --> 00:10:00.181
+Totally reflecting prisms use glass with critical angle less
+
+151
+00:10:00.181 --> 00:10:03.526
+than 45 degrees to turn light by 90 degrees
+
+152
+00:10:03.526 --> 00:10:07.397
+or 180 degrees through total internal reflection.
+
+153
+00:10:07.928 --> 00:10:11.774
+Next, optical fibres consist of a central core of higher
+
+154
+00:10:11.774 --> 00:10:16.074
+refractive index surrounded by cladding of lower refractive index.
+
+155
+00:10:16.595 --> 00:10:20.559
+Light enters the core and undergoes repeated total internal reflection
+
+156
+00:10:20.559 --> 00:10:24.562
+along the entire length without appreciable loss of intensity.
+
+157
+00:10:25.107 --> 00:10:28.881
+This technology is widely used in high speed communication
+
+158
+00:10:28.881 --> 00:10:32.845
+and in endoscopy for medical examination of internal organs.
+
+159
+00:10:34.884 --> 00:10:36.160
+Check yourself.
+
+160
+00:10:36.679 --> 00:10:38.965
+Why does a mirage appear as a shimmering
+
+161
+00:10:38.965 --> 00:10:40.929
+pool of water on a hot summer road?
+
+162
+00:10:47.968 --> 00:10:51.670
+A mirage occurs because layers of hot air near the ground have
+
+163
+00:10:51.670 --> 00:10:55.825
+a lower refractive index than the cooler air above, causing light rays
+
+164
+00:10:55.825 --> 00:11:00.158
+from the sky to bend progressively and undergo total internal reflection.
+
+165
+00:11:02.196 --> 00:11:07.365
+We have completed Total Internal Reflection: Demonstration and Applications.
+
+166
+00:11:07.896 --> 00:11:11.398
+Now we start Refraction at a Spherical Surface.
+
+167
+00:11:11.920 --> 00:11:14.491
+Have you ever looked through a crystal paperweight and
+
+168
+00:11:14.491 --> 00:11:18.113
+noticed how objects inside seem distorted or shifted?
+
+169
+00:11:18.622 --> 00:11:21.646
+Today we study refraction at a spherical surface,
+
+170
+00:11:21.646 --> 00:11:24.875
+which forms the foundation for understanding lenses.
+
+171
+00:11:25.396 --> 00:11:28.586
+When light travels from a medium of refractive index
+
+172
+00:11:28.586 --> 00:11:31.801
+n_1 to another of refractive index n_2 across a
+
+173
+00:11:31.801 --> 00:11:35.089
+curved boundary, it bends according to Snell's law.
+
+174
+00:11:35.598 --> 00:11:39.313
+Let us define the key terms: O is the point object,
+
+175
+00:11:39.313 --> 00:11:42.741
+I is the point image formed by the refracted rays, P
+
+176
+00:11:42.741 --> 00:11:45.610
+is the pole which is the geometric centre of the spherical
+
+177
+00:11:45.610 --> 00:11:49.396
+surface, and C is the centre of curvature whose distance from
+
+178
+00:11:49.396 --> 00:11:51.420
+P is the radius of curvature R.
+
+179
+00:11:53.456 --> 00:11:56.694
+To relate object distance u and image distance v for a
+
+180
+00:11:56.694 --> 00:12:00.646
+single spherical surface, we use the formula n_2 by v minus
+
+181
+00:12:00.646 --> 00:12:04.149
+n_1 by u equals n_2 minus n_1 by R.
+
+182
+00:12:04.668 --> 00:12:08.382
+Here n_1 and n_2 are the refractive indices of the first and
+
+183
+00:12:08.382 --> 00:12:12.680
+second media, u is the object distance, v is the image distance,
+
+184
+00:12:12.680 --> 00:12:16.311
+and R is the radius of curvature, all measured with the Cartesian
+
+185
+00:12:16.311 --> 00:12:20.432
+sign convention where distances along incident light are positive.
+
+186
+00:12:20.954 --> 00:12:25.751
+In the derivation of this formula, we apply the paraxial approximation:
+
+187
+00:12:25.751 --> 00:12:28.858
+we assume that the incident rays are close to the principal
+
+188
+00:12:28.858 --> 00:12:32.358
+axis and make very small angles with it, so that we
+
+189
+00:12:32.358 --> 00:12:36.835
+can approximate sines and tangents of angles by the angles themselves,
+
+190
+00:12:36.835 --> 00:12:40.382
+allowing us to use geometry of similar triangles cleanly.
+
+191
+00:12:42.460 --> 00:12:45.186
+We have completed Refraction at a Spherical Surface.
+
+192
+00:12:45.186 --> 00:12:48.553
+Now we start Light Sources and Photometry.
+
+193
+00:12:48.553 --> 00:12:52.660
+Have you ever wondered why a 100 watt bulb
+
+194
+00:12:52.660 --> 00:12:55.160
+feels so much brighter than a 40 watt bulb?
+
+195
+00:12:55.160 --> 00:12:59.755
+Photometry measures light as the human eye perceives it, rather
+
+196
+00:12:59.755 --> 00:13:02.731
+than raw radiant power, because our eyes are sensitive only
+
+197
+00:13:02.731 --> 00:13:08.722
+to wavelengths between 400 nm and 750 nm.
+
+198
+00:13:09.255 --> 00:13:12.553
+Luminous flux is the total radiant energy emitted per
+
+199
+00:13:12.553 --> 00:13:16.305
+second weighted by eye sensitivity, measured in lumen.
+
+200
+00:13:16.827 --> 00:13:20.434
+Luminous intensity is the luminous flux emitted per unit
+
+201
+00:13:20.434 --> 00:13:23.874
+solid angle in a given direction, measured in candela.
+
+202
+00:13:25.896 --> 00:13:29.420
+When light shines on a surface, illuminance is defined as
+
+203
+00:13:29.420 --> 00:13:33.529
+the luminous flux falling per unit area, measured in lux.
+
+204
+00:13:34.048 --> 00:13:37.167
+According to the inverse square law, illuminance from a
+
+205
+00:13:37.167 --> 00:13:40.167
+point source is proportional to 1 by r squared,
+
+206
+00:13:40.167 --> 00:13:42.491
+where r is the distance from the source.
+
+207
+00:13:43.013 --> 00:13:45.858
+E equals I divided by r squared, where E
+
+208
+00:13:45.858 --> 00:13:49.215
+is illuminance in lux, I is luminous intensity in
+
+209
+00:13:49.215 --> 00:13:52.027
+candela, and r is distance in meters.
+
+210
+00:13:52.548 --> 00:13:55.989
+This happens because light spreads out over a sphere whose
+
+211
+00:13:55.989 --> 00:13:58.786
+surface area grows with the square of the radius.
+
+212
+00:14:00.836 --> 00:14:02.112
+Check yourself.
+
+213
+00:14:02.631 --> 00:14:05.238
+Why does photometry measure light based on the
+
+214
+00:14:05.238 --> 00:14:07.596
+human eye rather than raw radiant power?
+
+215
+00:14:14.616 --> 00:14:18.330
+Photometry measures light as the human eye perceives it because our eyes
+
+216
+00:14:18.330 --> 00:14:25.021
+are sensitive only to specific wavelengths between 400 nm and 750 nm.
+
+217
+00:14:27.068 --> 00:14:30.201
+We have completed Light Sources and Photometry.
+
+218
+00:14:30.732 --> 00:14:33.401
+Now we start Refraction by a Lens.
+
+219
+00:14:33.923 --> 00:14:37.628
+Have you ever used a magnifying glass to read tiny print?
+
+220
+00:14:38.173 --> 00:14:41.268
+A lens is a transparent optical medium bounded by
+
+221
+00:14:41.268 --> 00:14:44.568
+two surfaces, at least one of which is spherical.
+
+222
+00:14:45.089 --> 00:14:48.363
+A convex lens is thicker at the centre and converges a
+
+223
+00:14:48.363 --> 00:14:52.018
+parallel beam of light to its principal focus, whereas a concave
+
+224
+00:14:52.018 --> 00:14:55.282
+lens is thinner at the centre and diverges light.
+
+225
+00:14:55.816 --> 00:14:57.756
+The focal length is the distance from
+
+226
+00:14:57.756 --> 00:15:00.197
+the optical centre to the principal focus.
+
+227
+00:15:02.224 --> 00:15:05.653
+The thin lens formula relates object distance, image
+
+228
+00:15:05.653 --> 00:15:08.893
+distance, and focal length for any thin lens.
+
+229
+00:15:09.400 --> 00:15:11.424
+It is stated as 1 by v minus
+
+230
+00:15:11.424 --> 00:15:13.664
+1 by u equals 1 by f.
+
+231
+00:15:14.174 --> 00:15:17.507
+Here, u is the object distance, v is the image
+
+232
+00:15:17.507 --> 00:15:20.864
+distance, and f is the focal length, all measured in
+
+233
+00:15:20.864 --> 00:15:24.472
+centimetres from the optical centre using the sign convention.
+
+234
+00:15:26.508 --> 00:15:31.010
+How do lens designers choose curvatures to get a desired focal length?
+
+235
+00:15:31.529 --> 00:15:34.672
+The lens maker's formula is 1 by f equals n
+
+236
+00:15:34.672 --> 00:15:38.413
+minus 1 times 1 by R1 minus 1 by R2.
+
+237
+00:15:38.946 --> 00:15:42.672
+Here, n is the refractive index of the lens material relative
+
+238
+00:15:42.672 --> 00:15:46.029
+to the surrounding medium, and R1 and R2 are the radii
+
+239
+00:15:46.029 --> 00:15:49.637
+of curvature of the two spherical surfaces in centimetres.
+
+240
+00:15:51.680 --> 00:15:54.870
+Linear magnification is given by m equals v by u,
+
+241
+00:15:54.870 --> 00:15:57.466
+which is the ratio of image height to object height.
+
+242
+00:15:57.466 --> 00:16:00.201
+Let us solve a numerical example.
+
+243
+00:16:00.201 --> 00:16:05.356
+Consider an object placed 30 cm from a convex
+
+244
+00:16:05.356 --> 00:16:08.690
+lens of focal length 10 cm, so u is
+
+245
+00:16:08.690 --> 00:16:13.856
+minus 30 cm and f is plus 10 cm.
+
+246
+00:16:13.856 --> 00:16:17.320
+Using the thin lens formula, 1 by v minus 1 by minus
+
+247
+00:16:17.320 --> 00:16:22.749
+30 equals 1 by 10, giving v equal to 15 cm.
+
+248
+00:16:22.749 --> 00:16:25.273
+The magnification m is 15 divided by
+
+249
+00:16:25.273 --> 00:16:28.942
+minus 30, which equals minus 0.5.
+
+250
+00:16:29.463 --> 00:16:32.475
+The image is real, inverted, and diminished.
+
+251
+00:16:34.492 --> 00:16:35.768
+Check yourself.
+
+252
+00:16:36.287 --> 00:16:39.156
+How does the physical structure of a convex lens
+
+253
+00:16:39.156 --> 00:16:41.549
+differ from that of a concave lens in terms
+
+254
+00:16:41.549 --> 00:16:43.859
+of their effect on a parallel beam of light?
+
+255
+00:16:50.912 --> 00:16:54.210
+A convex lens is thicker at the centre and converges a
+
+256
+00:16:54.210 --> 00:16:57.876
+parallel beam of light to its principal focus, whereas a concave
+
+257
+00:16:57.876 --> 00:17:00.960
+lens is thinner at the centre and diverges the light.
+

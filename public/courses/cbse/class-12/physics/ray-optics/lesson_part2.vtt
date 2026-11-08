@@ -1,0 +1,886 @@
+WEBVTT
+
+1
+00:00:10.868 --> 00:00:12.775
+Welcome back to part 2.
+
+2
+00:00:13.282 --> 00:00:16.437
+In part 1 we covered Reflection of Light by
+
+3
+00:00:16.437 --> 00:00:20.151
+Spherical Mirrors, Sign Convention, Refraction and Snell's Law and
+
+4
+00:00:20.151 --> 00:00:23.201
+Total Internal Reflection and the Critical Angle.
+
+5
+00:00:23.735 --> 00:00:25.937
+Now we continue with Power of a Lens.
+
+6
+00:00:27.976 --> 00:00:30.800
+We have completed Refraction by a Lens.
+
+7
+00:00:31.319 --> 00:00:33.595
+Now we start Power of a Lens.
+
+8
+00:00:34.116 --> 00:00:37.726
+Have you ever wondered how strong a magnifying glass is?
+
+9
+00:00:38.259 --> 00:00:40.438
+The power P of a lens is defined as
+
+10
+00:00:40.438 --> 00:00:43.224
+the reciprocal of its focal length f in metres,
+
+11
+00:00:43.224 --> 00:00:45.714
+given by P = 1 / f.
+
+12
+00:00:46.236 --> 00:00:48.155
+It is measured in dioptre.
+
+13
+00:00:48.688 --> 00:00:50.652
+It is positive for a convex lens
+
+14
+00:00:50.652 --> 00:00:52.628
+and negative for a concave lens.
+
+15
+00:00:54.660 --> 00:00:58.005
+For thin lenses in contact, 1 / f equals 1 /
+
+16
+00:00:58.005 --> 00:01:01.803
+f1 plus 1 / f2, so P equals P1 plus P2.
+
+17
+00:01:01.803 --> 00:01:05.967
+Let us find the combined power and focal length of a
+
+18
+00:01:05.967 --> 00:01:09.443
+5 dioptre lens in contact with a minus 2 dioptre lens.
+
+19
+00:01:09.443 --> 00:01:14.312
+Adding them gives P = 5 - 2 = 3 dioptre.
+
+20
+00:01:14.312 --> 00:01:20.622
+The focal length is f = 1 / 3 = 0.33 m.
+
+21
+00:01:22.640 --> 00:01:23.916
+Check yourself.
+
+22
+00:01:24.435 --> 00:01:27.554
+Why is the power of a convex lens considered positive
+
+23
+00:01:27.554 --> 00:01:30.852
+while the power of a concave lens is considered negative?
+
+24
+00:01:37.860 --> 00:01:41.398
+The power of a lens is the reciprocal of its focal length.
+
+25
+00:01:41.917 --> 00:01:45.143
+Because a convex lens has a positive focal length,
+
+26
+00:01:45.143 --> 00:01:48.298
+its power is positive, whereas a concave lens has
+
+27
+00:01:48.298 --> 00:01:51.298
+a negative focal length, making its power negative.
+
+28
+00:01:53.336 --> 00:01:55.779
+We have completed Power of a Lens.
+
+29
+00:01:56.298 --> 00:01:59.229
+Now we start Refraction through a Prism.
+
+30
+00:01:59.750 --> 00:02:01.786
+Have you ever wondered how a prism
+
+31
+00:02:01.786 --> 00:02:03.884
+splits white light into a rainbow?
+
+32
+00:02:04.405 --> 00:02:07.979
+Let us examine refraction through a transparent prism.
+
+33
+00:02:08.488 --> 00:02:11.488
+Consider a ray of light incident on the first face of the
+
+34
+00:02:11.488 --> 00:02:16.048
+prism at angle i, refracting at angle r1, striking the second face
+
+35
+00:02:16.048 --> 00:02:19.693
+at angle r2, and emerging into the air at angle e.
+
+36
+00:02:20.226 --> 00:02:22.465
+The angle between the incident ray and the
+
+37
+00:02:22.465 --> 00:02:25.336
+emergent ray is the angle of deviation delta.
+
+38
+00:02:25.857 --> 00:02:28.905
+Geometry shows that the total angle of deviation is
+
+39
+00:02:28.905 --> 00:02:32.060
+given by delta = i + e - A,
+
+40
+00:02:32.060 --> 00:02:34.024
+where A is the angle of the prism.
+
+41
+00:02:36.028 --> 00:02:40.076
+As the angle of incidence increases, the angle of deviation first
+
+42
+00:02:40.076 --> 00:02:45.042
+decreases, reaches a unique minimum value Dm, and then increases.
+
+43
+00:02:45.549 --> 00:02:49.430
+At this position of minimum deviation, the ray passes symmetrically
+
+44
+00:02:49.430 --> 00:02:53.133
+through the prism, meaning the angle of incidence equals the
+
+45
+00:02:53.133 --> 00:02:56.645
+angle of emergence, so i = e, and the internal
+
+46
+00:02:56.645 --> 00:03:01.680
+angles satisfy r1 = r2 = A / 2.
+
+47
+00:03:01.680 --> 00:03:06.871
+Substituting these conditions into Snell's law yields the prism formula n =
+
+48
+00:03:06.871 --> 00:03:10.811
+sin((A + Dm) / 2) / sin(A / 2), which allows us
+
+49
+00:03:10.811 --> 00:03:14.609
+to experimentally determine the refractive index n of the prism material.
+
+50
+00:03:17.232 --> 00:03:20.246
+We have completed Refraction through a Prism.
+
+51
+00:03:20.777 --> 00:03:23.565
+Now we start Dispersion by a Prism.
+
+52
+00:03:24.099 --> 00:03:27.349
+Have you ever wondered how a simple glass prism splits a
+
+53
+00:03:27.349 --> 00:03:30.577
+beam of white light into a stunning rainbow of colours?
+
+54
+00:03:31.122 --> 00:03:34.161
+This phenomenon is called dispersion of light.
+
+55
+00:03:34.682 --> 00:03:38.289
+When white light passes through a prism, violet light is bent
+
+56
+00:03:38.289 --> 00:03:41.325
+the most while red light is bent the least because the
+
+57
+00:03:41.325 --> 00:03:45.196
+refractive index of glass depends on the wavelength of light.
+
+58
+00:03:45.718 --> 00:03:49.765
+Since each colour has a different wavelength, it travels at a slightly
+
+59
+00:03:49.765 --> 00:03:53.801
+different speed inside the glass and thus deviates by a unique angle.
+
+60
+00:03:55.820 --> 00:04:00.582
+Let us examine Table 9.2 from your textbook, which lists refractive
+
+61
+00:04:00.582 --> 00:04:04.930
+indices at specific wavelengths for crown glass and flint glass.
+
+62
+00:04:05.449 --> 00:04:17.020
+At wavelengths of 396.9, 486.1, 589.3, and 656.3 nanometre, crown glass
+
+63
+00:04:17.020 --> 00:04:26.987
+has refractive indices of 1.533, 1.523, 1.517, and 1.515 respectively.
+
+64
+00:04:27.508 --> 00:04:29.996
+For flint glass at the same wavelengths, the
+
+65
+00:04:29.996 --> 00:04:38.403
+refractive indices are 1.663, 1.639, 1.627, and 1.622.
+
+66
+00:04:38.925 --> 00:04:42.377
+Notice how the refractive index decreases as the wavelength
+
+67
+00:04:42.377 --> 00:04:44.996
+increases from the violet end to the red end
+
+68
+00:04:44.996 --> 00:04:47.675
+of the visible spectrum for both glass types.
+
+69
+00:04:49.696 --> 00:04:54.008
+Why do thick lenses suffer from a defect known as chromatic aberration?
+
+70
+00:04:54.527 --> 00:04:57.801
+Because a thick lens acts like a combination of prisms
+
+71
+00:04:57.801 --> 00:05:02.625
+stacked together, refracting different wavelengths of light by varying amounts.
+
+72
+00:05:03.146 --> 00:05:05.920
+When white light passes through a thick lens, blue
+
+73
+00:05:05.920 --> 00:05:08.622
+light focuses closer to the lens while red light
+
+74
+00:05:08.622 --> 00:05:13.113
+focuses further away, producing blurred images with coloured fringes.
+
+75
+00:05:13.634 --> 00:05:16.658
+This dispersion effect limits the optical clarity
+
+76
+00:05:16.658 --> 00:05:20.075
+of simple uncorrected lenses in precision instruments.
+
+77
+00:05:22.140 --> 00:05:23.416
+Check yourself.
+
+78
+00:05:23.935 --> 00:05:26.161
+Why does violet light bend more than
+
+79
+00:05:26.161 --> 00:05:28.269
+red light when passing through a prism?
+
+80
+00:05:35.296 --> 00:05:38.915
+Because the refractive index of glass depends on the wavelength of
+
+81
+00:05:38.915 --> 00:05:42.927
+light, causing shorter wavelengths like violet to travel at a different
+
+82
+00:05:42.927 --> 00:05:46.129
+speed and deviate more than longer wavelengths like red.
+
+83
+00:05:48.180 --> 00:05:51.159
+We have completed Dispersion by a Prism.
+
+84
+00:05:51.678 --> 00:05:55.763
+Now we start Natural Phenomena due to Sunlight: The Rainbow.
+
+85
+00:05:56.285 --> 00:05:58.737
+Have you ever wondered how a brilliant arc of
+
+86
+00:05:58.737 --> 00:06:01.728
+colours appears in the sky after a rain shower?
+
+87
+00:06:02.249 --> 00:06:05.344
+A rainbow is a wonderful natural phenomenon caused by
+
+88
+00:06:05.344 --> 00:06:09.118
+the combined effect of dispersion, refraction, and reflection of
+
+89
+00:06:09.118 --> 00:06:13.037
+sunlight by spherical raindrops suspended in the atmosphere.
+
+90
+00:06:13.570 --> 00:06:17.428
+For a rainbow to be visible to an observer, two essential conditions
+
+91
+00:06:17.428 --> 00:06:21.368
+must be met: the Sun must be positioned behind the observer, and
+
+92
+00:06:21.368 --> 00:06:25.204
+there must be falling or suspended rain in front of the observer.
+
+93
+00:06:25.737 --> 00:06:30.213
+Sunlight enters a spherical raindrop, undergoes refraction at the front
+
+94
+00:06:30.213 --> 00:06:34.880
+surface, is dispersed into its constituent colours, reflects internally from
+
+95
+00:06:34.880 --> 00:06:38.320
+the back surface of the drop, and finally refracts again
+
+96
+00:06:38.320 --> 00:06:41.190
+as it emerges into the air towards the observer.
+
+97
+00:06:43.232 --> 00:06:45.696
+The primary rainbow is formed by rays that
+
+98
+00:06:45.696 --> 00:06:49.770
+undergo exactly one internal reflection inside the raindrop.
+
+99
+00:06:50.289 --> 00:06:53.753
+The resulting bow shows red on the outer edge, at an angle
+
+100
+00:06:53.753 --> 00:06:58.661
+of 42 degrees, and violet on the inner edge, at 40 degrees.
+
+101
+00:06:59.182 --> 00:07:02.027
+Sometimes, a second, fainter bow called the
+
+102
+00:07:02.027 --> 00:07:05.518
+secondary rainbow appears outside the primary one.
+
+103
+00:07:06.039 --> 00:07:08.468
+The secondary rainbow is produced by rays
+
+104
+00:07:08.468 --> 00:07:12.041
+undergoing two internal reflections inside the raindrops.
+
+105
+00:07:12.563 --> 00:07:16.861
+Because of the extra reflection, the intensity is significantly lower
+
+106
+00:07:16.861 --> 00:07:20.289
+and the order of colours is completely reversed, appearing with
+
+107
+00:07:20.289 --> 00:07:23.682
+violet on the outer edge at 53 degrees and red
+
+108
+00:07:23.682 --> 00:07:25.789
+on the inner edge at 50 degrees.
+
+109
+00:07:27.820 --> 00:07:29.096
+Check yourself.
+
+110
+00:07:29.615 --> 00:07:32.389
+What optical phenomena combined with sunlight and
+
+111
+00:07:32.389 --> 00:07:34.758
+raindrops cause the formation of a rainbow?
+
+112
+00:07:41.792 --> 00:07:45.161
+A rainbow is caused by the combined effect of refraction,
+
+113
+00:07:45.161 --> 00:07:49.435
+dispersion, and internal reflection of sunlight by spherical raindrops.
+
+114
+00:07:51.484 --> 00:07:55.760
+We have completed Natural Phenomena due to Sunlight: The Rainbow.
+
+115
+00:07:56.279 --> 00:07:58.603
+Now we start Scattering of Light.
+
+116
+00:07:59.124 --> 00:08:01.136
+Have you ever wondered why the sky
+
+117
+00:08:01.136 --> 00:08:03.567
+above us appears blue during the day?
+
+118
+00:08:04.101 --> 00:08:08.232
+Scattering is the phenomenon where light is deflected in various directions
+
+119
+00:08:08.232 --> 00:08:13.032
+by particles in its path, such as atmospheric molecules and dust.
+
+120
+00:08:13.553 --> 00:08:16.434
+When the particles are much smaller than the wavelength,
+
+121
+00:08:16.434 --> 00:08:20.434
+Rayleigh scattering applies, and the scattered intensity is proportional
+
+122
+00:08:20.434 --> 00:08:23.103
+to one over wavelength to the fourth power.
+
+123
+00:08:23.624 --> 00:08:27.291
+So shorter wavelengths scatter much more than longer ones,
+
+124
+00:08:27.291 --> 00:08:30.184
+which explains why the blue sky is so prominent.
+
+125
+00:08:32.208 --> 00:08:33.898
+Why does the sun look red at
+
+126
+00:08:33.898 --> 00:08:37.056
+sunrise and sunset while clouds look white?
+
+127
+00:08:37.598 --> 00:08:42.039
+At sunset, light travels through a thicker atmosphere layer, scattering
+
+128
+00:08:42.039 --> 00:08:45.994
+away shorter blue wavelengths and leaving the longer red wavelengths.
+
+129
+00:08:46.515 --> 00:08:49.765
+Meanwhile, clouds look white because water droplets
+
+130
+00:08:49.765 --> 00:08:52.670
+scatter all wavelengths of white light equally.
+
+131
+00:08:54.716 --> 00:08:55.992
+Check yourself.
+
+132
+00:08:56.511 --> 00:08:58.964
+According to Rayleigh scattering, why does the
+
+133
+00:08:58.964 --> 00:09:00.726
+sky appear blue during the day?
+
+134
+00:09:07.752 --> 00:09:11.550
+Shorter wavelengths of light scatter much more than longer wavelengths
+
+135
+00:09:11.550 --> 00:09:15.895
+when deflected by atmospheric particles, making the blue color prominent.
+
+136
+00:09:17.924 --> 00:09:19.734
+We have completed Scattering of Light.
+
+137
+00:09:19.734 --> 00:09:23.553
+Now we start Optical Instruments: The Eye.
+
+138
+00:09:23.553 --> 00:09:26.684
+Have you ever wondered how the human eye
+
+139
+00:09:26.684 --> 00:09:29.731
+automatically focuses on objects both near and far?
+
+140
+00:09:29.731 --> 00:09:34.291
+Light enters the eye through the transparent cornea and passes through
+
+141
+00:09:34.291 --> 00:09:37.993
+the pupil, an aperture regulated in size by the pigmented iris.
+
+142
+00:09:37.993 --> 00:09:43.362
+Behind the pupil, the crystalline eye lens refracts the light rays to
+
+143
+00:09:43.362 --> 00:09:47.541
+form a sharp, inverted real image on the sensitive retina, which converts
+
+144
+00:09:47.541 --> 00:09:51.648
+the optical signal into electrical nerve impulses sent to the brain.
+
+145
+00:09:51.648 --> 00:09:55.076
+The near point of a normal human eye is situated
+
+146
+00:09:55.076 --> 00:09:59.648
+at a standard distance of 25 cm, closer than which
+
+147
+00:09:59.648 --> 00:10:03.231
+objects cannot be seen clearly without strain, while the far
+
+148
+00:10:03.231 --> 00:10:06.255
+point lies at infinity for a relaxed normal eye.
+
+149
+00:10:08.296 --> 00:10:11.906
+How does the eye adjust its focus for different distances?
+
+150
+00:10:12.436 --> 00:10:17.067
+Through the process of accommodation, ciliary muscles contract or relax to
+
+151
+00:10:17.067 --> 00:10:21.010
+alter the curvature and focal length of the flexible eye lens.
+
+152
+00:10:21.532 --> 00:10:24.570
+However, structural defects often occur.
+
+153
+00:10:25.103 --> 00:10:30.544
+Myopia, or nearsightedness, is a condition where distant objects appear blurred because
+
+154
+00:10:30.544 --> 00:10:34.139
+the image forms in front of the retina; it is corrected using
+
+155
+00:10:34.139 --> 00:10:38.665
+a concave lens of suitable focal length that diverges the incoming rays.
+
+156
+00:10:39.186 --> 00:10:45.627
+Conversely, hypermetropia, or farsightedness, occurs when nearby images form behind the retina,
+
+157
+00:10:45.627 --> 00:10:49.865
+which is corrected using a converging convex lens that adds the necessary
+
+158
+00:10:49.865 --> 00:10:53.079
+refraction to pull the focal point back onto the retina.
+
+159
+00:10:55.116 --> 00:10:58.440
+We have completed Optical Instruments: The Eye.
+
+160
+00:10:58.971 --> 00:11:01.128
+Now we start The Microscope.
+
+161
+00:11:01.649 --> 00:11:05.592
+Have you ever tried reading tiny text with a magnifying glass?
+
+162
+00:11:06.126 --> 00:11:08.923
+A simple microscope is a convex lens used
+
+163
+00:11:08.923 --> 00:11:12.307
+as a magnifier to view small objects clearly.
+
+164
+00:11:12.911 --> 00:11:16.185
+When the final virtual image is formed at the near point,
+
+165
+00:11:16.185 --> 00:11:19.721
+the magnifying power is given by m equals 1 plus D
+
+166
+00:11:19.721 --> 00:11:23.149
+by f, where D is the least distance of distinct vision
+
+167
+00:11:23.149 --> 00:11:25.756
+and f is the focal length of the convex lens.
+
+168
+00:11:27.776 --> 00:11:30.169
+To achieve much higher magnification than a
+
+169
+00:11:30.169 --> 00:11:33.362
+simple lens, we use a compound microscope.
+
+170
+00:11:33.881 --> 00:11:39.024
+The objective lens forms a real, inverted, and magnified intermediate image,
+
+171
+00:11:39.024 --> 00:11:43.383
+which the eyepiece then further magnifies as a virtual final image.
+
+172
+00:11:43.905 --> 00:11:48.238
+The total magnifying power is the product of the objective magnification
+
+173
+00:11:48.238 --> 00:11:52.857
+and the eyepiece magnification, given approximately by m equals L by
+
+174
+00:11:52.857 --> 00:11:56.452
+f_o times D by f_e, where L is the tube length.
+
+175
+00:11:58.492 --> 00:11:59.768
+Check yourself.
+
+176
+00:12:00.287 --> 00:12:04.216
+In a compound microscope, what type of intermediate image is formed
+
+177
+00:12:04.216 --> 00:12:07.716
+by the objective lens, and how does the eyepiece treat it?
+
+178
+00:12:14.744 --> 00:12:20.089
+The objective lens forms a real, inverted, and magnified intermediate image, which
+
+179
+00:12:20.089 --> 00:12:24.220
+the eyepiece then further magnifies to produce a virtual final image.
+
+180
+00:12:26.260 --> 00:12:28.608
+We have completed The Microscope.
+
+181
+00:12:29.127 --> 00:12:31.153
+Now we start The Telescope.
+
+182
+00:12:31.674 --> 00:12:34.781
+Have you ever wondered how astronomers gaze deep into
+
+183
+00:12:34.781 --> 00:12:37.689
+the night sky to view distant stars and planets?
+
+184
+00:12:38.210 --> 00:12:42.317
+An astronomical refracting telescope consists of an objective lens of
+
+185
+00:12:42.317 --> 00:12:45.674
+large focal length and a large aperture to gather maximum
+
+186
+00:12:45.674 --> 00:12:49.341
+light from distant celestial objects, and an eyepiece of small
+
+187
+00:12:49.341 --> 00:12:52.022
+focal length to magnify the formed image.
+
+188
+00:12:52.543 --> 00:12:56.665
+In normal adjustment, the final image is formed at infinity.
+
+189
+00:12:57.210 --> 00:13:00.103
+The magnifying power m is given by the ratio of
+
+190
+00:13:00.103 --> 00:13:03.103
+focal length of the objective f_o to focal length of
+
+191
+00:13:03.103 --> 00:13:07.186
+the eyepiece f_e, so that m equals f_o by f_e,
+
+192
+00:13:07.186 --> 00:13:10.150
+and the tube length equals f_o plus f_e.
+
+193
+00:13:12.216 --> 00:13:17.680
+While refracting telescopes are useful, large lenses suffer from chromatic aberration and
+
+194
+00:13:17.680 --> 00:13:21.337
+are heavy, so they are difficult to support and can sag.
+
+195
+00:13:21.856 --> 00:13:27.249
+To overcome this, the reflecting telescope uses a parabolic mirror objective, which
+
+196
+00:13:27.249 --> 00:13:32.526
+avoids chromatic aberration and permits a large aperture to collect faint starlight.
+
+197
+00:13:33.047 --> 00:13:37.916
+The Cassegrain arrangement employs a large parabolic primary mirror with a central
+
+198
+00:13:37.916 --> 00:13:41.702
+hole and a convex secondary mirror that reflects light back through the
+
+199
+00:13:41.702 --> 00:13:46.321
+hole to the eyepiece, creating a compact system with reduced spherical and
+
+200
+00:13:46.321 --> 00:13:50.095
+chromatic aberration, though coma can still occur off the axis.
+
+201
+00:13:52.124 --> 00:13:53.400
+Check yourself.
+
+202
+00:13:53.919 --> 00:13:56.717
+Why is a reflecting telescope preferred over a
+
+203
+00:13:56.717 --> 00:14:00.467
+refracting telescope when observing faint celestial objects?
+
+204
+00:14:07.488 --> 00:14:12.928
+A reflecting telescope uses a mirror objective that completely avoids chromatic aberration
+
+205
+00:14:12.928 --> 00:14:16.786
+and allows for a much larger aperture to collect fainter starlight.
+
+206
+00:14:18.836 --> 00:14:21.088
+We have completed The Telescope.
+
+207
+00:14:21.607 --> 00:14:24.646
+Now we start Summary and Points to Remember.
+
+208
+00:14:25.191 --> 00:14:28.527
+Let us summarize the main results of ray optics.
+
+209
+00:14:29.048 --> 00:14:31.822
+Light travels in straight lines and satisfies
+
+210
+00:14:31.822 --> 00:14:34.300
+the laws of reflection and refraction.
+
+211
+00:14:34.834 --> 00:14:37.881
+Spherical mirrors obey the mirror equation 1 / v
+
+212
+00:14:37.881 --> 00:14:40.726
++ 1 / u = 1 / f, with
+
+213
+00:14:40.726 --> 00:14:43.086
+focal length f = R / 2.
+
+214
+00:14:43.619 --> 00:14:47.976
+Refraction across an interface follows Snell's law n_21 = sin
+
+215
+00:14:47.976 --> 00:14:51.536
+i / sin r, and total internal reflection occurs for
+
+216
+00:14:51.536 --> 00:14:55.931
+angles exceeding the critical angle sin i_c = n_21.
+
+217
+00:14:56.465 --> 00:14:59.667
+Lenses use refraction to form images, governed by
+
+218
+00:14:59.667 --> 00:15:02.681
+the lens maker's formula and lens formula.
+
+219
+00:15:03.215 --> 00:15:06.455
+Prisms produce deviation and dispersion of light.
+
+220
+00:15:07.012 --> 00:15:12.895
+Optical instruments like microscopes and telescopes enhance vision and angular magnification.
+
+221
+00:15:13.429 --> 00:15:16.250
+Thank you for joining this lesson on ray optics.
+
