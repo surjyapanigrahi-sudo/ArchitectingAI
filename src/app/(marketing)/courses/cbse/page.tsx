@@ -9,6 +9,10 @@ export default function CbseCoursesPage() {
       <ul>{cls.subjects.map(subject => <li key={subject.name}>
         {subject.status === "live" && subject.href ? <Link href={subject.href}>{subject.name}</Link> : <span>{subject.name}</span>}
         <span className={`academy-status status-${subject.status === "live" ? "available" : "coming-soon"}`}>{subject.status === "live" ? "Live" : "Soon"}</span>
+        {subject.chapters && <ol className="cbse-chapters" aria-label={`${cls.label} ${subject.name} chapters`}>{subject.chapters.map(ch => <li key={ch.number}>
+          {ch.status === "live" && ch.href ? <Link href={ch.href}>{ch.number}. {ch.title}</Link> : <span>{ch.number}. {ch.title}</span>}
+          <span className={`academy-status status-${ch.status === "live" ? "available" : "coming-soon"}`}>{ch.status === "live" ? "Live" : "Soon"}</span>
+        </li>)}</ol>}
       </li>)}</ul>
       <p className="cbse-sooner">Want this sooner? <Link href="/contact">Tell us</Link></p>
     </section>)}</div>
